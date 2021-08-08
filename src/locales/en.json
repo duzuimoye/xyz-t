@@ -1,0 +1,42 @@
+{
+  "translation": {
+    "header": {
+      "homePage": "Home",
+      "new": "new",
+      "autoSave": "autoSave",
+      "exit": "exit",
+      "view": "view",
+      "commandPanel": "commandPanel",
+      "openView": "openView",
+      "appearance": "appearance",
+      "headerMenuBar": "headerMenuBar",
+      "sidebarLeft": "sidebar",
+      "footerBar": "footerBar",
+      "sidebarToRight": "sidebarToRight"
+    },
+    "common": {
+      "resourceManage": "resource Manage",
+      "workbar": "work bar",
+      "staticResource": "static resource",
+      "componentTree": "component tree",
+      "emptyFile": "empty file",
+      "holdAll": "hold-all",
+      "search": "search",
+      "debug": "run & debug",
+      "extend": "extend",
+      "setting": "setting",
+      "counter": "counter"
+    },
+    "toast": {
+      "unfinish": "Not finished yet, please look forward to..."
+    },
+    "baseMaterial": {
+      "element": {
+        "buttonComponent": {
+          "group": "button group",
+          "label": "button"
+        }
+      }
+    }
+  }
+}

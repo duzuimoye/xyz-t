@@ -1,2 +1,3 @@
-# lowCode-frontend
-a pure front-end lowCode project
+## UI design
+
+I hate dialog, popover, dwawer and hover style.

@@ -1,0 +1,40 @@
+{
+  "translation": {
+    "header": {
+      "homePage": "首页",
+      "new": "新建",
+      "autoSave": "自动保存",
+      "exit": "退出",
+      "view": "视图",
+      "commandPanel": "命令面板",
+      "openView": "打开视图",
+      "appearance": "外观",
+      "headerMenuBar": "顶部菜单栏",
+      "sidebarLeft": "侧边栏",
+      "footerBar": "底部状态栏",
+      "sidebarToRight": "侧栏右移"
+    },
+    "common": {
+      "resourceManage": "资源管理器",
+      "workbar": "工作栏",
+      "staticResource": "静态资源",
+      "componentTree": "组件树",
+      "emptyFile": "未发现文件",
+      "holdAll": "工具箱",
+      "search": "搜索",
+      "debug": "运行和调试",
+      "extend": "扩展",
+      "setting": "配置",
+      "counter": "账户"
+    },
+    "toast": {
+      "unfinish": "暂未完成，尽请期待。。。"
+    },
+    "baseMaterial": {
+      "element": {
+        "group": "按钮控件",
+        "label": "按钮"
+      }
+    }
+  }
+}
