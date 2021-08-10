@@ -1,43 +1,83 @@
+import { memo } from 'react'
+import { connect } from 'react-redux'
+import store from '../../redux/store'
 import HomeHeaderComp from './HomeHeaderComp/index'
 import SidebarleftIconList from './SidebarLeftIconsList/index'
 import SideBarLeftToolComp from './SidebarLeftTool/index'
 import WorkbenchComp from './WorkbenchComp/index'
 import ComponentConfig from './ComponentConfig/index'
 import { HomePageContainer, HomeMain } from './styled'
-import { useAppState } from '../../contexts/providers'
 import AuxliaryComp from './AuxliaryComp'
 import ImageGridLoader from '../../components/Loader/index'
 
+const mapStateMainContentContainerToProps = (state: any) => {
+  return {
+    visibleSidebarRightConfigBox: state.DrawingBoardReducer.visibleSidebarRightConfigBox,
+    areaModuleValue: state.DrawingBoardReducer.areaModuleValue,
+    activeConfigCompEnterName: state.DrawingBoardReducer.activeConfigCompEnterName
+  }
+}
+
+const MainContentContainer = connect(mapStateMainContentContainerToProps)(memo(() => {
+  const {
+    DrawingBoardReducer: {
+      visibleSidebarRightConfigBox,
+      areaModuleValue,
+      activeConfigCompEnterName
+    }
+  } = store.getState()
+
+  switch (areaModuleValue) {
+    case 'drawingboard':
+      return (
+        <>
+          <WorkbenchComp />
+          {visibleSidebarRightConfigBox && <ComponentConfig activeName={activeConfigCompEnterName} />}
+        </>
+      )
+    case 'fullContent':
+      return <AuxliaryComp.OperationGuide />
+    case 'metaView':
+      return <div>none</div>
+    default:
+      return <div>none</div>
+  }
+}))
+
 const HomePage = () => {
   const {
-    metaView: {
-      auxliaryCompName,
-      componentfield,
-      visibleSidebarRightConfigBox,
-      visibleFullLoading,
-      fullLoaderProgress,
-      fullLoaderInfo
+    DrawingBoardReducer: {
+      visibleHeaderBox,
+      initFullLoader: {
+        visible,
+        progress,
+        messageInfo
+      }
     }
-  } = useAppState()
+
+  } = store.getState()
 
   return (
     <HomePageContainer>
-      {visibleFullLoading && <ImageGridLoader progress={fullLoaderProgress} loadInfo={fullLoaderInfo} />}
-      <HomeHeaderComp />
+      {visible && <ImageGridLoader progress={progress} loadInfo={messageInfo.slice(-1)} />}
+      {visibleHeaderBox && <HomeHeaderComp />}
       <HomeMain>
         <SidebarleftIconList />
         <SideBarLeftToolComp />
-        {
-          auxliaryCompName ? <AuxliaryComp.OperationGuide /> : (
-            <>
-              <WorkbenchComp />
-              <ComponentConfig routename={componentfield} visible={visibleSidebarRightConfigBox} />
-            </>
-          )
-        }
+        <MainContentContainer />
       </HomeMain>
     </HomePageContainer>
   )
 }
 
-export default HomePage
+const mapStateToProps = (state: any) => {
+  return {
+    visibleHeaderBox: state.DrawingBoardReducer.visibleHeaderBox,
+    visible: state.DrawingBoardReducer.initFullLoader.visible,
+    progress: state.DrawingBoardReducer.initFullLoader.progress,
+    messageInfo: state.DrawingBoardReducer.initFullLoader.messageInfo
+  }
+}
+
+
+export default connect(mapStateToProps)(memo(HomePage))

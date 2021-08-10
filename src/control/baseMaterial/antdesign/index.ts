@@ -1,8 +1,10 @@
 import baseButton from './baseButton/index'
 import baseText from './baseText/index'
+import bodyPage from "./bodyPage/index"
+
+export const antdComp = [baseButton, baseText, bodyPage]
 
 const groupComp: { children?: any[], groupName?: string }[] = []
-const antdComp = [baseButton, baseText]
 
 antdComp.forEach(({ attrs }) => {
   const index = groupComp.findIndex(p => p.groupName === attrs.groupName)

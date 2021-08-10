@@ -1,4 +1,4 @@
-const metaView = {
+const metaView: State.InitMetaViewProp = {
   selectedSideBarLeftIconLabel: 'resourceManager', // 左侧图标默认选中值
   auxliaryCompName: '',
   componentfield: '',
@@ -11,6 +11,8 @@ const metaView = {
   visibleSidebarIconsList: true, // 是否显示左侧图标栏
   visibleSidebarRightConfigBox: true, // 是否显示右侧配置栏
   visibleHeaderBox: true, // 是否显示顶部栏
+  areaModuleValue: 'drawingboard', // main区域显示内容
+  activeConfigCompEnterName: 'uxo2-body-page',  // 当前选中的组件显示右侧配置项
 
   // 初始化全屏loader
   initFullLoader: {
@@ -23,9 +25,7 @@ const metaView = {
   fileResourceManage: {
     visiblePageConfig: true,
     visibleStaticResource: true
-  },
-
-  testAxios: [] // 测试接口
+  }
 }
 
 export default metaView

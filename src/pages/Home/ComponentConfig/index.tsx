@@ -1,20 +1,13 @@
 import { memo } from 'react'
 import { ComponentConfigContainer } from './styled'
-import componentConfigItem from '../../../control/baseMaterial/antdesign/index'
-import { isValidKey } from '../../../utils/index'
+import { antdComp } from '../../../control/baseMaterial/antdesign/index'
 
-const ComponentConfig = (
-  { routename, visible }: { routename: string, visible: boolean }
-) => {
-  let ActiveComponentConfig: any
-
-  if (isValidKey(routename, componentConfigItem)) {
-    ActiveComponentConfig = componentConfigItem[routename]
-  }
+const ComponentConfig = ({ activeName }: { activeName: string }) => {
+  const SelectComp = antdComp.find(item => item.tag === activeName)?.config
 
   return (
-    <ComponentConfigContainer visible={visible}>
-      {ActiveComponentConfig && <ActiveComponentConfig />}
+    <ComponentConfigContainer>
+      {SelectComp && <SelectComp />}
     </ComponentConfigContainer>
   )
 }

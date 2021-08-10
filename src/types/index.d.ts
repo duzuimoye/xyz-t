@@ -23,6 +23,32 @@ declare namespace State {
     visibleStaticResource: boolean
   }
 
+  export type areaModuleValueType = 'drawingboard' | 'fullContent' | 'metaView'
+
+  interface InitMetaViewProp {
+    selectedSideBarLeftIconLabel: string | undefined
+    auxliaryCompName: string
+    componentfield: string
+    resizeDrawingBoard: number
+    visibleFullPage: boolean
+    visibleSideBarLeftTool: boolean
+    visibleSidebarIconsList: boolean
+    visibleSidebarRightConfigBox: boolean
+    visibleHeaderBox: boolean
+    areaModuleValue: areaModuleValueType
+    activeConfigCompEnterName: string
+    initFullLoader: {
+      visible: boolean
+      progress: number
+      messageInfo: string[]
+      addProgressMaxStep: number
+    }
+    fileResourceManage: {
+      visiblePageConfig: true
+      visibleStaticResource: true
+    }
+  }
+
   interface MetaView {
     selectedSideBarLeftIconLabel: string
     visibleSideBarLeftTool: boolean
