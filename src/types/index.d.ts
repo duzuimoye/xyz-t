@@ -113,6 +113,15 @@ declare namespace CustomRouter {
   }
 }
 
+declare namespace DrawingBoard {
+  interface Component {
+    label?: string
+    componentId: string
+    [prop: string]: any,
+    childrenNode?: array<Component>
+  }
+}
+
 declare namespace Meta {
   export interface FileDir {
     label: string

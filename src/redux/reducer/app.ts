@@ -1,5 +1,5 @@
 import { DRAWINGBOARDLIST_PUSH_ACTION } from '../actions/index'
-import projectState from '../state/project'
+import projectState from '../state/drawingBoard'
 
 function reducer(state = projectState, action: any) {
   switch (action.type) {

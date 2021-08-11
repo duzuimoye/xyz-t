@@ -1,9 +1,18 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, memo } from 'react'
 import { uid } from 'react-uid'
 import WorkbenchHeader from './WorkbenchHeader'
-import { DividerWorkbenchVerticalContainer, DividerWorkbenchHorizontalContainer, WorkbenchBox, DividerWorkbenchVertical, DividerWorkbenchHorizontal, IframeContainer, IframeBox, IframeContent } from './styled'
 import DrawingBoard from './DrawingBoard/index'
 import { useAppState } from '../../../contexts/providers'
+import {
+  DividerWorkbenchVerticalContainer,
+  DividerWorkbenchHorizontalContainer,
+  WorkbenchBox,
+  DividerWorkbenchVertical,
+  DividerWorkbenchHorizontal,
+  IframeContainer,
+  IframeBox,
+  IframeContent
+} from './styled'
 
 const DividerContainer = () => {
   const [scrollTopValue, setscrollTopValue] = useState(0)
@@ -54,20 +63,13 @@ const DividerContainer = () => {
 }
 
 export const WorkbenchComp = () => {
-  const {
-    workbench: {
-      drawingboardList
-    }
-  } = useAppState()
-
-
   return (
     <WorkbenchBox>
       <WorkbenchHeader />
       <IframeContainer>
         <IframeBox>
           <IframeContent id="iframeMount">
-            <DrawingBoard drawingboardList={drawingboardList} />
+            <DrawingBoard />
           </IframeContent>
         </IframeBox>
         <DividerContainer />
@@ -76,4 +78,4 @@ export const WorkbenchComp = () => {
   )
 }
 
-export default WorkbenchComp
+export default memo(WorkbenchComp)

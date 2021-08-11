@@ -1,18 +1,25 @@
 import { memo } from 'react'
-import Frame, { FrameContextConsumer } from 'react-frame-component'
 import shortuuid from 'short-uuid'
-import { useDispatch } from '../../../../contexts/providers'
-import { InitialDrawingBoard, PROGRESSMAPENUM } from '../../../../utils/constant'
+import { connect } from 'react-redux'
+import Frame, { FrameContextConsumer } from 'react-frame-component'
+import store from '../../../../redux/store'
 import { isValidKey } from '../../../../utils/index'
-import { DrawingBoardActions, PageActions } from '../../../../contexts/actions'
 import { AntdRender } from '../../../../control/renderComponent/index'
+import { InitialDrawingBoard } from '../../../../utils/constant'
+import { ACTIVE_COMPONENT_ACTION, PUSH_COMPONENT_ACTION } from '../../../../redux/actions/index'
 
-function areEqual(prevProps: any, nextProps: any) {
-  return JSON.stringify(prevProps.drawingboardList) === JSON.stringify(nextProps.drawingboardList)
+export enum PROGRESSMAPENUM {
+  InitBaseEnv = 5,
+  DrawingBoardIframeLoadStatus = 30,
+  CoreAxiosValue = 30
 }
 
-const DrawingBoard = memo(({ drawingboardList }: { drawingboardList: any }) => {
-  const dispatch = useDispatch()
+const DrawingBoardContainer = () => {
+  const {
+    DrawingBoardReducer: {
+      drawingboardList
+    }
+  } = store.getState()
 
   function allowDrop(event: React.DragEvent) {
     event.preventDefault()
@@ -26,31 +33,25 @@ const DrawingBoard = memo(({ drawingboardList }: { drawingboardList: any }) => {
     if (dropText) {
       const compData = JSON.parse(dropText)
 
-      dispatch({
-        type: DrawingBoardActions.PushDrawingBoard,
+      store.dispatch({
+        type: ACTIVE_COMPONENT_ACTION,
         payload: {
           activeComponent: compData
         }
       })
-      dispatch({
-        type: PageActions.ActiveRightBarConfigRouteName,
-        payload: {
-          componentfield: compData.componentfield
-        }
+
+      const stashDrawingList = JSON.parse(JSON.stringify(drawingboardList))
+
+      stashDrawingList.push(compData)
+
+      store.dispatch({
+        type: PUSH_COMPONENT_ACTION,
+        payload: stashDrawingList
       })
     }
   }
 
-  const InnerComponent = (document: Document, window: Window) => {
-    // setTimeout(() => {
-    //   dispatch({
-    //     type: PageActions.FullLoaderProgressAction,
-    //     payload: {
-    //       fullLoaderProgress: PROGRESSMAPENUM.DrawingBoardIframeLoadStatus
-    //     }
-    //   })
-    // }, 3000)
-    console.log(document, window, PROGRESSMAPENUM)
+  const InnerComponent = () => {
     return (<div
       onDrop={evt => drop(evt)}
       onDragOver={allowDrop}
@@ -77,11 +78,17 @@ const DrawingBoard = memo(({ drawingboardList }: { drawingboardList: any }) => {
       initialContent={InitialDrawingBoard}
       mountTarget='#DrawingBoard'>
       <FrameContextConsumer>
-        {({ document, window }) => InnerComponent(document, window)}
+        {/* {({ document, window }) => InnerComponent(document, window)} */}
+        {() => InnerComponent()}
       </FrameContextConsumer>
     </Frame>
   )
-}, areEqual)
+}
 
+const mapStateToProps = (state: any) => {
+  return {
+    drawingboardList: state.DrawingBoardReducer.drawingboardList
+  }
+}
 
-export default DrawingBoard
+export default connect(mapStateToProps)(memo(DrawingBoardContainer))

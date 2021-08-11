@@ -7,7 +7,12 @@ import {
 } from './styled'
 
 const SideBarLeftToolComp = () => {
-  const { DrawingBoardReducer: { selectedSideBarLeftIconLabel, visibleSideBarLeftTool } } = store.getState()
+  const {
+    metaViewReducer: {
+      selectedSideBarLeftIconLabel,
+      visibleSideBarLeftTool
+    }
+  } = store.getState()
   const ComponentMap = SIDEBAR_ICONS_LIST.header.find(item => item.value === selectedSideBarLeftIconLabel)
 
   return (
@@ -19,8 +24,8 @@ const SideBarLeftToolComp = () => {
 
 const mapStateToProps = (state: any) => {
   return {
-    selectedSideBarLeftIconLabel: state.DrawingBoardReducer.selectedSideBarLeftIconLabel,
-    visibleSideBarLeftTool: state.DrawingBoardReducer.visibleSideBarLeftTool
+    selectedSideBarLeftIconLabel: state.metaViewReducer.selectedSideBarLeftIconLabel,
+    visibleSideBarLeftTool: state.metaViewReducer.visibleSideBarLeftTool
   }
 }
 

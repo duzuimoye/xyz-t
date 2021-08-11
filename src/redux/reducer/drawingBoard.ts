@@ -1,32 +1,39 @@
-import metaView from '../state/metaView'
+import drawingBoardState from '../state/drawingBoard'
+import { getComponentByComponentId } from '../../utils/component'
 import {
-  VISIBLE_SIZEBARLEFT_TOOL_ACTION,
-  TEST_AXIOS_AXIOS,
-  VISIBLE_SIDEBAR_RIGHT_CONFIG_BOX,
-  RESIZE_DRAWINGBOARD_ACTION
+  ACTIVE_COMPONENT_ACTION,
+  PUSH_COMPONENT_ACTION
 } from '../actions/index'
 
-function reducer(state = metaView, action: any) {
+export const activeComponentFn = (
+  state = drawingBoardState,
+  obj: {
+    activeComponent: DrawingBoard.Component,
+    componentId: string
+  }) => {
+  const activeComp = getComponentByComponentId(obj.componentId, state.drawingboardList)
+
+  if (activeComp) {
+    return {
+      ...state,
+      activeComponent: activeComp
+    }
+  }
+
+  return state
+}
+
+function reducer(state = drawingBoardState, action: any) {
   switch (action.type) {
-    case VISIBLE_SIZEBARLEFT_TOOL_ACTION:
+    case ACTIVE_COMPONENT_ACTION:
       return {
         ...state,
         ...action.payload
       }
-    case VISIBLE_SIDEBAR_RIGHT_CONFIG_BOX:
+    case PUSH_COMPONENT_ACTION:
       return {
         ...state,
-        ...action.payload
-      }
-    case RESIZE_DRAWINGBOARD_ACTION:
-      return {
-        ...state,
-        ...action.payload
-      }
-    case TEST_AXIOS_AXIOS:
-      return {
-        ...state,
-        testAxios: action.payload.testAxios
+        drawingboardList: action.payload
       }
     default:
       return state

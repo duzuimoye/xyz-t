@@ -9,9 +9,8 @@ const SizeOptions = [
   { label: '小型', value: 'small' }
 ]
 
-const changeSize = (val: any) => {
-  console.log(val)
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const changeSize = (): void => { }
 
 export default () => {
   return (

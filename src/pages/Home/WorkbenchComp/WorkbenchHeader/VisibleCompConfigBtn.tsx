@@ -10,13 +10,13 @@ import { VISIBLE_SIDEBAR_RIGHT_CONFIG_BOX } from '../../../../redux/actions'
 
 const mapVisibleCompConfigStateToProps = (state: any) => {
   return {
-    visibleSidebarRightConfigBox: state.DrawingBoardReducer.visibleSidebarRightConfigBox
+    visibleSidebarRightConfigBox: state.metaViewReducer.visibleSidebarRightConfigBox
   }
 }
 
 export default connect(mapVisibleCompConfigStateToProps)(memo(() => {
   const {
-    DrawingBoardReducer: {
+    metaViewReducer: {
       visibleSidebarRightConfigBox
     }
   } = store.getState()

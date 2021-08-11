@@ -12,15 +12,15 @@ import ImageGridLoader from '../../components/Loader/index'
 
 const mapStateMainContentContainerToProps = (state: any) => {
   return {
-    visibleSidebarRightConfigBox: state.DrawingBoardReducer.visibleSidebarRightConfigBox,
-    areaModuleValue: state.DrawingBoardReducer.areaModuleValue,
-    activeConfigCompEnterName: state.DrawingBoardReducer.activeConfigCompEnterName
+    visibleSidebarRightConfigBox: state.metaViewReducer.visibleSidebarRightConfigBox,
+    areaModuleValue: state.metaViewReducer.areaModuleValue,
+    activeConfigCompEnterName: state.metaViewReducer.activeConfigCompEnterName
   }
 }
 
 const MainContentContainer = connect(mapStateMainContentContainerToProps)(memo(() => {
   const {
-    DrawingBoardReducer: {
+    metaViewReducer: {
       visibleSidebarRightConfigBox,
       areaModuleValue,
       activeConfigCompEnterName
@@ -46,7 +46,7 @@ const MainContentContainer = connect(mapStateMainContentContainerToProps)(memo((
 
 const HomePage = () => {
   const {
-    DrawingBoardReducer: {
+    metaViewReducer: {
       visibleHeaderBox,
       initFullLoader: {
         visible,
@@ -72,10 +72,10 @@ const HomePage = () => {
 
 const mapStateToProps = (state: any) => {
   return {
-    visibleHeaderBox: state.DrawingBoardReducer.visibleHeaderBox,
-    visible: state.DrawingBoardReducer.initFullLoader.visible,
-    progress: state.DrawingBoardReducer.initFullLoader.progress,
-    messageInfo: state.DrawingBoardReducer.initFullLoader.messageInfo
+    visibleHeaderBox: state.metaViewReducer.visibleHeaderBox,
+    visible: state.metaViewReducer.initFullLoader.visible,
+    progress: state.metaViewReducer.initFullLoader.progress,
+    messageInfo: state.metaViewReducer.initFullLoader.messageInfo
   }
 }
 

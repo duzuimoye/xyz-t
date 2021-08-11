@@ -1,13 +1,18 @@
 import { memo } from 'react'
 import { connect } from 'react-redux'
-import { SidebarleftIconList, SidebarContainer, SidebarFooterList, SideBarIconLi } from './styled'
-import { SIDEBAR_ICONS_LIST } from '../../../utils/constant'
 import store from '../../../redux/store'
-import { VISIBLE_SIZEBARLEFT_TOOL_ACTION, TEST_AXIOS_AXIOS } from '../../../redux/actions'
 import { coreAxios } from '../../../axios'
+import { SIDEBAR_ICONS_LIST } from '../../../utils/constant'
+import { VISIBLE_SIZEBARLEFT_TOOL_ACTION, TEST_AXIOS_AXIOS } from '../../../redux/actions'
+import { SidebarleftIconList, SidebarContainer, SidebarFooterList, SideBarIconLi } from './styled'
 
 const SidebarLeft = () => {
-  const { DrawingBoardReducer: { selectedSideBarLeftIconLabel, visibleSideBarLeftTool } } = store.getState()
+  const {
+    metaViewReducer: {
+      selectedSideBarLeftIconLabel,
+      visibleSideBarLeftTool
+    }
+  } = store.getState()
 
   return (
     <SidebarContainer>
@@ -62,8 +67,8 @@ const SidebarLeft = () => {
 
 const mapStateToProps = (state: any) => {
   return {
-    selectedSideBarLeftIconLabel: state.DrawingBoardReducer.selectedSideBarLeftIconLabel,
-    visibleSideBarLeftTool: state.DrawingBoardReducer.visibleSideBarLeftTool
+    selectedSideBarLeftIconLabel: state.metaViewReducer.selectedSideBarLeftIconLabel,
+    visibleSideBarLeftTool: state.metaViewReducer.visibleSideBarLeftTool
   }
 }
 

@@ -6,13 +6,13 @@ import { RESIZE_DRAWINGBOARD_ACTION } from '../../../../redux/actions'
 
 const mapResizeDrawingboardStateToProps = (state: any) => {
   return {
-    resizeDrawingBoard: state.DrawingBoardReducer.resizeDrawingBoard
+    resizeDrawingBoard: state.metaViewReducer.resizeDrawingBoard
   }
 }
 
 export default connect(mapResizeDrawingboardStateToProps)(memo(() => {
   const {
-    DrawingBoardReducer: {
+    metaViewReducer: {
       resizeDrawingBoard
     }
   } = store.getState()
