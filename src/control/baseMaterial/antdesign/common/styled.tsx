@@ -2,42 +2,52 @@ import styled from 'styled-components'
 
 export const RightBarConfigContainer = styled.div`
   width: 100%;
-  height: 100%;
-  overflow: hidden auto;
+  overflow: hidden;
   font-size: 14px;
   color: #fff;
+  display: flex;
+  flex-direction: column;
 `
 
 export const HeaderContent = styled.div`
   width: 100%;
-  height: 30px;
-  line-height: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  padding: 0 4px;
+  padding-right: 4px;
   background-color: #272f3b;
   color: #e8e8e9;
   box-sizing: border-box;
   border-bottom: 1px solid #171b21;
-
 `
 
 export const HeaderTitle = styled.div`
-  text-indent: 3px;
   font-weight: 600;
+  user-select: none;
+  width: 100%;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0);
+  text-indent: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
 `
 
 export const HeaderTitleRightConfig = styled.div`
   color: #fff;
 `
 
+interface visibleProps {
+  visible: boolean
+}
+
 export const CollapseContent = styled.div`
-  width: 100%;
-  height: auto;
-  padding: 4px 0;
-  box-sizing: border-box;
+  overflow: hidden;
+  height: 0;
+  flex: ${(props: visibleProps) => props.visible ? 1 : 'none'};
 `
 
 export const LineBlock = styled.div`
@@ -49,8 +59,9 @@ export const LineBlock = styled.div`
 `
 
 export const LineBlockLabel = styled.label`
-  min-width: 60px;
-  text-indent: 4px;
+  min-width: 45px;
+  text-indent: 0px;
+  user-select: none;
 `
 
 export const LineBlockContent = styled.div`
