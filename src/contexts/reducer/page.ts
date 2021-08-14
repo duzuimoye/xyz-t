@@ -36,7 +36,7 @@ export const pageReducer = (
         ...state,
         metaView: {
           ...state.metaView,
-          componentfield: payload.componentfield
+          configCompEnterName: payload.configCompEnterName
         }
       }
     case PageActions.VisibleFullLoadingContainer:

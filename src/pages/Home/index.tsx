@@ -13,8 +13,7 @@ import ImageGridLoader from '../../components/Loader/index'
 const mapStateMainContentContainerToProps = (state: any) => {
   return {
     visibleSidebarRightConfigBox: state.metaViewReducer.visibleSidebarRightConfigBox,
-    areaModuleValue: state.metaViewReducer.areaModuleValue,
-    activeConfigCompEnterName: state.metaViewReducer.activeConfigCompEnterName
+    areaModuleValue: state.metaViewReducer.areaModuleValue
   }
 }
 
@@ -22,8 +21,7 @@ const MainContentContainer = connect(mapStateMainContentContainerToProps)(memo((
   const {
     metaViewReducer: {
       visibleSidebarRightConfigBox,
-      areaModuleValue,
-      activeConfigCompEnterName
+      areaModuleValue
     }
   } = store.getState()
 
@@ -32,7 +30,7 @@ const MainContentContainer = connect(mapStateMainContentContainerToProps)(memo((
       return (
         <>
           <WorkbenchComp />
-          {visibleSidebarRightConfigBox && <ComponentConfig activeName={activeConfigCompEnterName} />}
+          {visibleSidebarRightConfigBox && <ComponentConfig />}
         </>
       )
     case 'fullContent':
@@ -54,7 +52,6 @@ const HomePage = () => {
         messageInfo
       }
     }
-
   } = store.getState()
 
   return (
@@ -70,14 +67,12 @@ const HomePage = () => {
   )
 }
 
-const mapStateToProps = (state: any) => {
+export default connect((state: any) => {
   return {
     visibleHeaderBox: state.metaViewReducer.visibleHeaderBox,
     visible: state.metaViewReducer.initFullLoader.visible,
     progress: state.metaViewReducer.initFullLoader.progress,
+    activeComponent: state.DrawingBoardReducer.activeComponent,
     messageInfo: state.metaViewReducer.initFullLoader.messageInfo
   }
-}
-
-
-export default connect(mapStateToProps)(memo(HomePage))
+})(memo(HomePage))

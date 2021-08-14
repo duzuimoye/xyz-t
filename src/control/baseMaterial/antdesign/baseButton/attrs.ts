@@ -9,9 +9,6 @@ const baseButton = {
   size: 'small',
   buttonText: '提交',
 
-  // 右侧配置路由地址
-  componentfield: 'baseButton',
-
   // 自定义样式
   customAttr: {
     style: '',

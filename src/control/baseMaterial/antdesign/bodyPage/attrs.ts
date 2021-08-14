@@ -7,7 +7,7 @@ export default {
   tag: 'uxo2-body-page',
 
   // 右侧配置路由地址
-  configCompEnterName: 'body-page',
+  configCompEnterName: 'uxo2-body-page',
 
   // 自定义样式
   styleConfig: null,

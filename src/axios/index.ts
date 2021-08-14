@@ -1,8 +1,8 @@
-import Axios from './config'
+// import Axios from './config'
 
 export const coreAxios = {
   // 获取issue类型（工作和生活）
-  testAxios: (params = {}) => Axios({ method: 'get', url: `http://jsonplaceholder.typicode.com/comments`, params })
+  // testAxios: (params = {}) => Axios({ method: 'get', url: `http://jsonplaceholder.typicode.com/comments`, params })
 }
 export const metaAxios = {}
 

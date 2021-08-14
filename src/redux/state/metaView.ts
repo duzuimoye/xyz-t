@@ -1,7 +1,7 @@
 const metaView: State.InitMetaViewProp = {
   selectedSideBarLeftIconLabel: 'resourceManager', // 左侧图标默认选中值
   auxliaryCompName: '',
-  componentfield: '',
+  configCompEnterName: '',
 
   resizeDrawingBoard: 100, // 画板缩放比例(range: 20~250)
 
@@ -12,7 +12,6 @@ const metaView: State.InitMetaViewProp = {
   visibleSidebarRightConfigBox: true, // 是否显示右侧配置栏
   visibleHeaderBox: true, // 是否显示顶部栏
   areaModuleValue: 'drawingboard', // main区域显示内容
-  activeConfigCompEnterName: 'uxo2-body-page',  // 当前选中的组件显示右侧配置项
 
   // 初始化全屏loader
   initFullLoader: {

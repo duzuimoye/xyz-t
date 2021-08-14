@@ -28,7 +28,7 @@ declare namespace State {
   interface InitMetaViewProp {
     selectedSideBarLeftIconLabel: string | undefined
     auxliaryCompName: string
-    componentfield: string
+    configCompEnterName: string
     resizeDrawingBoard: number
     visibleFullPage: boolean
     visibleSideBarLeftTool: boolean
@@ -36,7 +36,6 @@ declare namespace State {
     visibleSidebarRightConfigBox: boolean
     visibleHeaderBox: boolean
     areaModuleValue: areaModuleValueType
-    activeConfigCompEnterName: string
     initFullLoader: {
       visible: boolean
       progress: number
@@ -57,7 +56,7 @@ declare namespace State {
     visibleHeaderBox: boolean
     auxliaryCompName: string
     visibleInitPropsModal: boolean
-    componentfield: string
+    configCompEnterName: string
     visibleinitFullLoading: boolean
     fullLoaderProgress: number
     fullLoaderInfo: string
@@ -80,7 +79,7 @@ declare namespace State {
     groupName: string
     label: string
     tag: string
-    componentfield: string
+    configCompEnterName: string
   }
 
   interface PageState {
