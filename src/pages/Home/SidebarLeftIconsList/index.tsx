@@ -1,9 +1,8 @@
 import { memo } from 'react'
 import { connect } from 'react-redux'
 import store from '../../../redux/store'
-import { coreAxios } from '../../../axios'
 import { SIDEBAR_ICONS_LIST } from '../../../utils/constant'
-import { VISIBLE_SIZEBARLEFT_TOOL_ACTION, TEST_AXIOS_AXIOS } from '../../../redux/actions'
+import { VISIBLE_SIZEBARLEFT_TOOL_ACTION } from '../../../redux/actions'
 import { SidebarleftIconList, SidebarContainer, SidebarFooterList, SideBarIconLi } from './styled'
 
 const SidebarLeft = () => {
@@ -30,17 +29,6 @@ const SidebarLeft = () => {
                     selectedSideBarLeftIconLabel: item.value,
                     visibleSideBarLeftTool: item.value === selectedSideBarLeftIconLabel ? !visibleSideBarLeftTool : true
                   }
-                })
-
-                store.dispatch(async (dispatch: any) => {
-                  const res = await coreAxios.testAxios()
-
-                  dispatch({
-                    type: TEST_AXIOS_AXIOS,
-                    payload: {
-                      testAxios: res.data
-                    }
-                  })
                 })
               }}
             >

@@ -1,15 +1,20 @@
 import { memo } from 'react'
+import { connect } from 'react-redux'
 import { ComponentConfigContainer } from './styled'
+import store from '../../../redux/store'
 import { antdComp } from '../../../control/baseMaterial/antdesign/index'
 
-const ComponentConfig = ({ activeName }: { activeName: string }) => {
-  const SelectComp = antdComp.find(item => item.tag === activeName)?.config
+const ComponentConfig = () => {
+  const { DrawingBoardReducer: { activeComponent } } = store.getState()
+  const SelectComp = antdComp.find(item => item.tag === activeComponent?.tag)?.config
 
   return (
     <ComponentConfigContainer>
-      {SelectComp && <SelectComp />}
+      {SelectComp && <SelectComp activeComponent={activeComponent} />}
     </ComponentConfigContainer>
   )
 }
 
-export default memo(ComponentConfig)
+export default connect((state: any) => ({
+  activeComponent: state.DrawingBoardReducer.activeComponent
+}))(memo(ComponentConfig))

@@ -5,7 +5,7 @@ export const InitMetaView: State.MetaView = {
   visibleSidebarRightConfigBox: true,
   visibleHeaderBox: true,
   auxliaryCompName: '',
-  componentfield: '',
+  configCompEnterName: '',
 
   // fullLoader data
   visibleinitFullLoading: true,

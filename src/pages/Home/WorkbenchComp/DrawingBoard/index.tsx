@@ -17,7 +17,8 @@ export enum PROGRESSMAPENUM {
 const DrawingBoardContainer = () => {
   const {
     DrawingBoardReducer: {
-      drawingboardList
+      drawingboardList,
+      activeComponent
     }
   } = store.getState()
 
@@ -57,16 +58,16 @@ const DrawingBoardContainer = () => {
       onDragOver={allowDrop}
       style={{ width: '100%', height: '100%' }}>
       {
-        drawingboardList.map((item: { componentfield: string }) => {
+        drawingboardList.map((item: { tag: string }) => {
           let RenderCompItem: any
 
-          if (isValidKey(item.componentfield, AntdRender)) {
-            RenderCompItem = AntdRender[item.componentfield]
+          if (isValidKey(item.tag, AntdRender) && activeComponent) {
+            RenderCompItem = AntdRender[item.tag]
 
-            return <RenderCompItem key={shortuuid.generate()} />
+            return <RenderCompItem key={shortuuid.generate()} activeComponent={activeComponent} />
           }
 
-          return <div key={shortuuid.generate()}>123</div>
+          return <span key={shortuuid.generate()} style={{ display: 'none' }} />
         })
       }
     </div>
@@ -85,10 +86,7 @@ const DrawingBoardContainer = () => {
   )
 }
 
-const mapStateToProps = (state: any) => {
-  return {
-    drawingboardList: state.DrawingBoardReducer.drawingboardList
-  }
-}
-
-export default connect(mapStateToProps)(memo(DrawingBoardContainer))
+export default connect((state: any) => ({
+  activeComponent: state.DrawingBoardReducer.activeComponent,
+  drawingboardList: state.DrawingBoardReducer.drawingboardList
+}))(memo(DrawingBoardContainer))

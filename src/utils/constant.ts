@@ -153,9 +153,13 @@ export const InitialDrawingBoard = `
 <!DOCTYPE html>
   <html>
   <head>
-    <link href="https://cdn.bootcdn.net/ajax/libs/antd/4.16.6/antd.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/antd/4.16.6/antd.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/antd/4.16.9/antd.css" rel="stylesheet">
+    <script src="https://unpkg.com/moment/min/moment-with-locales.js"></script>
+    <script src="https://unpkg.com/antd/dist/antd-with-locales.js"></script>
+    <script src="https://unpkg.com/react-input-mask/dist/react-input-mask.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/antd/4.16.9/antd.min.js"></script>
   </head>
   <body>
     <div id="DrawingBoard" style="width: 100%; height: 100%"></div>

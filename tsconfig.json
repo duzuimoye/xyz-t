@@ -36,7 +36,7 @@
   },
   "include": [
     "src"
-  ],
+, "src/assets/pkg/antd.min.js"  ],
   "exclude": [
     "node_modules"
   ]

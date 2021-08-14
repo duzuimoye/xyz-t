@@ -2,6 +2,6 @@ import { Button } from 'antd'
 
 export default () => {
   return (
-    <Button type="primary">Primary Button</Button>
+    <Button type="primary" onClick={() => { console.log(12) }}>Primary Button</Button>
   )
 }
