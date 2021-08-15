@@ -9,7 +9,7 @@ export function newComponent(comp: string) {
     return JSON.stringify(newComp)
 
   } catch {
-    throw new Error('drawing board ad component maybe some error.')
+    throw new Error('drawing board add component maybe some error.')
   }
 }
 

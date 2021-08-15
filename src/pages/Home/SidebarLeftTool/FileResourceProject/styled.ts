@@ -153,7 +153,6 @@ export const SplitViewHeader = styled.div`
 export const SplitViewPane = styled.div`
   overflow: hidden;
   transition: 0.3s;
-  overflow: hidden;
   height: 0;
   flex: ${(props: SplitViewPaneProps) => props.visible ? 1 : 'none'};
 `

@@ -1,4 +1,5 @@
-import { CaretRightOutlined } from '@ant-design/icons'
+import { useState } from 'react'
+import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons'
 import {
   RightBarConfigContainer,
   HeaderContent,
@@ -7,16 +8,18 @@ import {
   CollapseContent
 } from './styled'
 
-const BaseStructureBox = ({ children, title }: { children: any, title: string }) => {
+const BaseStructureBox = ({ children, title }: { children: React.ReactNode, title: string }) => {
+  const [visible, setVisible] = useState(false)
+
   return (
     <RightBarConfigContainer>
-      <HeaderContent>
+      <HeaderContent onClick={() => setVisible(!visible)}>
         <HeaderTitle>{title}</HeaderTitle>
         <HeaderTitleRightConfig>
-          <CaretRightOutlined />
+          {visible ? <CaretDownOutlined /> : <CaretRightOutlined />}
         </HeaderTitleRightConfig>
       </HeaderContent>
-      <CollapseContent>
+      <CollapseContent visible={visible}>
         {children}
       </CollapseContent>
     </RightBarConfigContainer>

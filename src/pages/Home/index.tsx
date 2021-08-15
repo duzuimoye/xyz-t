@@ -10,14 +10,10 @@ import { HomePageContainer, HomeMain } from './styled'
 import AuxliaryComp from './AuxliaryComp'
 import ImageGridLoader from '../../components/Loader/index'
 
-const mapStateMainContentContainerToProps = (state: any) => {
-  return {
-    visibleSidebarRightConfigBox: state.metaViewReducer.visibleSidebarRightConfigBox,
-    areaModuleValue: state.metaViewReducer.areaModuleValue
-  }
-}
-
-const MainContentContainer = connect(mapStateMainContentContainerToProps)(memo(() => {
+const MainContentContainer = connect((state: any) => ({
+  visibleSidebarRightConfigBox: state.metaViewReducer.visibleSidebarRightConfigBox,
+  areaModuleValue: state.metaViewReducer.areaModuleValue
+}))(memo(() => {
   const {
     metaViewReducer: {
       visibleSidebarRightConfigBox,
