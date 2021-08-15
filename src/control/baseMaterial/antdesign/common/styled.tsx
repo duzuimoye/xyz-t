@@ -67,3 +67,33 @@ export const LineBlockLabel = styled.label`
 export const LineBlockContent = styled.div`
   flex: 1;
 `
+
+export const IconBlock = styled.div`
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  border: 1px solid #00000073;
+  margin: 10px;
+  font-size: 22px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16) 0 3px 6px 0 rgba(0, 0, 0, 0.12) 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+  &:hover {
+    border: 2px solid #1890ff;
+  }
+`
+
+export const IconBox = styled.div`
+  width: 100%;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding: 3px;
+  border: 1px dashed #71779040;
+`
+
+export const IconTypeContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
