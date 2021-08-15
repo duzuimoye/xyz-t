@@ -16,7 +16,7 @@ export default ({
 }) => {
   const [customIcon, setCustomIcon] = useState(icon)
   const [customIconType, setCustomIconType] = useState(iconType)
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
 
   console.log(customIcon, selectIcon)
 
