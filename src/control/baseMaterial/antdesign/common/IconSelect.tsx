@@ -1,9 +1,11 @@
-import { useState } from 'react'
-import { Drawer, Input, Radio } from 'antd'
+import { useState, memo } from 'react'
+import { Drawer, Input, Select, Pagination } from 'antd'
 import { SettingOutlined } from '@ant-design/icons'
 import { LineBlockLabel, LineBlock, IconBlock, IconTypeContainer, IconBox } from './styled'
 import { IconList } from '../assets/constant'
 import { IconType } from '../baseText/_type'
+
+const { Search } = Input
 
 export default ({
   selectIcon,
@@ -31,10 +33,52 @@ export default ({
     const drawerBodyStyle = {
       padding: '0 5px 5px'
     }
+    const IconContainer = memo(() => {
+      const total = IconList.length
+      const [pageSize, setPageSize] = useState(100)
+      const [current, setCurrent] = useState(1)
+
+      const RenderIconList = ({ current, pageSize }: { current: number, pageSize: number }) => (
+        <IconTypeContainer>
+          {
+            IconList.slice((current - 1) * pageSize, current * pageSize).map(Item => (
+              <IconBlock key={Item.label}>
+                <Item.Icon />
+              </IconBlock>)
+            )
+          }
+        </IconTypeContainer>
+      )
+
+      return (
+        <>
+          {customIconType && <RenderIconList current={current} pageSize={pageSize} />}
+          <Pagination
+            total={total}
+            current={current}
+            size="default"
+            showTitle={false}
+            showLessItems
+            showSizeChanger={false}
+            hideOnSinglePage
+            style={{ textAlign: 'center' }}
+            defaultPageSize={pageSize}
+            onShowSizeChange={(current, pageSize) => {
+              setPageSize(pageSize)
+              setCurrent(current)
+            }}
+            onChange={current => {
+              setCurrent(current)
+            }}
+          />
+        </>
+      )
+    })
+
     return (
       <Drawer
         placement="right"
-        width={350}
+        width={380}
         visible={visible}
         closable={false}
         title={<div style={{ color: '#fff' }}>图标选择</div>}
@@ -45,35 +89,30 @@ export default ({
           setCustomIcon(icon)
         }}
       >
-        <LineBlock style={{
-          position: 'sticky',
-          top: 0,
-          background: '#fff',
-          borderBottom: '1px solid var(--border-color)',
-          paddingBottom: '10px',
-          marginBottom: '10px'
-        }}>
+        <LineBlock className="sticky">
           <LineBlockLabel>图标:</LineBlockLabel>
-          <Radio.Group
-            size="small"
-            value={iconType}
-            onChange={evt => {
-              console.log(evt)
-              setCustomIconType(evt.target.value)
+          <Select
+            defaultValue={iconType}
+            onChange={value => {
+              setCustomIconType(value)
+            }}>
+            <Select.Option value="antdIcon">antd 图标</Select.Option>
+            <Select.Option value="thirdPartyIcon">第三方图标</Select.Option>
+            <Select.Option value="img">图片</Select.Option>
+            <Select.Option value="svg">svg</Select.Option>
+          </Select>
+          <Search
+            placeholder="搜索图标"
+            allowClear
+            onSearch={(value: string) => {
+              console.log(value)
             }}
-          >
-            <Radio.Button value="antdIcon">antd 图标</Radio.Button>
-            <Radio.Button value="thirdPartyIcon">第三方图标</Radio.Button>
-            <Radio.Button value="img">图片</Radio.Button>
-            <Radio.Button value="svg">svg</Radio.Button>
-          </Radio.Group>
+            style={{ width: 200 }} />
         </LineBlock>
         <IconBox>
-          <IconTypeContainer>
-            {IconList.map(Item => <IconBlock key={Item.label}><Item.Icon /></IconBlock>)}
-          </IconTypeContainer>
+          <IconContainer />
         </IconBox>
-      </Drawer>
+      </Drawer >
     )
   }
 

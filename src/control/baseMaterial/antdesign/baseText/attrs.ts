@@ -2,8 +2,8 @@ import { baseTextProps } from './_type'
 
 const baseText: baseTextProps = {
   // 工具栏配置
-  groupName: '文本组件',
-  label: '基础文本',
+  groupName: '按钮组件',
+  label: '文本按钮',
 
   // 组件属性
   tag: 'uxo2-base-text',

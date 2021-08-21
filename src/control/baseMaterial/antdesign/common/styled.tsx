@@ -56,6 +56,14 @@ export const LineBlock = styled.div`
   align-items: center;
   padding: 4px;
   margin-bottom: 10px;
+  &.sticky {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
 `
 
 export const LineBlockLabel = styled.label`
@@ -69,8 +77,8 @@ export const LineBlockContent = styled.div`
 `
 
 export const IconBlock = styled.div`
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   border-radius: 4px;
   border: 1px solid #00000073;
   margin: 10px;

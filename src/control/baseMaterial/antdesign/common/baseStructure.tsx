@@ -8,8 +8,8 @@ import {
   CollapseContent
 } from './styled'
 
-const BaseStructureBox = ({ children, title }: { children: React.ReactNode, title: string }) => {
-  const [visible, setVisible] = useState(false)
+const BaseStructureBox = ({ children, title, initVisible }: { children: React.ReactNode, title: string, initVisible?: boolean }) => {
+  const [visible, setVisible] = useState(initVisible || false)
 
   return (
     <RightBarConfigContainer>

@@ -88,7 +88,7 @@ export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
 
   return (
     <>
-      <BaseStructureBox title="基础配置">
+      <BaseStructureBox title="基础配置" initVisible>
         <TextInput />
         <TypeSelect />
         <SizeRadio />

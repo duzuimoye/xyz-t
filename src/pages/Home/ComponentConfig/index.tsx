@@ -10,6 +10,7 @@ const ComponentConfig = () => {
 
   return (
     <ComponentConfigContainer>
+      
       {SelectComp && <SelectComp activeComponent={activeComponent} />}
     </ComponentConfigContainer>
   )

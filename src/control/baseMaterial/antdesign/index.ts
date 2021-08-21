@@ -1,8 +1,7 @@
 import baseButton from './baseButton/index'
 import baseText from './baseText/index'
-import bodyPage from "./bodyPage/index"
 
-export const antdComp = [baseButton, baseText, bodyPage]
+export const antdComp = [baseButton, baseText]
 
 const groupComp: { children?: any[], groupName?: string }[] = []
 

@@ -3,7 +3,7 @@ import { newComponent } from '../../../../utils/component'
 import { Toolcontainer, GroupBlock, GroupName, GroupChildren, CompUnit } from './styled'
 import baseMaterial from '../../../../control/baseMaterial'
 
-export const ComponentContainer = () => {
+export const ComponentListContainer = () => {
   const componentTags = Object.values(baseMaterial['ant-design'])
   const dragStart = (event: React.DragEvent<HTMLDivElement>, dragObj: string) => {
     event.dataTransfer.setData("dropData", newComponent(dragObj))
@@ -33,4 +33,4 @@ export const ComponentContainer = () => {
   )
 }
 
-export default ComponentContainer
+export default ComponentListContainer
