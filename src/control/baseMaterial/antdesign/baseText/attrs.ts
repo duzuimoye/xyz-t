@@ -11,7 +11,7 @@ const baseText: baseTextProps = {
   size: 'small',
   buttonText: '提交',
   type: 'default',
-  icon: '',
+  icon: 'AccountBookFilled',
   iconType: 'antdIcon',
 
   // 自定义样式

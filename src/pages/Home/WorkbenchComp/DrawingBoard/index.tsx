@@ -17,8 +17,7 @@ export enum PROGRESSMAPENUM {
 const DrawingBoardContainer = () => {
   const {
     DrawingBoardReducer: {
-      drawingboardList,
-      activeComponent
+      drawingboardList
     }
   } = store.getState()
 
@@ -43,6 +42,7 @@ const DrawingBoardContainer = () => {
 
       const stashDrawingList = JSON.parse(JSON.stringify(drawingboardList))
 
+      // todo push is only the last position.
       stashDrawingList.push(compData)
 
       store.dispatch({
@@ -52,8 +52,8 @@ const DrawingBoardContainer = () => {
     }
   }
 
-  const InnerComponent = () => {
-    return (<div
+  const InnerComponent = () => (
+    <div
       onDrop={evt => drop(evt)}
       onDragOver={allowDrop}
       style={{ width: '100%', height: '100%' }}>
@@ -61,18 +61,17 @@ const DrawingBoardContainer = () => {
         drawingboardList.map((item: { tag: string }) => {
           let RenderCompItem: any
 
-          if (isValidKey(item.tag, AntdRender) && activeComponent) {
+          if (isValidKey(item.tag, AntdRender)) {
             RenderCompItem = AntdRender[item.tag]
 
-            return <RenderCompItem key={shortuuid.generate()} activeComponent={activeComponent} />
+            return <RenderCompItem key={shortuuid.generate()} comp={item} />
           }
 
           return <span key={shortuuid.generate()} style={{ display: 'none' }} />
         })
       }
     </div>
-    )
-  }
+  )
 
   return (
     <Frame
@@ -87,6 +86,5 @@ const DrawingBoardContainer = () => {
 }
 
 export default connect((state: any) => ({
-  activeComponent: state.DrawingBoardReducer.activeComponent,
   drawingboardList: state.DrawingBoardReducer.drawingboardList
 }))(memo(DrawingBoardContainer))

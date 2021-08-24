@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Input, Radio, Select } from 'antd'
 import BaseStructureBox from '../common/baseStructure'
 import { LineBlockLabel, LineBlock } from '../common/styled'
-import { baseTextProps } from './_type'
+import { baseTextProps, IconType } from './_type'
 import IconSelect from '../common/IconSelect'
 
 const SizeOptions = [
@@ -27,6 +27,7 @@ export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
             ...activeComponent,
             buttonText: evt.target.value
           })
+
         }}
       />
     </LineBlock>
@@ -95,8 +96,12 @@ export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
         <IconSelect
           iconType={activeComponent.iconType}
           icon={activeComponent.icon}
-          selectIcon={({ icon, iconType }: { icon?: string, iconType?: string }) => {
-            console.log(icon, iconType)
+          selectIcon={(iconType?: IconType, icon?: string) => {
+            setBaseTextConfig({
+              ...activeComponent,
+              icon,
+              iconType
+            })
           }} />
       </BaseStructureBox>
       <BaseStructureBox title="模板选择">

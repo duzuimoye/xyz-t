@@ -8,19 +8,17 @@ import { IconType } from '../baseText/_type'
 const { Search } = Input
 
 export default ({
-  selectIcon,
   icon,
-  iconType
+  iconType,
+  selectIcon
 }: {
-  selectIcon: ({ iconType, icon }: { icon?: string, iconType?: IconType }) => void,
-  icon: string,
-  iconType: IconType
+  icon?: string | undefined,
+  iconType?: IconType,
+  selectIcon: (iconType?: IconType, icon?: string | undefined) => void
 }) => {
-  const [customIcon, setCustomIcon] = useState(icon)
-  const [customIconType, setCustomIconType] = useState(iconType)
-  const [visible, setVisible] = useState(false)
-
-  console.log(customIcon, selectIcon)
+  const [visible, setVisible] = useState<boolean>(false)
+  const [customIcon, setCustomIcon] = useState<string | undefined>(icon)
+  const [customIconType, setCustomIconType] = useState<IconType | undefined>(iconType)
 
   const DrawerIconSelect = () => {
     const drawerHeaderStyle = {
@@ -42,10 +40,17 @@ export default ({
         <IconTypeContainer>
           {
             IconList.slice((current - 1) * pageSize, current * pageSize).map(Item => (
-              <IconBlock key={Item.label}>
+              <IconBlock
+                key={Item.label}
+                onClick={() => {
+                  setVisible(false)
+                  setCustomIcon(Item.label)
+                  selectIcon(customIconType, Item.label)
+                }}
+                selected={customIcon === Item.label}>
                 <Item.Icon />
-              </IconBlock>)
-            )
+              </IconBlock>
+            ))
           }
         </IconTypeContainer>
       )
@@ -83,15 +88,11 @@ export default ({
         closable={false}
         title={<div style={{ color: '#fff' }}>图标选择</div>}
         headerStyle={drawerHeaderStyle}
-        bodyStyle={drawerBodyStyle}
-        onClose={() => {
-          setVisible(false)
-          setCustomIcon(icon)
-        }}
-      >
+        bodyStyle={drawerBodyStyle}>
         <LineBlock className="sticky">
           <LineBlockLabel>图标:</LineBlockLabel>
           <Select
+            disabled
             defaultValue={iconType}
             onChange={value => {
               setCustomIconType(value)
@@ -104,15 +105,13 @@ export default ({
           <Search
             placeholder="搜索图标"
             allowClear
-            onSearch={(value: string) => {
-              console.log(value)
-            }}
+            disabled
             style={{ width: 200 }} />
         </LineBlock>
         <IconBox>
           <IconContainer />
         </IconBox>
-      </Drawer >
+      </Drawer>
     )
   }
 

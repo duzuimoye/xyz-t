@@ -153,12 +153,12 @@ export const InitialDrawingBoard = `
 <!DOCTYPE html>
   <html>
   <head>
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <link href="https://cdn.bootcdn.net/ajax/libs/antd/4.16.9/antd.css" rel="stylesheet">
-    <script src="https://unpkg.com/moment/min/moment-with-locales.js"></script>
-    <script src="https://unpkg.com/antd/dist/antd-with-locales.js"></script>
-    <script src="https://unpkg.com/react-input-mask/dist/react-input-mask.min.js"></script>
+    <script crossorigin src="./iframeResource/react.development.js"></script>
+    <script crossorigin src="./iframeResource/react-dom.development.js"></script>
+    <link href="./iframeResource/antd.css" rel="stylesheet">
+    <script src="./iframeResource/moment-with-locales.js"></script>
+    <script src="./iframeResource/antd-with-locales.js"></script>
+    <script src="./iframeResource/react-input-mask.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/antd/4.16.9/antd.min.js"></script>
   </head>
   <body>
