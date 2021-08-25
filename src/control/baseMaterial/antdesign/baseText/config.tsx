@@ -1,33 +1,35 @@
-import { useState } from 'react'
 import { Input, Radio, Select } from 'antd'
 import BaseStructureBox from '../common/baseStructure'
 import { LineBlockLabel, LineBlock } from '../common/styled'
 import { baseTextProps, IconType } from './_type'
 import IconSelect from '../common/IconSelect'
+import { UPDATE_ACTIVE_COMPONENT_ACTION } from '../../../../redux/actions/index'
+import store from '../../../../redux/store'
+import i18n from '../../../../utils/i18n'
 
 const SizeOptions = [
-  { label: '大型', value: 'large' },
-  { label: '默认', value: 'middle' },
-  { label: '小型', value: 'small' }
+  { label: i18n.t('baseMateiral.baseText.sizeOptions.large'), value: 'large' },
+  { label: i18n.t('baseMateiral.baseText.sizeOptions.middle'), value: 'middle' },
+  { label: i18n.t('baseMateiral.baseText.sizeOptions.small'), value: 'small' }
 ]
 
 export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
-  const [baseTextConfig, setBaseTextConfig] = useState({ ...activeComponent })
-
   const TextInput = () => (
     <LineBlock>
-      <LineBlockLabel>文本</LineBlockLabel>
+      <LineBlockLabel>{i18n.t('baseMateiral.baseText.text')}</LineBlockLabel>
       <Input
         allowClear
         size="small"
-        placeholder="请输入标题"
-        defaultValue={baseTextConfig.buttonText}
+        placeholder={i18n.t('baseMateiral.baseText.textplaceholder')}
+        defaultValue={activeComponent.buttonText}
         onBlur={evt => {
-          setBaseTextConfig({
-            ...activeComponent,
-            buttonText: evt.target.value
+          store.dispatch({
+            type: UPDATE_ACTIVE_COMPONENT_ACTION,
+            payload: {
+              ...activeComponent,
+              buttonText: evt.target.value
+            }
           })
-
         }}
       />
     </LineBlock>
@@ -35,27 +37,30 @@ export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
 
   const TypeSelect = () => {
     const typeOptions = [
-      { label: '默认', value: 'default' },
-      { label: '主要', value: 'primary' },
-      { label: '幽灵', value: 'ghost' },
-      { label: '虚线', value: 'dashed' },
-      { label: '链接', value: 'link' },
-      { label: '文本', value: 'text' }
+      { label: i18n.t('baseMateiral.baseText.typeOptions.default'), value: 'default' },
+      { label: i18n.t('baseMateiral.baseText.typeOptions.primary'), value: 'primary' },
+      { label: i18n.t('baseMateiral.baseText.typeOptions.ghost'), value: 'ghost' },
+      { label: i18n.t('baseMateiral.baseText.typeOptions.dashed'), value: 'dashed' },
+      { label: i18n.t('baseMateiral.baseText.typeOptions.link'), value: 'link' },
+      { label: i18n.t('baseMateiral.baseText.typeOptions.text'), value: 'text' }
     ]
 
     return (
       <LineBlock>
-        <LineBlockLabel>类型</LineBlockLabel>
+        <LineBlockLabel>{i18n.t('baseMateiral.baseText.type')}</LineBlockLabel>
         <Select
           style={{ width: '100%' }}
           size="small"
           allowClear
-          placeholder="请选择类型"
-          defaultValue={baseTextConfig.type}
+          placeholder={i18n.t('baseMateiral.baseText.typeplaceholder')}
+          defaultValue={activeComponent.type}
           onChange={value => {
-            setBaseTextConfig({
-              ...activeComponent,
-              type: value
+            store.dispatch({
+              type: UPDATE_ACTIVE_COMPONENT_ACTION,
+              payload: {
+                ...activeComponent,
+                type: value
+              }
             })
           }}>
           {
@@ -70,17 +75,20 @@ export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
 
   const SizeRadio = () => (
     <LineBlock>
-      <LineBlockLabel>尺寸</LineBlockLabel>
+      <LineBlockLabel>{i18n.t('baseMateiral.baseText.size')}</LineBlockLabel>
       <Radio.Group
-        defaultValue={baseTextConfig.size}
+        defaultValue={activeComponent.size}
         size="small"
         optionType="button"
         buttonStyle="solid"
         options={SizeOptions}
         onChange={evt => {
-          setBaseTextConfig({
-            ...activeComponent,
-            size: evt.target.value
+          store.dispatch({
+            type: UPDATE_ACTIVE_COMPONENT_ACTION,
+            payload: {
+              ...activeComponent,
+              size: evt.target.value
+            }
           })
         }}
       />
@@ -89,7 +97,7 @@ export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
 
   return (
     <>
-      <BaseStructureBox title="基础配置" initVisible>
+      <BaseStructureBox title={i18n.t('baseMateiral.baseText.baseConfig')} initVisible>
         <TextInput />
         <TypeSelect />
         <SizeRadio />
@@ -97,14 +105,18 @@ export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
           iconType={activeComponent.iconType}
           icon={activeComponent.icon}
           selectIcon={(iconType?: IconType, icon?: string) => {
-            setBaseTextConfig({
-              ...activeComponent,
-              icon,
-              iconType
+            store.dispatch({
+              type: UPDATE_ACTIVE_COMPONENT_ACTION,
+              payload: {
+                ...activeComponent,
+                icon,
+                iconType
+              }
             })
+
           }} />
       </BaseStructureBox>
-      <BaseStructureBox title="模板选择">
+      <BaseStructureBox title={i18n.t('baseMateiral.baseText.baseConfig')}>
         <TextInput />
         <SizeRadio />
       </BaseStructureBox>

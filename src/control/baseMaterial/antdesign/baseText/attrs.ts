@@ -8,11 +8,15 @@ const baseText: baseTextProps = {
   // 组件属性
   tag: 'uxo2-base-text',
   disabled: false,
-  size: 'small',
+  size: 'middle',
   buttonText: '提交',
   type: 'default',
   icon: 'AccountBookFilled',
   iconType: 'antdIcon',
+  shape: undefined,
+  ghost: false,
+  danger: false,
+  block: false,
 
   // 自定义样式
   styleConfig: null,

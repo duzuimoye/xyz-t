@@ -47,7 +47,7 @@ const DrawingBoardContainer = () => {
 
       store.dispatch({
         type: PUSH_COMPONENT_ACTION,
-        payload: stashDrawingList
+        payload: compData
       })
     }
   }

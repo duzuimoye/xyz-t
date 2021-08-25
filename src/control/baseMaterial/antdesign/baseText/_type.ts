@@ -10,12 +10,18 @@ export type ButtonSize = typeof ButtonSizes[number]
 // 第三方图标或者官方图标或者图片svg
 export type IconType = 'antdIcon' | 'thirdPartyIcon' | 'img' | 'svg'
 
+type SizeType = 'small' | 'large' | 'middle'
+
 export interface baseTextProps extends defaultCompProps {
   tag: string
   type?: ButtonType
   icon?: string
   iconType?: IconType
   disabled: boolean
-  size: string
+  size: SizeType
   buttonText: string
+  shape: 'circle' | 'round' | undefined
+  ghost: boolean
+  danger: boolean
+  block: boolean
 }

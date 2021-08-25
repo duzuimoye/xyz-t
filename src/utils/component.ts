@@ -4,7 +4,7 @@ export function newComponent(comp: string) {
   try {
     const newComp = JSON.parse(comp)
 
-    newComp.id = shortUuid.generate()
+    newComp.componentId = shortUuid.generate()
 
     return JSON.stringify(newComp)
 

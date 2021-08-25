@@ -159,7 +159,7 @@ export const InitialDrawingBoard = `
     <script src="./iframeResource/moment-with-locales.js"></script>
     <script src="./iframeResource/antd-with-locales.js"></script>
     <script src="./iframeResource/react-input-mask.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/antd/4.16.9/antd.min.js"></script>
+    <script src="./iframeResource/antd.min.js"></script>
   </head>
   <body>
     <div id="DrawingBoard" style="width: 100%; height: 100%"></div>
