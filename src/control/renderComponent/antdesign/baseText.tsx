@@ -3,9 +3,22 @@ import { IconList } from "../../baseMaterial/antdesign/assets/constant"
 import { baseTextProps } from '../../baseMaterial/antdesign/baseText/_type'
 
 export default ({ comp }: { comp: baseTextProps }) => {
-  const { size, type, icon, buttonText, shape, ghost, disabled, danger, block } = comp
+  const { size, type, icon, buttonText, shape, ghost, disabled, danger, block, iconDirection } = comp
   const index = IconList.findIndex(item => item.label === icon)
-  const Icon: any = index >= 0 ? IconList[index].Icon : <></>
+
+  let buttonNode: React.ReactNode
+
+  // add button icon direction render.
+  if (index >= 0) {
+    const { Icon } = IconList[index]
+    if (iconDirection === 'left') {
+      buttonNode = <><Icon />{buttonText}</>
+    } else {
+      buttonNode = <>{buttonText}<Icon /></>
+    }
+  } else {
+    buttonNode = buttonText
+  }
 
   return (
     <Button
@@ -16,7 +29,6 @@ export default ({ comp }: { comp: baseTextProps }) => {
       danger={danger}
       ghost={ghost}
       block={block}
-      icon={<Icon />}
-    >{buttonText}</Button>
+    >{buttonNode}</Button>
   )
 }

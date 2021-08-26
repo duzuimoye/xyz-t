@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo, memo } from 'react'
 import { uid } from 'react-uid'
 import WorkbenchHeader from './WorkbenchHeader'
 import DrawingBoard from './DrawingBoard/index'
-import { useAppState } from '../../../contexts/providers'
+// import { useAppState } from '../../../contexts/providers'
 import {
   DividerWorkbenchVerticalContainer,
   DividerWorkbenchHorizontalContainer,
@@ -17,18 +17,17 @@ import {
 const DividerContainer = () => {
   const [scrollTopValue, setscrollTopValue] = useState(0)
   const [scrollLeftValue, setscrollLeftValue] = useState(0)
-  const {
-    workbench: {
-      resizeDrawingBoard
-    }
-  } = useAppState()
+  // const {
+  //   workbench: {
+  //     resizeDrawingBoard
+  //   }
+  // } = useAppState()
 
   const dividerDom = useMemo(() => {
-    console.log('resizeDrawingBoard', resizeDrawingBoard)
     return Array(100).fill(100).map((val, index) => (
       <span className="number" key={uid({ val, index })} >{index * val / 2}</span>
     ))
-  }, [resizeDrawingBoard])
+  }, [])
 
   useEffect(() => {
     const dom = document.getElementById('iframeMount') as HTMLElement

@@ -12,11 +12,13 @@ const baseText: baseTextProps = {
   buttonText: '提交',
   type: 'default',
   icon: 'AccountBookFilled',
+  iconDirection: 'left',
   iconType: 'antdIcon',
   shape: undefined,
   ghost: false,
   danger: false,
   block: false,
+  sourceCodeStr: '<Button />',
 
   // 自定义样式
   styleConfig: null,

@@ -11,8 +11,6 @@ const ch = JSON.parse(JSON.stringify(zhCommon))
 en.translation.baseMateiral = antdenLocale
 ch.translation.baseMateiral = antdzhLocale
 
-console.log(en)
-
 i18n.use(initReactI18next).init({
   resources: {
     en,

@@ -1,24 +1,65 @@
-import { Input, Radio, Select } from 'antd'
-import BaseStructureBox from '../common/baseStructure'
+import { Input, Radio, Select, Empty, Switch } from 'antd'
+import { sizeOptions, iconDirectionOptions, typeOptions, shapeOptinos } from './const'
+import { UPDATE_ACTIVE_COMPONENT_ACTION } from '../../../../redux/actions/index'
+import emptyPage from '../../../../assets/images/emptyPage.svg'
 import { LineBlockLabel, LineBlock } from '../common/styled'
+import BaseStructureBox from '../common/baseStructure'
+import MonacoEditIDE from '../common/monacoEditIDE'
 import { baseTextProps, IconType } from './_type'
 import IconSelect from '../common/IconSelect'
-import { UPDATE_ACTIVE_COMPONENT_ACTION } from '../../../../redux/actions/index'
 import store from '../../../../redux/store'
 import i18n from '../../../../utils/i18n'
 
-const SizeOptions = [
-  { label: i18n.t('baseMateiral.baseText.sizeOptions.large'), value: 'large' },
-  { label: i18n.t('baseMateiral.baseText.sizeOptions.middle'), value: 'middle' },
-  { label: i18n.t('baseMateiral.baseText.sizeOptions.small'), value: 'small' }
-]
+const ButtonTextConfigContainer = (
+  { activeComponent }: { activeComponent: baseTextProps }
+) => {
+  const ShapeType = () => {
+    const defaultShape = activeComponent.shape
+    return (
+      <LineBlock>
+        <LineBlockLabel>{i18n.t('baseMateiral.baseText.text')}</LineBlockLabel>
+        <Radio.Group
+          defaultValue={defaultShape === undefined ? 'default' : defaultShape}
+          size="small"
+          optionType="button"
+          buttonStyle="solid"
+          options={shapeOptinos}
+          onChange={evt => {
+            const { value } = evt.target
 
-export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
+            store.dispatch({
+              type: UPDATE_ACTIVE_COMPONENT_ACTION,
+              payload: {
+                ...activeComponent,
+                shape: value === 'default' ? undefined : value
+              }
+            })
+          }}
+        />
+      </LineBlock>
+    )
+  }
+
+  const DangerButton = () => (
+    <LineBlock>
+      <LineBlockLabel>{i18n.t('baseMateiral.baseText.danger')}</LineBlockLabel>
+      <Switch
+        defaultChecked={activeComponent.danger}
+        onChange={(checked: boolean) => {
+          store.dispatch({
+            type: UPDATE_ACTIVE_COMPONENT_ACTION,
+            payload: {
+              ...activeComponent,
+              danger: checked
+            }
+          })
+        }} />
+    </LineBlock>
+  )
   const TextInput = () => (
     <LineBlock>
       <LineBlockLabel>{i18n.t('baseMateiral.baseText.text')}</LineBlockLabel>
       <Input
-        allowClear
         size="small"
         placeholder={i18n.t('baseMateiral.baseText.textplaceholder')}
         defaultValue={activeComponent.buttonText}
@@ -36,15 +77,6 @@ export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
   )
 
   const TypeSelect = () => {
-    const typeOptions = [
-      { label: i18n.t('baseMateiral.baseText.typeOptions.default'), value: 'default' },
-      { label: i18n.t('baseMateiral.baseText.typeOptions.primary'), value: 'primary' },
-      { label: i18n.t('baseMateiral.baseText.typeOptions.ghost'), value: 'ghost' },
-      { label: i18n.t('baseMateiral.baseText.typeOptions.dashed'), value: 'dashed' },
-      { label: i18n.t('baseMateiral.baseText.typeOptions.link'), value: 'link' },
-      { label: i18n.t('baseMateiral.baseText.typeOptions.text'), value: 'text' }
-    ]
-
     return (
       <LineBlock>
         <LineBlockLabel>{i18n.t('baseMateiral.baseText.type')}</LineBlockLabel>
@@ -81,7 +113,7 @@ export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
         size="small"
         optionType="button"
         buttonStyle="solid"
-        options={SizeOptions}
+        options={sizeOptions}
         onChange={evt => {
           store.dispatch({
             type: UPDATE_ACTIVE_COMPONENT_ACTION,
@@ -95,12 +127,36 @@ export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
     </LineBlock>
   )
 
+  const IconDirection = () => (
+    <LineBlock>
+      <LineBlockLabel>{i18n.t('baseMateiral.baseText.iconDirection')}</LineBlockLabel>
+      <Radio.Group
+        defaultValue={activeComponent.iconDirection}
+        size="small"
+        optionType="button"
+        buttonStyle="solid"
+        options={iconDirectionOptions}
+        onChange={evt => {
+          store.dispatch({
+            type: UPDATE_ACTIVE_COMPONENT_ACTION,
+            payload: {
+              ...activeComponent,
+              iconDirection: evt.target.value
+            }
+          })
+        }}
+      />
+    </LineBlock>
+  )
+
   return (
     <>
       <BaseStructureBox title={i18n.t('baseMateiral.baseText.baseConfig')} initVisible>
         <TextInput />
         <TypeSelect />
         <SizeRadio />
+        <ShapeType />
+        <DangerButton />
         <IconSelect
           iconType={activeComponent.iconType}
           icon={activeComponent.icon}
@@ -113,13 +169,17 @@ export default ({ activeComponent }: { activeComponent: baseTextProps }) => {
                 iconType
               }
             })
-
           }} />
+        {activeComponent.icon && <IconDirection />}
       </BaseStructureBox>
-      <BaseStructureBox title={i18n.t('baseMateiral.baseText.baseConfig')}>
-        <TextInput />
-        <SizeRadio />
+      <BaseStructureBox title={i18n.t('baseMateiral.baseText.moduleCaseSelect')}>
+        <Empty className="empty-box" image={emptyPage} description={i18n.t('baseMateiral.baseText.busingDating')} />
+      </BaseStructureBox>
+      <BaseStructureBox title={i18n.t('baseMateiral.baseText.componentCodeView')}>
+        <MonacoEditIDE codeStr={activeComponent.sourceCodeStr} />
       </BaseStructureBox>
     </>
   )
 }
+
+export default ButtonTextConfigContainer

@@ -4,8 +4,16 @@ import { SettingOutlined } from '@ant-design/icons'
 import { LineBlockLabel, LineBlock, IconBlock, IconTypeContainer, IconBox } from './styled'
 import { IconList } from '../assets/constant'
 import { IconType } from '../baseText/_type'
+import i18n from '../../../../utils/i18n'
 
 const { Search } = Input
+
+const iconOptions = [
+  { label: i18n.t('baseMateiral.baseText.iconOptions.antdIcon'), value: 'antdIcon' },
+  { label: i18n.t('baseMateiral.baseText.iconOptions.thirdPartyIcon'), value: 'thirdPartyIcon' },
+  { label: i18n.t('baseMateiral.baseText.iconOptions.img'), value: 'img' },
+  { label: i18n.t('baseMateiral.baseText.iconOptions.svg'), value: 'svg' }
+]
 
 export default ({
   icon,
@@ -25,11 +33,11 @@ export default ({
       padding: '10px',
       height: '40px',
       backgroundColor: '#3c3c3c',
-      borderBottom: '1px solid 333f57',
+      borderBottom: '1px solid #333f57',
       borderRadius: 0
     }
     const drawerBodyStyle = {
-      padding: '0 5px 5px'
+      padding: '0 5px 0px'
     }
     const IconContainer = memo(() => {
       const total = IconList.length
@@ -85,28 +93,32 @@ export default ({
         placement="right"
         width={380}
         visible={visible}
-        closable={false}
-        title={<div style={{ color: '#fff' }}>图标选择</div>}
+        title={<div style={{ color: '#fff' }}>{i18n.t('baseMateiral.baseText.iconSelect')}</div>}
         headerStyle={drawerHeaderStyle}
-        bodyStyle={drawerBodyStyle}>
+        bodyStyle={drawerBodyStyle}
+        closable={false}
+        onClose={() => {
+          setVisible(false)
+        }}>
         <LineBlock className="sticky">
-          <LineBlockLabel>图标:</LineBlockLabel>
+          <LineBlockLabel style={{ width: "60px" }}>{i18n.t('baseMateiral.baseText.iconType')}</LineBlockLabel>
           <Select
             disabled
             defaultValue={iconType}
             onChange={value => {
               setCustomIconType(value)
             }}>
-            <Select.Option value="antdIcon">antd 图标</Select.Option>
-            <Select.Option value="thirdPartyIcon">第三方图标</Select.Option>
-            <Select.Option value="img">图片</Select.Option>
-            <Select.Option value="svg">svg</Select.Option>
+            {
+              iconOptions.map(item => (
+                <Select.Option value={item.value} key={item.value}>{item.label}</Select.Option>
+              ))
+            }
           </Select>
           <Search
-            placeholder="搜索图标"
+            placeholder={i18n.t('baseMateiral.baseText.searchIconplaceholder')}
             allowClear
             disabled
-            style={{ width: 200 }} />
+            style={{ width: 180, marginLeft: 10 }} />
         </LineBlock>
         <IconBox>
           <IconContainer />
@@ -118,14 +130,19 @@ export default ({
   return (
     <>
       <LineBlock>
-        <LineBlockLabel>图标</LineBlockLabel>
+        <LineBlockLabel>{i18n.t('baseMateiral.baseText.icon')}</LineBlockLabel>
         <Input
           allowClear
           size="small"
           placeholder="请输入标题"
-          defaultValue={icon}
-          disabled={customIconType === 'antdIcon'}
+          defaultValue={customIcon}
+          value={customIcon}
           addonAfter={<SettingOutlined onClick={() => { setVisible(true) }} />}
+          onChange={evt => {
+            setCustomIcon(evt.target.value)
+            console.log(evt.target.value, customIcon)
+            selectIcon(customIconType, evt.target.value)
+          }}
         />
       </LineBlock>
       <DrawerIconSelect />

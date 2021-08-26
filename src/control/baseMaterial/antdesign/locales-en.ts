@@ -7,8 +7,22 @@ export default {
     typeplaceholder: 'please select the type',
     size: 'size',
     icon: 'icon',
-    moduleSelect: 'module select',
+    moduleCaseSelect: 'Module cace select',
+    eventConfigTtitle: 'event config',
+    iconDirection: 'icon direction',
+    danger: 'danger',
+    componentCodeView: 'Code view',
+    iconSelect: 'Icon Select',
+    iconType: 'iconType',
+    searchIconplaceholder: 'please input the icon',
+    busingDating: 'Busing Dating...',
 
+    iconOptions: {
+      antdIcon: 'antd icon',
+      thirdPartyIcon: 'third party icon',
+      img: 'img',
+      svg: 'svg'
+    },
     typeOptions: {
       default: 'default',
       primary: 'primary',
@@ -21,6 +35,15 @@ export default {
       large: 'large',
       middle: 'middle',
       small: 'small'
+    },
+    iconDirectionOptions: {
+      left: 'left',
+      right: 'right'
+    },
+    shapeOptions: {
+      circle: 'circle',
+      round: 'round',
+      default: 'default'
     }
   }
 }

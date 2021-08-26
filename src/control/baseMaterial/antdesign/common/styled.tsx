@@ -24,7 +24,6 @@ export const HeaderContent = styled.div`
 
 export const HeaderTitle = styled.div`
   font-weight: 600;
-  user-select: none;
   width: 100%;
   height: 30px;
   background-color: rgba(0, 0, 0, 0);
@@ -48,6 +47,24 @@ export const CollapseContent = styled.div`
   overflow: hidden;
   height: 0;
   flex: ${(props: visibleProps) => props.visible ? 1 : 'none'};
+  .empty-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 200px;
+    user-select: none;
+    img {
+      -webkit-user-drag: none;
+    }
+  }
+  .ant-switch {
+    background-color: #e0e0e0;
+    &.ant-switch-checked {
+      background-color: #1890ff;
+    }
+  }
 `
 
 export const LineBlock = styled.div`
@@ -70,6 +87,7 @@ export const LineBlockLabel = styled.label`
   min-width: 45px;
   text-indent: 0px;
   user-select: none;
+  margin-right: 8px;
 `
 
 export const LineBlockContent = styled.div`

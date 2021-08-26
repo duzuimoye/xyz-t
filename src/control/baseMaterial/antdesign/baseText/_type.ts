@@ -12,10 +12,12 @@ export type IconType = 'antdIcon' | 'thirdPartyIcon' | 'img' | 'svg'
 
 type SizeType = 'small' | 'large' | 'middle'
 
+
 export interface baseTextProps extends defaultCompProps {
   tag: string
   type?: ButtonType
   icon?: string
+  iconDirection: 'left' | 'right'
   iconType?: IconType
   disabled: boolean
   size: SizeType
@@ -23,5 +25,6 @@ export interface baseTextProps extends defaultCompProps {
   shape: 'circle' | 'round' | undefined
   ghost: boolean
   danger: boolean
-  block: boolean
+  block: boolean,
+  sourceCodeStr: string
 }

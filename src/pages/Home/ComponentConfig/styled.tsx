@@ -7,4 +7,9 @@ export const ComponentConfigContainer = styled.div`
   background-color: #0a101b;
   border-left: 1px solid #333f57;
   position: relative;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 `

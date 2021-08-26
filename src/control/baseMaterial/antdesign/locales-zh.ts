@@ -1,13 +1,28 @@
 export default {
   baseText: {
-    baseConfig: "base config",
+    baseConfig: "基础配置",
     text: '文本',
     textplaceholder: '请输入标题',
     type: '类型',
     typeplaceholder: '请选择类型',
     size: '尺寸',
     icon: '图标',
-    moduleSelect: '模板选择',
+    moduleCaseSelect: '模板案例',
+    eventConfigTtitle: '事件配置',
+    iconDirection: '图标方向',
+    danger: '危险按钮',
+    componentCodeView: '代码预览',
+    iconSelect: '图标选择',
+    iconType: '图标类型',
+    searchIconplaceholder: '图标搜索',
+    busingDating: '忙着相亲呢，😕哪有时间写。',
+
+    iconOptions: {
+      antdIcon: 'antd 图标',
+      thirdPartyIcon: '第三方图标',
+      img: '图片',
+      svg: 'svg图片'
+    },
 
     typeOptions: {
       default: '默认',
@@ -21,6 +36,15 @@ export default {
       large: '大型',
       middle: '默认',
       small: '小型'
+    },
+    iconDirectionOptions: {
+      left: '左边',
+      right: '右边'
+    },
+    shapeOptions: {
+      circle: '圆形',
+      round: '圆角',
+      default: '默认'
     }
   }
 }
