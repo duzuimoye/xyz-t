@@ -13,7 +13,7 @@ export type IconType = 'antdIcon' | 'thirdPartyIcon' | 'img' | 'svg'
 type SizeType = 'small' | 'large' | 'middle'
 
 
-export interface baseTextProps extends defaultCompProps {
+export interface buttonTypes extends defaultCompProps {
   tag: string
   type?: ButtonType
   icon?: string

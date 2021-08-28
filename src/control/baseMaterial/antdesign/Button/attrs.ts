@@ -1,6 +1,6 @@
-import { baseTextProps } from './_type'
+import { buttonTypes } from './_type'
 
-const baseText: baseTextProps = {
+const baseText: buttonTypes = {
   // 工具栏配置
   groupName: '通用',
   label: 'Button 按钮',

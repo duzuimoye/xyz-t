@@ -19,6 +19,7 @@ export default {
     searchIconplaceholder: 'please input the icon',
     busingDating: 'Busing Dating...',
     block: 'block',
+    disabled: 'disabled',
 
     iconOptions: {
       antdIcon: 'antd icon',

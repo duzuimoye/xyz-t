@@ -2,6 +2,7 @@
   "name": "xyz-t",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "@tanem/react-nprogress": "^3.0.73",

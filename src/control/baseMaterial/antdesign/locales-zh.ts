@@ -19,6 +19,8 @@ export default {
     searchIconplaceholder: '图标搜索',
     busingDating: '忙着相亲呢，😕哪有时间写。',
     block: '块级按钮',
+    disabled: '禁用',
+
     iconOptions: {
       antdIcon: 'antd 图标',
       thirdPartyIcon: '第三方图标',

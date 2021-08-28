@@ -1,10 +1,10 @@
 import { Button } from 'antd'
 import { IconList } from "../../baseMaterial/antdesign/assets/constant"
-import { baseTextProps } from '../../baseMaterial/antdesign/Button/_type'
+import { buttonTypes } from '../../baseMaterial/antdesign/Button/_type'
 import store from "../../../redux/store"
 import { SELECT_COMPONENT_ACTION } from '../../../redux/actions'
 
-export default ({ comp }: { comp: baseTextProps }) => {
+export default ({ comp }: { comp: buttonTypes }) => {
   const { size, type, icon, componentId, buttonText, shape, ghost, disabled, danger, block, iconDirection } = comp
   const index = IconList.findIndex(item => item.label === icon)
 

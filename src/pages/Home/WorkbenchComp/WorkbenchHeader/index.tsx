@@ -15,7 +15,6 @@ import i18n from '../../../../utils/i18n'
 import ResizeDrawingBoard from './resizeDrawingBoard'
 import VisibleCompConfigBox from './VisibleCompConfigBtn'
 
-
 function requestFullScreen(element: any) {
   const requestMethod = element.requestFullScreen || // W3C
     element.webkitRequestFullScreen || // Chrome等
