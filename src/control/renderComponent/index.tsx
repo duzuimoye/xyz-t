@@ -1,9 +1,7 @@
-import baseButtonRender from './antdesign/baseButton'
-import baseTextRender from './antdesign/baseText'
+import Button from './antdesign/Button'
 
 export const AntdRender = {
-  'uxo2-base-btn': baseButtonRender,
-  'uxo2-base-text': baseTextRender
+  'uxo2-Button': Button
 }
 
 export default {

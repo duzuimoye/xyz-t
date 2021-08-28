@@ -8,14 +8,17 @@ export default {
     size: 'size',
     icon: 'icon',
     moduleCaseSelect: 'Module cace select',
+    sourceAnalysis: 'source analysis',
     eventConfigTtitle: 'event config',
     iconDirection: 'icon direction',
     danger: 'danger',
+    ghost: 'ghost',
     componentCodeView: 'Code view',
     iconSelect: 'Icon Select',
     iconType: 'iconType',
     searchIconplaceholder: 'please input the icon',
     busingDating: 'Busing Dating...',
+    block: 'block',
 
     iconOptions: {
       antdIcon: 'antd icon',

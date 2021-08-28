@@ -3,17 +3,9 @@ import { Drawer, Input, Select, Pagination } from 'antd'
 import { SettingOutlined } from '@ant-design/icons'
 import { LineBlockLabel, LineBlock, IconBlock, IconTypeContainer, IconBox } from './styled'
 import { IconList } from '../assets/constant'
-import { IconType } from '../baseText/_type'
-import i18n from '../../../../utils/i18n'
+import { IconType } from '../Button/_type'
 
 const { Search } = Input
-
-const iconOptions = [
-  { label: i18n.t('baseMateiral.baseText.iconOptions.antdIcon'), value: 'antdIcon' },
-  { label: i18n.t('baseMateiral.baseText.iconOptions.thirdPartyIcon'), value: 'thirdPartyIcon' },
-  { label: i18n.t('baseMateiral.baseText.iconOptions.img'), value: 'img' },
-  { label: i18n.t('baseMateiral.baseText.iconOptions.svg'), value: 'svg' }
-]
 
 export default ({
   icon,
@@ -93,7 +85,7 @@ export default ({
         placement="right"
         width={380}
         visible={visible}
-        title={<div style={{ color: '#fff' }}>{i18n.t('baseMateiral.baseText.iconSelect')}</div>}
+        title={<div style={{ color: '#fff' }}>图标选择</div>}
         headerStyle={drawerHeaderStyle}
         bodyStyle={drawerBodyStyle}
         closable={false}
@@ -101,21 +93,20 @@ export default ({
           setVisible(false)
         }}>
         <LineBlock className="sticky">
-          <LineBlockLabel style={{ width: "60px" }}>{i18n.t('baseMateiral.baseText.iconType')}</LineBlockLabel>
+          <LineBlockLabel>图标类型</LineBlockLabel>
           <Select
             disabled
             defaultValue={iconType}
             onChange={value => {
               setCustomIconType(value)
             }}>
-            {
-              iconOptions.map(item => (
-                <Select.Option value={item.value} key={item.value}>{item.label}</Select.Option>
-              ))
-            }
+            <Select.Option value="antdIcon">antd 图标</Select.Option>
+            <Select.Option value="thirdPartyIcon">第三方图标</Select.Option>
+            <Select.Option value="img">图片</Select.Option>
+            <Select.Option value="svg">svg</Select.Option>
           </Select>
           <Search
-            placeholder={i18n.t('baseMateiral.baseText.searchIconplaceholder')}
+            placeholder="搜索图标"
             allowClear
             disabled
             style={{ width: 180, marginLeft: 10 }} />
@@ -130,7 +121,7 @@ export default ({
   return (
     <>
       <LineBlock>
-        <LineBlockLabel>{i18n.t('baseMateiral.baseText.icon')}</LineBlockLabel>
+        <LineBlockLabel>图标</LineBlockLabel>
         <Input
           allowClear
           size="small"

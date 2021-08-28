@@ -40,6 +40,23 @@ const ButtonTextConfigContainer = (
     )
   }
 
+  const BlockButon = () => (
+    <LineBlock>
+      <LineBlockLabel>{i18n.t('baseMateiral.baseText.block')}</LineBlockLabel>
+      <Switch
+        defaultChecked={activeComponent.block}
+        onChange={(checked: boolean) => {
+          store.dispatch({
+            type: UPDATE_ACTIVE_COMPONENT_ACTION,
+            payload: {
+              ...activeComponent,
+              block: checked
+            }
+          })
+        }} />
+    </LineBlock>
+  )
+
   const DangerButton = () => (
     <LineBlock>
       <LineBlockLabel>{i18n.t('baseMateiral.baseText.danger')}</LineBlockLabel>
@@ -76,6 +93,22 @@ const ButtonTextConfigContainer = (
     </LineBlock>
   )
 
+  const GhostButton = () => (
+    <LineBlock>
+      <LineBlockLabel>{i18n.t('baseMateiral.baseText.ghost')}</LineBlockLabel>
+      <Switch
+        defaultChecked={activeComponent.ghost}
+        onChange={(checked: boolean) => {
+          store.dispatch({
+            type: UPDATE_ACTIVE_COMPONENT_ACTION,
+            payload: {
+              ...activeComponent,
+              ghost: checked
+            }
+          })
+        }} />
+    </LineBlock>
+  )
   const TypeSelect = () => {
     return (
       <LineBlock>
@@ -157,6 +190,8 @@ const ButtonTextConfigContainer = (
         <SizeRadio />
         <ShapeType />
         <DangerButton />
+        <GhostButton />
+        <BlockButon />
         <IconSelect
           iconType={activeComponent.iconType}
           icon={activeComponent.icon}
@@ -172,11 +207,14 @@ const ButtonTextConfigContainer = (
           }} />
         {activeComponent.icon && <IconDirection />}
       </BaseStructureBox>
+      <BaseStructureBox title={i18n.t('baseMateiral.baseText.componentCodeView')}>
+        <MonacoEditIDE codeStr={activeComponent.sourceCodeStr} />
+      </BaseStructureBox>
       <BaseStructureBox title={i18n.t('baseMateiral.baseText.moduleCaseSelect')}>
         <Empty className="empty-box" image={emptyPage} description={i18n.t('baseMateiral.baseText.busingDating')} />
       </BaseStructureBox>
-      <BaseStructureBox title={i18n.t('baseMateiral.baseText.componentCodeView')}>
-        <MonacoEditIDE codeStr={activeComponent.sourceCodeStr} />
+      <BaseStructureBox title={i18n.t('baseMateiral.baseText.sourceAnalysis')}>
+        <Empty className="empty-box" image={emptyPage} description={i18n.t('baseMateiral.baseText.busingDating')} />
       </BaseStructureBox>
     </>
   )

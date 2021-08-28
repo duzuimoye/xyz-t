@@ -3,7 +3,8 @@ import { getComponentByComponentId } from '../../utils/component'
 import {
   ACTIVE_COMPONENT_ACTION,
   PUSH_COMPONENT_ACTION,
-  UPDATE_ACTIVE_COMPONENT_ACTION
+  UPDATE_ACTIVE_COMPONENT_ACTION,
+  SELECT_COMPONENT_ACTION
 } from '../actions/index'
 
 export const activeComponentFn = (
@@ -36,12 +37,42 @@ function pushComponent(state = drawingBoardState, activeComponent: DrawingBoard.
   }
 }
 
+function selectComponent(state = drawingBoardState, selectComponentId: string) {
+  const activeComponent = state.drawingboardList.find((item: any) => item.componentId === selectComponentId)
+
+  if (activeComponent) {
+    console.log(activeComponent)
+  }
+
+  return {
+    ...state,
+    activeComponent
+  }
+}
+
 function updateComponent(state = drawingBoardState, activeComponent: DrawingBoard.Component) {
   const stashDrawingboard = JSON.parse(JSON.stringify(state.drawingboardList))
   const index = stashDrawingboard.findIndex((item: DrawingBoard.Component) => item.componentId === activeComponent.componentId)
 
   if (index >= 0) {
-    stashDrawingboard.splice(0, 1, activeComponent)
+    stashDrawingboard[index] = activeComponent
+  }
+
+  const frams = window.frames
+
+  for (let i = 0; i < frams.length; i++) {
+    const els = frams[0].document.querySelectorAll('.drawingboard-customclassname')
+
+    els.forEach(item => {
+      if (item.getAttribute('data-component-id') === activeComponent.componentId) {
+
+        item.scrollIntoView({
+          block: 'center',
+          behavior: 'smooth',
+          inline: 'center'
+        })
+      }
+    })
   }
 
   return {
@@ -51,13 +82,23 @@ function updateComponent(state = drawingBoardState, activeComponent: DrawingBoar
   }
 }
 
+function catchIframeAction({ iframePropagationClick }: { iframePropagationClick: boolean }) {
+  if (iframePropagationClick) {
+    // useless
+    document.body.click()
+  }
+}
+
 function reducer(state = drawingBoardState, action: any) {
+  catchIframeAction(action)
   switch (action.type) {
     case ACTIVE_COMPONENT_ACTION:
       return {
         ...state,
         ...action.payload
       }
+    case SELECT_COMPONENT_ACTION:
+      return selectComponent(state, action.payload)
     case UPDATE_ACTIVE_COMPONENT_ACTION:
       return updateComponent(state, action.payload)
     case PUSH_COMPONENT_ACTION:

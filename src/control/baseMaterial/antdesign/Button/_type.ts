@@ -26,5 +26,6 @@ export interface baseTextProps extends defaultCompProps {
   ghost: boolean
   danger: boolean
   block: boolean,
-  sourceCodeStr: string
+  sourceCodeStr: string,
+  [prop: string]: any
 }

@@ -1,9 +1,11 @@
 import { Button } from 'antd'
 import { IconList } from "../../baseMaterial/antdesign/assets/constant"
-import { baseTextProps } from '../../baseMaterial/antdesign/baseText/_type'
+import { baseTextProps } from '../../baseMaterial/antdesign/Button/_type'
+import store from "../../../redux/store"
+import { SELECT_COMPONENT_ACTION } from '../../../redux/actions'
 
 export default ({ comp }: { comp: baseTextProps }) => {
-  const { size, type, icon, buttonText, shape, ghost, disabled, danger, block, iconDirection } = comp
+  const { size, type, icon, componentId, buttonText, shape, ghost, disabled, danger, block, iconDirection } = comp
   const index = IconList.findIndex(item => item.label === icon)
 
   let buttonNode: React.ReactNode
@@ -29,6 +31,18 @@ export default ({ comp }: { comp: baseTextProps }) => {
       danger={danger}
       ghost={ghost}
       block={block}
+      onClick={evt => {
+        store.dispatch({
+          type: SELECT_COMPONENT_ACTION,
+          payload: componentId,
+          iframePropagationClick: true
+        })
+
+        evt.stopPropagation()
+        evt.preventDefault()
+      }}
+      className="drawingboard-customclassname"
+      data-component-id={componentId}
     >{buttonNode}</Button>
   )
 }
