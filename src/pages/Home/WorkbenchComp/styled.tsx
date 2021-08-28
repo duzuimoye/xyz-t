@@ -13,7 +13,6 @@ export const WorkbenchBox = styled.div`
   color: #fff;
   position: relative;
   box-sizing: border-box;
-  overflow: hidden;
 `
 
 export const WorkbenchFooter = styled.div`
@@ -28,7 +27,6 @@ export const IframeContainer = styled.div`
   box-sizing: border-box;
   background-color: #3c3c3c;
   position: relative;
-  overflow: hidden;
 `
 
 export const IframeBox = styled.div`
