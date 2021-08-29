@@ -7,7 +7,6 @@ export const HomeHeaderBox = styled.header`
   justify-content: flex-start;
   align-items: center;
   background-color: #3c3c3c;
-  border-bottom: 1px solid #333f57;
   .logo-box {
     width: 100%;
     height: 100%;
@@ -60,7 +59,6 @@ export const PopoverContentItem = styled.li`
   align-items: center;
   line-height: 25px;
   font-size: 14px;
-  cursor: pointer;
   text-indent: 5px;
   border-radius: 3px;
   user-select: none;

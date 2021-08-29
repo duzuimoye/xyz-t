@@ -51,8 +51,8 @@ export const IframeContent = styled.div`
   height: 100%;
   overflow: auto;
   position: relative;
+  text-align: center;
   ::-webkit-scrollbar {
-    position: relative;
     width: 15px;
     height: 15px;
     border-radius: 0;
@@ -85,8 +85,8 @@ export const IframeContent = styled.div`
     border: none;
     margin: 0;
     padding: 0;
-    width: 1920px;
-    height: 1080px;
+    width: 375px;
+    height: 667px;
     .frame-drawboard-content {
       width: 100%;
       height: 100%;
@@ -94,12 +94,20 @@ export const IframeContent = styled.div`
   }
 `
 
-export const DividerWorkbenchVerticalContainer = styled.div`
+export const DividerWorkbenchVerticalLeftContainer = styled.div`
   position: absolute;
   top: 40px;
   bottom:0;
   width: 20px;
   left: 0;
+  overflow: hidden;
+`
+export const DividerWorkbenchVerticalRightContainer = styled.div`
+  position: absolute;
+  top: 40px;
+  bottom:0;
+  width: 20px;
+  right: 0;
   overflow: hidden;
 `
 
@@ -148,7 +156,7 @@ export const DividerWorkbenchHorizontal = styled.div`
   background-position-x: 0;
   background-image: url(${divider1});
   background-repeat: repeat-x;
-  border-bottom: solid 1px #333f57;
+  height: 20px;
   box-sizing: border-box;
   overflow: hidden;
   margin-left: 20px;

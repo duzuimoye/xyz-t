@@ -28,7 +28,6 @@ export const ComponentBox = styled.div`
 `
 
 export const TitleLabel = styled.div`
-  cursor: default;
   margin-left: 10px;
 `
 

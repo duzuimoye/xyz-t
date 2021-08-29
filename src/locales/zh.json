@@ -12,7 +12,15 @@
       "headerMenuBar": "顶部菜单栏",
       "sidebarLeft": "侧边栏",
       "footerBar": "底部状态栏",
-      "sidebarToRight": "侧栏右移"
+      "sidebarToRight": "侧栏右移",
+      "drawingboard": "画板",
+      "pc": "PC端",
+      "pc-1920*1080": "1920 * 1080",
+      "pc-1440*1050": "1440 * 1050",
+      "pc-1024*768": "1024 * 768",
+      "mobile": "移动端",
+      "mobile-320*480": "320 * 480",
+      "mobile-480*800": "480 * 800"
     },
     "common": {
       "resourceManage": "资源管理器",

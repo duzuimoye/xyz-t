@@ -30,7 +30,6 @@ export const SideBarIconLi = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   line-height: 45px;
   height: 45px;
   color: #8492a6;
@@ -68,7 +67,6 @@ export const SidebarFooterList = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     line-height: 45px;
     height: 45px;
     color: #8492a6;

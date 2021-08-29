@@ -144,6 +144,60 @@ export const HEADER_DIR: Array<Meta.HeaderDir> = [
             notify: true
           }
         ]
+      },
+      {
+        label: i18n.t('header.drawingboard'),
+        value: 'drawingboard',
+        disabled: false,
+        notify: false,
+        children: [
+          {
+            label: i18n.t('header.pc'),
+            value: 'appearance',
+            disabled: false,
+            notify: false,
+            children: [
+              {
+                label: i18n.t('header.pc-1920*1080'),
+                value: 'pc-1920*1080',
+                disabled: false,
+                notify: false
+              },
+              {
+                label: i18n.t('header.pc-1440*1050'),
+                value: 'pc-1440*1050',
+                disabled: false,
+                notify: false
+              },
+              {
+                label: i18n.t('header.pc-1024*768'),
+                value: 'pc-1024*768',
+                disabled: false,
+                notify: false
+              }
+            ]
+          },
+          {
+            label: i18n.t('header.mobile'),
+            value: 'appearance',
+            disabled: false,
+            notify: false,
+            children: [
+              {
+                label: i18n.t('header.mobile-320*480'),
+                value: 'mobile-320*480',
+                disabled: false,
+                notify: false
+              },
+              {
+                label: i18n.t('header.mobile-480*800'),
+                value: 'mobile-480*800',
+                disabled: false,
+                notify: false
+              }
+            ]
+          }
+        ]
       }
     ]
   }

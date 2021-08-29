@@ -139,7 +139,6 @@ export const SplitViewHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   box-shadow: #000000 0 -1px 9px -1px inset;
-  cursor: pointer;
   user-select: none;
   padding: 0 5px;
   .resource-item-title {

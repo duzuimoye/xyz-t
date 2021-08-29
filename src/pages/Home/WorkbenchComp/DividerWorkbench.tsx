@@ -1,10 +1,11 @@
 import { useState, useEffect, useMemo } from 'react'
 import { uid } from 'react-uid'
 import {
-  DividerWorkbenchVerticalContainer,
+  DividerWorkbenchVerticalLeftContainer,
   DividerWorkbenchHorizontalContainer,
   DividerWorkbenchVertical,
-  DividerWorkbenchHorizontal
+  DividerWorkbenchHorizontal,
+  DividerWorkbenchVerticalRightContainer
 } from './styled'
 
 
@@ -36,11 +37,16 @@ const DividerContainer = () => {
 
   return (
     <>
-      <DividerWorkbenchVerticalContainer>
+      <DividerWorkbenchVerticalLeftContainer>
         <DividerWorkbenchVertical className="left-divider" style={{ top: `${- scrollTopValue}px` }}>
           {dividerDom}
         </DividerWorkbenchVertical>
-      </DividerWorkbenchVerticalContainer>
+      </DividerWorkbenchVerticalLeftContainer>
+      <DividerWorkbenchVerticalRightContainer>
+        <DividerWorkbenchVertical className="right-divider" style={{ top: `${- scrollTopValue}px` }}>
+          {dividerDom}
+        </DividerWorkbenchVertical>
+      </DividerWorkbenchVerticalRightContainer>
       <DividerWorkbenchHorizontalContainer>
         <DividerWorkbenchHorizontal className="top-divider" style={{ left: `${- scrollLeftValue}px` }}>
           {dividerDom}
