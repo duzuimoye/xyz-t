@@ -209,6 +209,7 @@ export const InitialDrawingBoard = `
   <head>
     <script crossorigin src="./iframeResource/react.development.js"></script>
     <script crossorigin src="./iframeResource/react-dom.development.js"></script>
+    <link href="./iframeResource/reactContexify.css" rel="stylesheet">
     <link href="./iframeResource/antd.css" rel="stylesheet">
     <script src="./iframeResource/moment-with-locales.js"></script>
     <script src="./iframeResource/antd-with-locales.js"></script>
@@ -223,9 +224,11 @@ export const InitialDrawingBoard = `
 body, html, #DrawingBoard {
   width: 100%;
   height: 100%;
-  padding: 0;
+  box-sizing: border-box;
   background: #fff;
   margin: 0;
+  padding:2px;
+  font-family: HanziPen SC,翩翩體-簡 粗體,HanziPen SC Bold,翩翩体-简 粗体;
 }
 .frame-content {
   width: 100%;

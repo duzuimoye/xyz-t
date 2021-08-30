@@ -7,8 +7,6 @@ export type ButtonType = typeof ButtonTypes[number]
 const ButtonSizes = tuple('large', 'middle', 'small')
 export type ButtonSize = typeof ButtonSizes[number]
 
-// 第三方图标或者官方图标或者图片svg
-export type IconType = 'antdIcon' | 'thirdPartyIcon' | 'img' | 'svg'
 
 type SizeType = 'small' | 'large' | 'middle'
 
@@ -18,7 +16,7 @@ export interface buttonTypes extends defaultCompProps {
   type?: ButtonType
   icon?: string
   iconDirection: 'left' | 'right'
-  iconType?: IconType
+  iconType?: State.IconType
   disabled: boolean
   size: SizeType
   buttonText: string

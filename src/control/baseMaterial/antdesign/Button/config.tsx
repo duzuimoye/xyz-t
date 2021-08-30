@@ -5,7 +5,7 @@ import emptyPage from '../../../../assets/images/emptyPage.svg'
 import { LineBlockLabel, LineBlock } from '../common/styled'
 import BaseStructureBox from '../common/baseStructure'
 import MonacoEditIDE from '../common/monacoEditIDE'
-import { buttonTypes, IconType } from './_type'
+import { buttonTypes } from './_type'
 import IconSelect from '../common/IconSelect'
 import store from '../../../../redux/store'
 import i18n from '../../../../utils/i18n'
@@ -213,7 +213,7 @@ const ButtonTextConfigContainer = (
         <IconSelect
           iconType={activeComponent.iconType}
           icon={activeComponent.icon}
-          selectIcon={(iconType?: IconType, icon?: string) => {
+          selectIcon={(iconType?: State.IconType, icon?: string) => {
             store.dispatch({
               type: UPDATE_ACTIVE_COMPONENT_ACTION,
               payload: {

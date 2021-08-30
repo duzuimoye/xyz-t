@@ -1,5 +1,6 @@
 import { memo } from 'react'
 import shortuuid from 'short-uuid'
+import "react-contexify/dist/ReactContexify.css"
 import { connect } from 'react-redux'
 import Frame, { FrameContextConsumer } from 'react-frame-component'
 import store from '../../../../redux/store'
@@ -7,15 +8,13 @@ import { isValidKey } from '../../../../utils/index'
 import { AntdRender } from '../../../../control/renderComponent/index'
 import { InitialDrawingBoard } from '../../../../utils/constant'
 import { ACTIVE_COMPONENT_ACTION, PUSH_COMPONENT_ACTION } from '../../../../redux/actions/index'
-
-export enum PROGRESSMAPENUM {
-  InitBaseEnv = 5,
-  DrawingBoardIframeLoadStatus = 30,
-  CoreAxiosValue = 30
-}
+import Contextify from '../../../../control/renderComponent/contextify/index'
 
 const DrawingBoardContainer = () => {
   const {
+    metaViewReducer: {
+      drawingboardSize
+    },
     DrawingBoardReducer: {
       drawingboardList
     }
@@ -70,13 +69,21 @@ const DrawingBoardContainer = () => {
           return <span key={shortuuid.generate()} style={{ display: 'none' }} />
         })
       }
+      <Contextify componentId="12" />
     </div>
   )
+
+  const viewSize = drawingboardSize.split('-')[1].split('*')
+  const iframeStyleSize = {
+    width: `${viewSize[0]}px`,
+    height: `${viewSize[1]}px`
+  }
 
   return (
     <Frame
       initialContent={InitialDrawingBoard}
-      mountTarget='#DrawingBoard'>
+      mountTarget='#DrawingBoard'
+      style={iframeStyleSize}>
       <FrameContextConsumer>
         {/* {({ document, window }) => InnerComponent(document, window)} */}
         {() => InnerComponent()}
@@ -86,5 +93,6 @@ const DrawingBoardContainer = () => {
 }
 
 export default connect((state: any) => ({
+  drawingboardSize: state.metaViewReducer.drawingboardSize,
   drawingboardList: state.DrawingBoardReducer.drawingboardList
 }))(memo(DrawingBoardContainer))

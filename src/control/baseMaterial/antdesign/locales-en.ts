@@ -49,5 +49,9 @@ export default {
       round: 'round',
       default: 'default'
     }
+  },
+  affix: {
+    offsetBottom: 'offsetBottom',
+    offsetTop: 'offsetTop'
   }
 }

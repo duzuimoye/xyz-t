@@ -40,10 +40,6 @@ function pushComponent(state = drawingBoardState, activeComponent: DrawingBoard.
 function selectComponent(state = drawingBoardState, selectComponentId: string) {
   const activeComponent = state.drawingboardList.find((item: any) => item.componentId === selectComponentId)
 
-  if (activeComponent) {
-    console.log(activeComponent)
-  }
-
   return {
     ...state,
     activeComponent

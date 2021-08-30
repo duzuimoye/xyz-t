@@ -3,7 +3,6 @@ import { Drawer, Input, Select, Pagination } from 'antd'
 import { SettingOutlined } from '@ant-design/icons'
 import { LineBlockLabel, LineBlock, IconBlock, IconTypeContainer, IconBox } from './styled'
 import { IconList } from '../assets/constant'
-import { IconType } from '../Button/_type'
 
 const { Search } = Input
 
@@ -13,12 +12,12 @@ export default ({
   selectIcon
 }: {
   icon?: string | undefined,
-  iconType?: IconType,
-  selectIcon: (iconType?: IconType, icon?: string | undefined) => void
+  iconType?: State.IconType,
+  selectIcon: (iconType?: State.IconType, icon?: string | undefined) => void
 }) => {
   const [visible, setVisible] = useState<boolean>(false)
   const [customIcon, setCustomIcon] = useState<string | undefined>(icon)
-  const [customIconType, setCustomIconType] = useState<IconType | undefined>(iconType)
+  const [customIconType, setCustomIconType] = useState<State.IconType | undefined>(iconType)
 
   const DrawerIconSelect = () => {
     const drawerHeaderStyle = {
@@ -131,7 +130,6 @@ export default ({
           addonAfter={<SettingOutlined onClick={() => { setVisible(true) }} />}
           onChange={evt => {
             setCustomIcon(evt.target.value)
-            console.log(evt.target.value, customIcon)
             selectIcon(customIconType, evt.target.value)
           }}
         />

@@ -50,5 +50,9 @@ export default {
       round: '圆角',
       default: '默认'
     }
+  },
+  affix: {
+    offsetBottom: '底部间距',
+    offsetTop: '顶部间距'
   }
 }

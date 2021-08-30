@@ -4,6 +4,7 @@ import { EllipsisOutlined, CheckOutlined, RightOutlined, DownOutlined } from '@a
 import { FileResourceProjectContainer, HeaderFileTitleBox, ResourceManagePopoverContainer, ResourceManageList, SplitView, SplitViewHeader, SplitViewPane } from './styled'
 import i18n from '../../../../utils/i18n'
 import SketchpadComponentTree from './SketchpadComponentTree/index'
+import FileResourceTree from './FileResourceTree/index'
 
 const FileResourceProject = () => {
   const [visiblePopover, setVisiblePopover] = useState(false)
@@ -68,7 +69,7 @@ const FileResourceProject = () => {
           {resource.visiblePageResource ? <DownOutlined /> : <RightOutlined />}
         </SplitViewHeader>
         <SplitViewPane visible={resource.visiblePageResource}>
-          file directory
+          <FileResourceTree />
         </SplitViewPane>
         <SplitViewHeader onClick={() => {
           setResource({

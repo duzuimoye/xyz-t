@@ -3,6 +3,7 @@ const metaView: State.InitMetaViewProp = {
   auxliaryCompName: '',
   configCompEnterName: '',
 
+  drawingboardSize: 'pc-1920*1080',
   resizeDrawingBoard: 100, // 画板缩放比例(range: 20~250)
 
   // view-component 配置显示

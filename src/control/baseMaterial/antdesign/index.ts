@@ -1,6 +1,7 @@
 import Button from './Button/index'
+import Affix from './Affix/index'
 
-export const antdComp = [Button]
+export const antdComp = [Button, Affix]
 
 const groupComp: { children?: any[], groupName?: string }[] = []
 

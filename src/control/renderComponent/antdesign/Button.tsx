@@ -1,4 +1,6 @@
 import { Button } from 'antd'
+import 'react-contexify/dist/ReactContexify.css'
+import { useContextMenu } from 'react-contexify'
 import { IconList } from "../../baseMaterial/antdesign/assets/constant"
 import { buttonTypes } from '../../baseMaterial/antdesign/Button/_type'
 import store from "../../../redux/store"
@@ -22,6 +24,8 @@ export default ({ comp }: { comp: buttonTypes }) => {
     buttonNode = buttonText
   }
 
+  const { show } = useContextMenu({ id: '12' })
+
   return (
     <Button
       size={size}
@@ -31,6 +35,7 @@ export default ({ comp }: { comp: buttonTypes }) => {
       danger={danger}
       ghost={ghost}
       block={block}
+      onContextMenu={show}
       onClick={evt => {
         store.dispatch({
           type: SELECT_COMPONENT_ACTION,
