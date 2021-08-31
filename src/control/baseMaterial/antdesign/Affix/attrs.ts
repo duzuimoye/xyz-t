@@ -2,7 +2,7 @@ import { affixTypes } from './_type'
 
 const baseText: affixTypes = {
   // 右键配置
-  
+
   // 工具栏配置
   groupName: '导航',
   label: 'Affix 固钉',

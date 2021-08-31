@@ -1,22 +1,34 @@
+import { memo } from 'react'
 import { Image, Popover } from 'antd'
+import { connect } from 'react-redux'
 import { RightOutlined } from '@ant-design/icons'
-import { HomeHeaderBox, Button, PopoverContentItem, PopoverDivider, PopoverContentBox, NotityLabel } from './styled'
+import { UPDATE_DRAWINGBOARD_SIZE_ACTION } from '../../../redux/actions/index'
 import { HEADER_DIR } from '../../../utils/constant'
-import { useAppState, useDispatch } from '../../../contexts/providers'
-import { AppActions, PageActions } from '../../../contexts/actions'
 import logo from '../../../assets/images/logo.svg'
+import store from '../../../redux/store'
 
-export default () => {
-  const dispatch = useDispatch()
+import {
+  HomeHeaderBox,
+  Button,
+  PopoverContentItem,
+  PopoverDivider,
+  PopoverContentBox,
+  NotityLabel
+} from './styled'
+
+const HomeHeaderComp = () => {
   const {
-    metaView: { visibleHeaderBox }
-  } = useAppState()
+    metaViewReducer: {
+      drawingboardSize
+    }
+  } = store.getState()
+
   const handleClickPopoverLabel = (value: string) => {
-    if (value === 'operationGuide') {
-      dispatch({
-        type: PageActions.VisibleAuxiliaryComp,
+    if (['pc', 'mobile'].includes(value.split('-')[0])) {
+      store.dispatch({
+        type: UPDATE_DRAWINGBOARD_SIZE_ACTION,
         payload: {
-          auxliaryCompName: value
+          drawingboardSize: value
         }
       })
     }
@@ -25,12 +37,21 @@ export default () => {
   const CodeContentDOM = (file: Array<Meta.FileDir>): React.ReactElement => {
     const [...codeContent] = file
 
+    // init notify status.
+    codeContent.forEach(item => {
+      // checked drawingboardsize notify.
+      if (['pc', 'mobile'].includes(item.value.split('-')[0])) {
+        // eslint-disable-next-line no-param-reassign
+        item.notify = [drawingboardSize.split('-')[0], drawingboardSize].includes(item.value)
+      }
+    })
+
     return (
       <PopoverContentBox>
         {
           codeContent.map(item => {
             return (
-              <main key={item.label}>
+              <main key={item.value}>
                 <PopoverContentItem>
                   {
                     item.children ?
@@ -64,20 +85,12 @@ export default () => {
   }
 
   return (
-    visibleHeaderBox ? <HomeHeaderBox id="headerRef">
+    <HomeHeaderBox id="headerRef">
       <Image
         className="logo-box"
         width={45}
         height={35}
         preview={false}
-        onClick={() => {
-          dispatch({
-            type: AppActions.BackHomePage,
-            payload: {
-
-            }
-          })
-        }}
         src={logo}
       />
       {
@@ -101,11 +114,13 @@ export default () => {
             Children = () => <Button disabled className="header-menu-item">{file.label}</Button>
           }
 
-          return <Children key={file.label} />
+          return <Children key={file.value} />
         })
       }
     </HomeHeaderBox>
-      : <div />
   )
 }
 
+export default connect((state: any) => ({
+  drawingboardSize: state.metaViewReducer.drawingboardSize
+}))(memo(HomeHeaderComp))

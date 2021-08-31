@@ -4,9 +4,9 @@ import emptyPage from '../../../../assets/images/emptyPage.svg'
 import { LineBlockLabel, LineBlock } from '../common/styled'
 import BaseStructureBox from '../common/baseStructure'
 import MonacoEditIDE from '../common/monacoEditIDE'
-import { affixTypes } from './_type'
 import store from '../../../../redux/store'
 import i18n from '../../../../utils/i18n'
+import { affixTypes } from './_type'
 
 const AffixConfigContainer = (
   { activeComponent }: { activeComponent: affixTypes }

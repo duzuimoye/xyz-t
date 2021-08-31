@@ -54,5 +54,8 @@ export default {
   affix: {
     offsetBottom: '底部间距',
     offsetTop: '顶部间距'
+  },
+  contextify: {
+    copy: '复制'
   }
 }

@@ -53,5 +53,8 @@ export default {
   affix: {
     offsetBottom: 'offsetBottom',
     offsetTop: 'offsetTop'
+  },
+  contextify: {
+    copy: 'copy'
   }
 }

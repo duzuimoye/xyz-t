@@ -5,14 +5,25 @@ import emptyPage from '../../../../assets/images/emptyPage.svg'
 import { LineBlockLabel, LineBlock } from '../common/styled'
 import BaseStructureBox from '../common/baseStructure'
 import MonacoEditIDE from '../common/monacoEditIDE'
-import { buttonTypes } from './_type'
 import IconSelect from '../common/IconSelect'
 import store from '../../../../redux/store'
 import i18n from '../../../../utils/i18n'
+import { buttonTypes } from './_type'
 
 const ButtonTextConfigContainer = (
   { activeComponent }: { activeComponent: buttonTypes }
 ) => {
+
+  function updateActiveComponent(updateParams: any) {
+    store.dispatch({
+      type: UPDATE_ACTIVE_COMPONENT_ACTION,
+      payload: {
+        ...activeComponent,
+        ...updateParams
+      }
+    })
+  }
+
   const ShapeType = () => {
     const defaultShape = activeComponent.shape
     return (
@@ -27,13 +38,7 @@ const ButtonTextConfigContainer = (
           onChange={evt => {
             const { value } = evt.target
 
-            store.dispatch({
-              type: UPDATE_ACTIVE_COMPONENT_ACTION,
-              payload: {
-                ...activeComponent,
-                shape: value === 'default' ? undefined : value
-              }
-            })
+            updateActiveComponent({ shape: value === 'default' ? undefined : value })
           }}
         />
       </LineBlock>
@@ -46,13 +51,7 @@ const ButtonTextConfigContainer = (
       <Switch
         defaultChecked={activeComponent.block}
         onChange={(checked: boolean) => {
-          store.dispatch({
-            type: UPDATE_ACTIVE_COMPONENT_ACTION,
-            payload: {
-              ...activeComponent,
-              block: checked
-            }
-          })
+          updateActiveComponent({ block: checked })
         }} />
     </LineBlock>
   )
@@ -63,13 +62,7 @@ const ButtonTextConfigContainer = (
       <Switch
         defaultChecked={activeComponent.disabled}
         onChange={(checked: boolean) => {
-          store.dispatch({
-            type: UPDATE_ACTIVE_COMPONENT_ACTION,
-            payload: {
-              ...activeComponent,
-              disabled: checked
-            }
-          })
+          updateActiveComponent({ disabled: checked })
         }} />
     </LineBlock>
   )
@@ -80,16 +73,11 @@ const ButtonTextConfigContainer = (
       <Switch
         defaultChecked={activeComponent.danger}
         onChange={(checked: boolean) => {
-          store.dispatch({
-            type: UPDATE_ACTIVE_COMPONENT_ACTION,
-            payload: {
-              ...activeComponent,
-              danger: checked
-            }
-          })
+          updateActiveComponent({ danger: checked })
         }} />
     </LineBlock>
   )
+
   const TextInput = () => (
     <LineBlock>
       <LineBlockLabel>{i18n.t('baseMateiral.baseText.text')}</LineBlockLabel>
@@ -98,13 +86,7 @@ const ButtonTextConfigContainer = (
         placeholder={i18n.t('baseMateiral.baseText.textplaceholder')}
         defaultValue={activeComponent.buttonText}
         onBlur={evt => {
-          store.dispatch({
-            type: UPDATE_ACTIVE_COMPONENT_ACTION,
-            payload: {
-              ...activeComponent,
-              buttonText: evt.target.value
-            }
-          })
+          updateActiveComponent({ buttonText: evt.target.value })
         }}
       />
     </LineBlock>
@@ -116,13 +98,7 @@ const ButtonTextConfigContainer = (
       <Switch
         defaultChecked={activeComponent.ghost}
         onChange={(checked: boolean) => {
-          store.dispatch({
-            type: UPDATE_ACTIVE_COMPONENT_ACTION,
-            payload: {
-              ...activeComponent,
-              ghost: checked
-            }
-          })
+          updateActiveComponent({ ghost: checked })
         }} />
     </LineBlock>
   )
@@ -136,14 +112,8 @@ const ButtonTextConfigContainer = (
           allowClear
           placeholder={i18n.t('baseMateiral.baseText.typeplaceholder')}
           defaultValue={activeComponent.type}
-          onChange={value => {
-            store.dispatch({
-              type: UPDATE_ACTIVE_COMPONENT_ACTION,
-              payload: {
-                ...activeComponent,
-                type: value
-              }
-            })
+          onChange={type => {
+            updateActiveComponent({ type })
           }}>
           {
             typeOptions.map(item => (
@@ -165,13 +135,7 @@ const ButtonTextConfigContainer = (
         buttonStyle="solid"
         options={sizeOptions}
         onChange={evt => {
-          store.dispatch({
-            type: UPDATE_ACTIVE_COMPONENT_ACTION,
-            payload: {
-              ...activeComponent,
-              size: evt.target.value
-            }
-          })
+          updateActiveComponent({ size: evt.target.value })
         }}
       />
     </LineBlock>
@@ -187,13 +151,7 @@ const ButtonTextConfigContainer = (
         buttonStyle="solid"
         options={iconDirectionOptions}
         onChange={evt => {
-          store.dispatch({
-            type: UPDATE_ACTIVE_COMPONENT_ACTION,
-            payload: {
-              ...activeComponent,
-              iconDirection: evt.target.value
-            }
-          })
+          updateActiveComponent({ iconDirection: evt.target.value })
         }}
       />
     </LineBlock>
@@ -214,14 +172,7 @@ const ButtonTextConfigContainer = (
           iconType={activeComponent.iconType}
           icon={activeComponent.icon}
           selectIcon={(iconType?: State.IconType, icon?: string) => {
-            store.dispatch({
-              type: UPDATE_ACTIVE_COMPONENT_ACTION,
-              payload: {
-                ...activeComponent,
-                icon,
-                iconType
-              }
-            })
+            updateActiveComponent({ icon, iconType })
           }} />
         {activeComponent.icon && <IconDirection />}
       </BaseStructureBox>

@@ -1,6 +1,5 @@
 import { memo } from 'react'
 import shortuuid from 'short-uuid'
-import "react-contexify/dist/ReactContexify.css"
 import { connect } from 'react-redux'
 import Frame, { FrameContextConsumer } from 'react-frame-component'
 import store from '../../../../redux/store'
@@ -13,7 +12,8 @@ import Contextify from '../../../../control/renderComponent/contextify/index'
 const DrawingBoardContainer = () => {
   const {
     metaViewReducer: {
-      drawingboardSize
+      drawingboardSize,
+      resizeDrawingBoardIframe
     },
     DrawingBoardReducer: {
       drawingboardList
@@ -76,7 +76,9 @@ const DrawingBoardContainer = () => {
   const viewSize = drawingboardSize.split('-')[1].split('*')
   const iframeStyleSize = {
     width: `${viewSize[0]}px`,
-    height: `${viewSize[1]}px`
+    height: `${viewSize[1]}px`,
+    transformOrigin: drawingboardSize.split('-')[0] === 'pc' ? "0 0" : "top",
+    transform: `scale(${+parseFloat(resizeDrawingBoardIframe).toFixed(5) / 100})`
   }
 
   return (
@@ -93,6 +95,7 @@ const DrawingBoardContainer = () => {
 }
 
 export default connect((state: any) => ({
+  resizeDrawingBoardIframe: state.metaViewReducer.resizeDrawingBoardIframe,
   drawingboardSize: state.metaViewReducer.drawingboardSize,
   drawingboardList: state.DrawingBoardReducer.drawingboardList
 }))(memo(DrawingBoardContainer))

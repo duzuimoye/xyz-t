@@ -1,19 +1,21 @@
 import { memo } from 'react'
 import { connect } from 'react-redux'
 import { Slider } from 'antd'
+import { EyeOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons'
+import { Button } from './styled'
 import store from '../../../../redux/store'
 import { RESIZE_DRAWINGBOARD_ACTION } from '../../../../redux/actions'
 
 const mapResizeDrawingboardStateToProps = (state: any) => {
   return {
-    resizeDrawingBoard: state.metaViewReducer.resizeDrawingBoard
+    resizeDrawingBoardIframe: state.metaViewReducer.resizeDrawingBoardIframe
   }
 }
 
 export default connect(mapResizeDrawingboardStateToProps)(memo(() => {
   const {
     metaViewReducer: {
-      resizeDrawingBoard
+      resizeDrawingBoardIframe
     }
   } = store.getState()
 
@@ -21,19 +23,46 @@ export default connect(mapResizeDrawingboardStateToProps)(memo(() => {
     store.dispatch({
       type: RESIZE_DRAWINGBOARD_ACTION,
       payload: {
-        resizeDrawingBoard: resizeNumber
+        resizeDrawingBoardIframe: resizeNumber
       }
     })
   }
 
   return (
-    <Slider
-      defaultValue={resizeDrawingBoard}
-      className="slider-box"
-      onChange={val => changeResize(val)}
-      min={20}
-      max={200}
-      tipFormatter={value => `${value} %`}
-    />
+    <>
+      <Button>
+        <EyeOutlined />
+      </Button>
+      <Button onClick={() => {
+        store.dispatch({
+          type: RESIZE_DRAWINGBOARD_ACTION,
+          payload: {
+            resizeDrawingBoardIframe: resizeDrawingBoardIframe - 5
+          }
+        })
+      }}>
+        <MinusOutlined />
+      </Button>
+      <Slider
+        defaultValue={resizeDrawingBoardIframe}
+        value={resizeDrawingBoardIframe}
+        style={{ width: '150px' }}
+        onChange={val => changeResize(val)}
+        min={20}
+        step={5}
+        max={200}
+        tipFormatter={value => `${value} %`}
+      />
+      <Button onClick={() => {
+        store.dispatch({
+          type: RESIZE_DRAWINGBOARD_ACTION,
+          payload: {
+            resizeDrawingBoardIframe: resizeDrawingBoardIframe + 5
+          }
+        })
+      }}>
+        <PlusOutlined />
+      </Button>
+    </>
   )
 }))

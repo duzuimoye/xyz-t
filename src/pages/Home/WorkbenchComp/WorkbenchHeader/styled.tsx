@@ -21,10 +21,11 @@ export const ToolBtnComp = styled.div`
 
 export const ToolBtnRightComp = styled.div`
   display: flex;
-  width: 200px;
+  width: 250px;
   height: 100%;
   justify-content: flex-end;
   align-items: center;
+  user-select: none;
 `
 
 export const Button = styled.div`

@@ -1,9 +1,10 @@
 import { Menu, Item, Separator, Submenu } from 'react-contexify'
 import { CopyOutlined } from '@ant-design/icons'
+import i18n from '../../../utils/i18n'
 
 const Contextify = ({ componentId }: { componentId: string }) => {
   function handleItemClick() {
-    console.log('you click it')
+    // todo something...
   }
 
   return (
@@ -11,7 +12,7 @@ const Contextify = ({ componentId }: { componentId: string }) => {
       <Menu id={componentId}>
         <Item onClick={handleItemClick}>
           <CopyOutlined />
-          Copy
+          {i18n.t('baseMateiral.contextify.copy')}
         </Item>
         <Item onClick={handleItemClick}>
           Item 2
@@ -31,4 +32,3 @@ const Contextify = ({ componentId }: { componentId: string }) => {
 }
 
 export default Contextify
-

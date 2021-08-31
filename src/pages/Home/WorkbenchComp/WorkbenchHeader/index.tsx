@@ -1,4 +1,3 @@
-import { memo, useState } from 'react'
 import { message } from 'antd'
 import {
   YoutubeOutlined,
@@ -6,28 +5,23 @@ import {
   RightOutlined,
   ClearOutlined,
   CompressOutlined,
-  EyeOutlined,
   ExpandOutlined
 } from '@ant-design/icons'
+import { connect } from 'react-redux'
 import { ToolBtnComp, WorkbenchHeaderContainer, ToolBtnRightComp, Button } from './styled'
-import OpenResourceList from './OpenResourceList'
-import i18n from '../../../../utils/i18n'
-import ResizeDrawingBoard from './resizeDrawingBoard'
+import { FULL_SCREEN_ACTION } from '../../../../redux/actions/index'
 import VisibleCompConfigBox from './VisibleCompConfigBtn'
-
-function requestFullScreen(element: any) {
-  const requestMethod = element.requestFullScreen || // W3C
-    element.webkitRequestFullScreen || // Chrome等
-    element.mozRequestFullScreen || // FireFox
-    element.msRequestFullScreen // IE11
-
-  if (requestMethod) {
-    requestMethod.call(element)
-  }
-}
+import ResizeDrawingBoard from './resizeDrawingBoard'
+import store from '../../../../redux/store'
+import i18n from '../../../../utils/i18n'
 
 const WorkbenchHeader = () => {
-  const [fullScreen, setfullScreen] = useState<boolean>(false)
+  const {
+    metaViewReducer: {
+      visibleFullPage
+    }
+  } = store.getState()
+
   return (
     <WorkbenchHeaderContainer>
       <ToolBtnComp>
@@ -47,10 +41,14 @@ const WorkbenchHeader = () => {
           <ClearOutlined />
         </Button>
         <Button onClick={() => {
-          requestFullScreen(document.documentElement)
-          setfullScreen(!fullScreen)
+          store.dispatch({
+            type: FULL_SCREEN_ACTION,
+            payload: {
+              visibleFullPage: !visibleFullPage
+            }
+          })
         }}>
-          {fullScreen ? <CompressOutlined /> : <ExpandOutlined />}
+          {visibleFullPage ? <CompressOutlined /> : <ExpandOutlined />}
         </Button>
         <Button onClick={() => {
           message.warning(i18n.t('baseMateiral.baseText.busingDating'))
@@ -58,15 +56,15 @@ const WorkbenchHeader = () => {
           <YoutubeOutlined />
         </Button>
       </ToolBtnComp>
-      <OpenResourceList />
+      {/* <OpenResourceList /> */}
       <ToolBtnRightComp>
-        <Button>
-          <EyeOutlined />
-        </Button>
         <ResizeDrawingBoard />
         <VisibleCompConfigBox />
       </ToolBtnRightComp>
     </WorkbenchHeaderContainer>
   )
 }
-export default memo(WorkbenchHeader)
+
+export default connect((state: any) => ({
+  visibleFullPage: state.metaViewReducer.visibleFullPage
+}))(WorkbenchHeader)

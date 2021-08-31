@@ -103,14 +103,14 @@ export const HEADER_DIR: Array<Meta.HeaderDir> = [
     label: i18n.t('header.view'),
     value: 'view',
     disabled: false,
-    notify: true,
+    notify: false,
     visible: false,
     children: [
       {
         label: i18n.t('header.commandPanel'),
         value: 'commandPanel',
         disabled: false,
-        notify: true
+        notify: false
       },
       {
         label: i18n.t('header.openView'),
@@ -123,7 +123,7 @@ export const HEADER_DIR: Array<Meta.HeaderDir> = [
         label: i18n.t('header.appearance'),
         value: 'appearance',
         disabled: false,
-        notify: true,
+        notify: false,
         children: [
           {
             label: i18n.t('header.sidebarLeft'),
@@ -138,10 +138,10 @@ export const HEADER_DIR: Array<Meta.HeaderDir> = [
             notify: false
           },
           {
-            label: i18n.t('header.footerBar'),
+            label: i18n.t('header.sidebarToRight'),
             value: 'sidebarToRight',
             disabled: false,
-            notify: true
+            notify: false
           }
         ]
       },
@@ -153,7 +153,7 @@ export const HEADER_DIR: Array<Meta.HeaderDir> = [
         children: [
           {
             label: i18n.t('header.pc'),
-            value: 'appearance',
+            value: 'pc',
             disabled: false,
             notify: false,
             children: [
@@ -179,7 +179,7 @@ export const HEADER_DIR: Array<Meta.HeaderDir> = [
           },
           {
             label: i18n.t('header.mobile'),
-            value: 'appearance',
+            value: 'mobile',
             disabled: false,
             notify: false,
             children: [
@@ -227,7 +227,6 @@ body, html, #DrawingBoard {
   box-sizing: border-box;
   background: #fff;
   margin: 0;
-  padding:2px;
   font-family: HanziPen SC,翩翩體-簡 粗體,HanziPen SC Bold,翩翩体-简 粗体;
 }
 .frame-content {

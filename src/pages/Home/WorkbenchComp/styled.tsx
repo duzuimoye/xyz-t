@@ -32,10 +32,9 @@ export const IframeContainer = styled.div`
 export const IframeBox = styled.div`
   position: absolute;
   left: 20px;
-  right: -20px;
+  right: 0;
   top: 20px;
-  bottom: -20px;
-  padding: 20px;
+  bottom: 0;
   overflow: hidden;
   background-image: url(${iframeBg});
   flex: 1;
@@ -45,13 +44,17 @@ export const IframeBox = styled.div`
     height: 100%;
   }
 `
+export const IframeResizeBox = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`
 
 export const IframeContent = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
   position: relative;
-  text-align: center;
   ::-webkit-scrollbar {
     width: 15px;
     height: 15px;
@@ -83,10 +86,9 @@ export const IframeContent = styled.div`
     height: 100%;
     box-sizing: border-box;
     border: none;
-    margin: 0;
     padding: 0;
-    width: 375px;
-    height: 667px;
+    margin: 20px 20px 17px;
+    box-shadow: rgb(0 0 0 / 50%) 0 0 30px 0;
     .frame-drawboard-content {
       width: 100%;
       height: 100%;
