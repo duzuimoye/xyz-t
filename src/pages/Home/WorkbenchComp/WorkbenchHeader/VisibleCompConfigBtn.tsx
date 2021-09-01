@@ -8,7 +8,7 @@ import { Button } from './styled'
 import store from '../../../../redux/store'
 import { VISIBLE_SIDEBAR_RIGHT_CONFIG_BOX } from '../../../../redux/actions'
 
-const mapVisibleCompConfigStateToProps = (state: any) => {
+const mapVisibleCompConfigStateToProps = (state: State.ReduxConnectProps) => {
   return {
     visibleSidebarRightConfigBox: state.metaViewReducer.visibleSidebarRightConfigBox
   }

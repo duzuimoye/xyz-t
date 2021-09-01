@@ -4,50 +4,50 @@ declare namespace State {
 
   type DrawingboardSize = 'pc-1920*1080' | 'pc-1440*1050' | 'pc-1024*768' | 'mobile-320*480' | 'mobile-480*800'
 
+  interface FileProps {
+    label: string
+    id: string
+  }
+
   interface FileResourceManage {
     visiblePageConfig: boolean
     visibleStaticResource: boolean
   }
 
-  interface InitMetaViewProp {
-    drawingboardSize: DrawingboardSize
-    selectedSideBarLeftIconLabel: string | undefined
-    auxliaryCompName: string
-    configCompEnterName: string
-    resizeDrawingBoardIframe: number
-    visibleFullPage: boolean
-    visibleSideBarLeftTool: boolean
-    visibleSidebarIconsList: boolean
-    visibleSidebarRightConfigBox: boolean
-    visibleHeaderBox: boolean
-    areaModuleValue: areaModuleValueType
+  interface Drawingboard {
+    drawingboardList: Array
+    activeFile: any
+    activeComponent: any
+    eventGolbal: Array
+    styleGlobal: Array
+    stackFileOpened: FileProps[]
+    FileResource: Array
+  }
+
+  interface MetaView {
     initFullLoader: {
       visible: boolean
       progress: number
       messageInfo: string[]
       addProgressMaxStep: number
     }
-    fileResourceManage: {
-      visiblePageConfig: true
-      visibleStaticResource: true
-    }
-  }
-
-  interface MetaView {
+    visibleFullPage: boolean
+    areaModuleValue: areaModuleValueType
+    resizeDrawingBoardIframe: number
+    drawingboardSize: DrawingboardSize
     selectedSideBarLeftIconLabel: string
     visibleSideBarLeftTool: boolean
     visibleSidebarIconsList: boolean
     visibleSidebarRightConfigBox: boolean
     visibleHeaderBox: boolean
     auxliaryCompName: string
-    visibleInitPropsModal: boolean
     configCompEnterName: string
-    visibleinitFullLoading: boolean
-    fullLoaderProgress: number
-    fullLoaderInfo: string
-    addProgress: number
-    visibleFullLoading: boolean
     fileResourceManage: FileResourceManage
+  }
+
+  interface ReduxConnectProps {
+    DrawingBoardReducer: Drawingboard
+    metaViewReducer: MetaView
   }
 }
 
@@ -74,6 +74,7 @@ declare namespace DrawingBoard {
     [prop: string]: any,
     childrenNode?: array<Component>
   }
+
 }
 
 declare namespace Meta {
@@ -89,6 +90,7 @@ declare namespace Meta {
     Comp?: React.FunctionComponent<any>
     children?: Array<FileDir>
   }
+
   interface HeaderDir {
     label: string
     value: string

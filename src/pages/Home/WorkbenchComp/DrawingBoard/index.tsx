@@ -57,8 +57,8 @@ const DrawingBoardContainer = () => {
       onDragOver={allowDrop}
       style={{ width: '100%', height: '100%' }}>
       {
-        drawingboardList.map((item: { tag: string }) => {
-          let RenderCompItem: any
+        drawingboardList.map((item: { tag: string, [prop: string]: any }) => {
+          let RenderCompItem: React.FC<any>
 
           if (isValidKey(item.tag, AntdRender)) {
             RenderCompItem = AntdRender[item.tag]
@@ -78,7 +78,7 @@ const DrawingBoardContainer = () => {
     width: `${viewSize[0]}px`,
     height: `${viewSize[1]}px`,
     transformOrigin: drawingboardSize.split('-')[0] === 'pc' ? "0 0" : "top",
-    transform: `scale(${+parseFloat(resizeDrawingBoardIframe).toFixed(5) / 100})`
+    transform: `scale(${+resizeDrawingBoardIframe.toFixed(5) / 100})`
   }
 
   return (
@@ -94,7 +94,7 @@ const DrawingBoardContainer = () => {
   )
 }
 
-export default connect((state: any) => ({
+export default connect((state: State.ReduxConnectProps) => ({
   resizeDrawingBoardIframe: state.metaViewReducer.resizeDrawingBoardIframe,
   drawingboardSize: state.metaViewReducer.drawingboardSize,
   drawingboardList: state.DrawingBoardReducer.drawingboardList

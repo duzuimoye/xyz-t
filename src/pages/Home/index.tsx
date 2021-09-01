@@ -1,4 +1,3 @@
-import { memo } from 'react'
 import { connect } from 'react-redux'
 import store from '../../redux/store'
 import HomeHeaderComp from './HomeHeaderComp/index'
@@ -8,12 +7,12 @@ import WorkbenchComp from './WorkbenchComp/index'
 import ComponentConfig from './ComponentConfig/index'
 import { HomePageContainer, HomeMain } from './styled'
 import AuxliaryComp from './AuxliaryComp'
-import ImageGridLoader from '../../components/Loader/index'
+// import ImageGridLoader from '../../components/Loader/index'
 
-const MainContentContainer = connect((state: any) => ({
+const MainContentContainer = connect((state: State.ReduxConnectProps) => ({
   visibleSidebarRightConfigBox: state.metaViewReducer.visibleSidebarRightConfigBox,
   areaModuleValue: state.metaViewReducer.areaModuleValue
-}))(memo(() => {
+}))(() => {
   const {
     metaViewReducer: {
       visibleSidebarRightConfigBox,
@@ -36,26 +35,23 @@ const MainContentContainer = connect((state: any) => ({
     default:
       return <div>none</div>
   }
-}))
+})
 
 const HomePage = () => {
   const {
     metaViewReducer: {
       visibleHeaderBox,
-      initFullLoader: {
-        visible,
-        progress,
-        messageInfo
-      }
+      visibleFullPage,
+      visibleSidebarIconsList
     }
   } = store.getState()
 
   return (
     <HomePageContainer>
-      {visible && <ImageGridLoader progress={progress} loadInfo={messageInfo.slice(-1)} />}
-      {visibleHeaderBox && <HomeHeaderComp />}
+      {/* {visible && <ImageGridLoader progress={progress} loadInfo={messageInfo.slice(-1)} />} */}
+      {visibleHeaderBox && !visibleFullPage && <HomeHeaderComp />}
       <HomeMain>
-        <SidebarleftIconList />
+        {visibleSidebarIconsList && <SidebarleftIconList />}
         <SideBarLeftToolComp />
         <MainContentContainer />
       </HomeMain>
@@ -63,12 +59,10 @@ const HomePage = () => {
   )
 }
 
-export default connect((state: any) => {
+export default connect((state: State.ReduxConnectProps) => {
   return {
     visibleHeaderBox: state.metaViewReducer.visibleHeaderBox,
-    visible: state.metaViewReducer.initFullLoader.visible,
-    progress: state.metaViewReducer.initFullLoader.progress,
-    activeComponent: state.DrawingBoardReducer.activeComponent,
-    messageInfo: state.metaViewReducer.initFullLoader.messageInfo
+    visibleFullPage: state.metaViewReducer.visibleFullPage,
+    visibleSidebarIconsList: state.metaViewReducer.visibleSidebarIconsList
   }
-})(memo(HomePage))
+})(HomePage)

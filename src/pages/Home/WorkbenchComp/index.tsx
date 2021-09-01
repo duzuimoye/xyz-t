@@ -4,6 +4,7 @@ import WorkbenchHeader from './WorkbenchHeader'
 import DrawingBoard from './DrawingBoard/index'
 import DividerWorkbench from './DividerWorkbench'
 import store from '../../../redux/store'
+import { resizeAutoDrawingbordAction } from '../../../utils/dom'
 
 import {
   WorkbenchBox,
@@ -21,25 +22,15 @@ export const WorkbenchComp = () => {
     }
   } = store.getState()
 
-  const viewSize = drawingboardSize.split('-')[1].split('*')
-  const transFormSize = resizeDrawingBoardIframe / 100
-  const iframeBoxStyleSizeWidth = +(viewSize[0] * transFormSize).toFixed(0) + 40
-  const iframeBoxStyleSizeHeight = +(+viewSize[1] * transFormSize).toFixed(0) + 40
-
   const [width, setwidth] = useState<string | number>(0)
   const [height, setheight] = useState<string | number>(0)
 
   useEffect(() => {
-    const dom = document.getElementById('iframeMount') as HTMLElement
-    const iframeWrapperStyle = {
-      height: dom.offsetHeight,
-      width: dom.offsetWidth
-    }
+    const domStyle = resizeAutoDrawingbordAction({ resizeNumber: resizeDrawingBoardIframe, drawingboardSize }) as { width: string, height: string }
 
-    setwidth(iframeBoxStyleSizeWidth >= iframeWrapperStyle.width ? `${iframeBoxStyleSizeWidth}px` : '100%')
-    setheight(iframeBoxStyleSizeHeight >= iframeWrapperStyle.height ? `${iframeBoxStyleSizeHeight}px` : iframeWrapperStyle.height)
-
-  }, [iframeBoxStyleSizeWidth, iframeBoxStyleSizeHeight])
+    setwidth(domStyle.width)
+    setheight(domStyle.height)
+  }, [resizeDrawingBoardIframe, drawingboardSize])
 
   return (
     <WorkbenchBox>
@@ -63,7 +54,7 @@ export const WorkbenchComp = () => {
   )
 }
 
-export default connect((state: any) => ({
+export default connect((state: { metaViewReducer: State.MetaView }) => ({
   resizeDrawingBoardIframe: state.metaViewReducer.resizeDrawingBoardIframe,
   drawingboardSize: state.metaViewReducer.drawingboardSize
 }))(WorkbenchComp)

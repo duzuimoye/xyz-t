@@ -1,4 +1,3 @@
-import { memo } from 'react'
 import { Progress } from 'antd'
 import { LoaderContainer, LoaderInfo, LoaderItem } from './styled'
 
@@ -30,8 +29,5 @@ const ImageGridLoader = ({ progress, loadInfo }: { progress: number, loadInfo: s
   )
 }
 
-function areEqual(prevProps: any, nextProps: any) {
-  return prevProps.progress === nextProps.progress && prevProps.fullLoaderInfo === nextProps.fullLoaderInfo
-}
 
-export default memo(ImageGridLoader, areEqual)
+export default ImageGridLoader

@@ -53,7 +53,7 @@ const SidebarLeft = () => {
   )
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: State.ReduxConnectProps) => {
   return {
     selectedSideBarLeftIconLabel: state.metaViewReducer.selectedSideBarLeftIconLabel,
     visibleSideBarLeftTool: state.metaViewReducer.visibleSideBarLeftTool

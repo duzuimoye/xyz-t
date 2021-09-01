@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { Image, Popover } from 'antd'
 import { connect } from 'react-redux'
 import { RightOutlined } from '@ant-design/icons'
-import { UPDATE_DRAWINGBOARD_SIZE_ACTION } from '../../../redux/actions/index'
+import { UPDATE_DRAWINGBOARD_SIZE_ACTION, VISIBLE_SIDEBAR_LEFT_ICONS_ACTION } from '../../../redux/actions/index'
 import { HEADER_DIR } from '../../../utils/constant'
 import logo from '../../../assets/images/logo.svg'
 import store from '../../../redux/store'
@@ -19,7 +19,8 @@ import {
 const HomeHeaderComp = () => {
   const {
     metaViewReducer: {
-      drawingboardSize
+      drawingboardSize,
+      visibleSidebarIconsList
     }
   } = store.getState()
 
@@ -29,6 +30,15 @@ const HomeHeaderComp = () => {
         type: UPDATE_DRAWINGBOARD_SIZE_ACTION,
         payload: {
           drawingboardSize: value
+        }
+      })
+    }
+
+    if (value === 'sidebarLeft') {
+      store.dispatch({
+        type: VISIBLE_SIDEBAR_LEFT_ICONS_ACTION,
+        payload: {
+          visibleSidebarIconsList: !visibleSidebarIconsList
         }
       })
     }
@@ -43,6 +53,11 @@ const HomeHeaderComp = () => {
       if (['pc', 'mobile'].includes(item.value.split('-')[0])) {
         // eslint-disable-next-line no-param-reassign
         item.notify = [drawingboardSize.split('-')[0], drawingboardSize].includes(item.value)
+      }
+
+      if (item.value === 'sidebarLeft' && visibleSidebarIconsList) {
+        // eslint-disable-next-line no-param-reassign
+        item.notify = true
       }
     })
 
@@ -121,6 +136,7 @@ const HomeHeaderComp = () => {
   )
 }
 
-export default connect((state: any) => ({
-  drawingboardSize: state.metaViewReducer.drawingboardSize
+export default connect((state: State.ReduxConnectProps) => ({
+  drawingboardSize: state.metaViewReducer.drawingboardSize,
+  visibleSidebarIconsList: state.metaViewReducer.visibleSidebarIconsList
 }))(memo(HomeHeaderComp))

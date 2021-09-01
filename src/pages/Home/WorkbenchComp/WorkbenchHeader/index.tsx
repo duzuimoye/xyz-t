@@ -11,9 +11,10 @@ import { connect } from 'react-redux'
 import { ToolBtnComp, WorkbenchHeaderContainer, ToolBtnRightComp, Button } from './styled'
 import { FULL_SCREEN_ACTION } from '../../../../redux/actions/index'
 import VisibleCompConfigBox from './VisibleCompConfigBtn'
-import ResizeDrawingBoard from './resizeDrawingBoard'
+import ResizeDrawingBoardBox from './Resizebox'
 import store from '../../../../redux/store'
 import i18n from '../../../../utils/i18n'
+import OpenResourceList from './OpenResourceList'
 
 const WorkbenchHeader = () => {
   const {
@@ -48,7 +49,7 @@ const WorkbenchHeader = () => {
             }
           })
         }}>
-          {visibleFullPage ? <CompressOutlined /> : <ExpandOutlined />}
+          {visibleFullPage ? <ExpandOutlined /> : <CompressOutlined />}
         </Button>
         <Button onClick={() => {
           message.warning(i18n.t('baseMateiral.baseText.busingDating'))
@@ -56,15 +57,15 @@ const WorkbenchHeader = () => {
           <YoutubeOutlined />
         </Button>
       </ToolBtnComp>
-      {/* <OpenResourceList /> */}
+      <OpenResourceList />
       <ToolBtnRightComp>
-        <ResizeDrawingBoard />
+        <ResizeDrawingBoardBox />
         <VisibleCompConfigBox />
       </ToolBtnRightComp>
     </WorkbenchHeaderContainer>
   )
 }
 
-export default connect((state: any) => ({
+export default connect((state: State.ReduxConnectProps) => ({
   visibleFullPage: state.metaViewReducer.visibleFullPage
 }))(WorkbenchHeader)

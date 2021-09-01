@@ -85,7 +85,7 @@ function catchIframeAction({ iframePropagationClick }: { iframePropagationClick:
   }
 }
 
-function reducer(state = drawingBoardState, action: any) {
+function reducer(state: State.Drawingboard = drawingBoardState, action: any): State.Drawingboard {
   catchIframeAction(action)
   switch (action.type) {
     case ACTIVE_COMPONENT_ACTION:

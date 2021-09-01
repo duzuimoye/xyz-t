@@ -1,9 +1,11 @@
 // metaView action
 export const VISIBLE_SIZEBARLEFT_TOOL_ACTION = "visible sidebar left tool action"
 export const VISIBLE_SIDEBAR_RIGHT_CONFIG_BOX = 'visible sidebar rightbar config'
-export const RESIZE_DRAWINGBOARD_ACTION = 'resize drawing board action'
+export const RESIZE_DRAWINGBOARD_ACTION = 'resize drawingboard action'
+export const RESIZE_AUTO_DRAWINGBOARD_ACTION = 'resize auto drawingboard action'
 export const UPDATE_DRAWINGBOARD_SIZE_ACTION = 'update drawingboard size action'
 export const FULL_SCREEN_ACTION = 'full screen action'
+export const VISIBLE_SIDEBAR_LEFT_ICONS_ACTION = 'visible sidebar left icons action'
 
 export const TEST_AXIOS_AXIOS = 'test axios http'
 

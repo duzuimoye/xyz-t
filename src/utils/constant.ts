@@ -113,6 +113,12 @@ export const HEADER_DIR: Array<Meta.HeaderDir> = [
         notify: false
       },
       {
+        label: i18n.t('header.animation'),
+        value: 'animation',
+        disabled: false,
+        notify: true
+      },
+      {
         label: i18n.t('header.openView'),
         value: 'openView',
         disabled: false,
@@ -127,7 +133,7 @@ export const HEADER_DIR: Array<Meta.HeaderDir> = [
         children: [
           {
             label: i18n.t('header.sidebarLeft'),
-            value: 'sidebar',
+            value: 'sidebarLeft',
             disabled: false,
             notify: false
           },
@@ -227,7 +233,7 @@ body, html, #DrawingBoard {
   box-sizing: border-box;
   background: #fff;
   margin: 0;
-  font-family: HanziPen SC,翩翩體-簡 粗體,HanziPen SC Bold,翩翩体-简 粗体;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 }
 .frame-content {
   width: 100%;

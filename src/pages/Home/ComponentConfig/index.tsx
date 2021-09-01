@@ -10,7 +10,12 @@ const ComponentConfig = () => {
       activeComponent
     }
   } = store.getState()
-  const SelectComp = antdComp.find(item => item.tag === activeComponent?.tag)?.config
+
+  let SelectComp: React.FC<any> | undefined
+
+  if (activeComponent && activeComponent.tag) {
+    SelectComp = antdComp.find(item => item.tag === activeComponent?.tag)?.config
+  }
 
   return (
     <ComponentConfigContainer>
@@ -19,6 +24,6 @@ const ComponentConfig = () => {
   )
 }
 
-export default connect((state: any) => ({
+export default connect((state: State.ReduxConnectProps) => ({
   activeComponent: state.DrawingBoardReducer.activeComponent
 }))(memo(ComponentConfig))
