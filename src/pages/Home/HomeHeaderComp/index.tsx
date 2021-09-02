@@ -1,15 +1,25 @@
 import { memo } from 'react'
 import { Image, Popover } from 'antd'
 import { connect } from 'react-redux'
-import { RightOutlined } from '@ant-design/icons'
-import { UPDATE_DRAWINGBOARD_SIZE_ACTION, VISIBLE_SIDEBAR_LEFT_ICONS_ACTION } from '../../../redux/actions/index'
+import {
+  RightOutlined
+} from '@ant-design/icons'
+
 import { HEADER_DIR } from '../../../utils/constant'
 import logo from '../../../assets/images/logo.svg'
 import store from '../../../redux/store'
-
+import i18n from '../../../utils/i18n'
 import {
+  UPDATE_DRAWINGBOARD_SIZE_ACTION,
+  SELECT_RIGHTBAR_CONFIG_PAGE_ACTION,
+  VISIBLE_SIDEBAR_LEFT_ICONS_ACTION
+} from '../../../redux/actions/index'
+import {
+  RightBarBtns,
+  LeftBarBox,
   HomeHeaderBox,
   Button,
+  RightBth,
   PopoverContentItem,
   PopoverDivider,
   PopoverContentBox,
@@ -20,9 +30,46 @@ const HomeHeaderComp = () => {
   const {
     metaViewReducer: {
       drawingboardSize,
-      visibleSidebarIconsList
+      visibleSidebarIconsList,
+      selectedRightBarConfigPage
+    },
+    DrawingBoardReducer: {
+      activeComponent
     }
   } = store.getState()
+
+  const RightBarContainer = () => {
+
+    const headerIcons = [
+      { title: i18n.t('common.preview'), value: 'html', icon: 'xyz-html' },
+      { title: i18n.t('common.lock'), value: 'js', icon: 'xyz-js' },
+      { title: i18n.t('common.workbar'), value: 'css', icon: 'xyz-style' }
+    ]
+
+    const IconButtonAttr = headerIcons.map(item => (
+      <RightBth
+        title={item.title}
+        key={item.value}
+        select={selectedRightBarConfigPage === item.value}
+        onClick={() => {
+          store.dispatch({
+            type: SELECT_RIGHTBAR_CONFIG_PAGE_ACTION,
+            payload: {
+              selectedRightBarConfigPage: item.value
+            }
+          })
+        }}
+      >
+        <i className={`xyz ${item.icon}`} />
+      </RightBth>
+    ))
+
+    return (
+      <RightBarBtns>
+        {IconButtonAttr}
+      </RightBarBtns>
+    )
+  }
 
   const handleClickPopoverLabel = (value: string) => {
     if (['pc', 'mobile'].includes(value.split('-')[0])) {
@@ -101,42 +148,47 @@ const HomeHeaderComp = () => {
 
   return (
     <HomeHeaderBox id="headerRef">
-      <Image
-        className="logo-box"
-        width={45}
-        height={35}
-        preview={false}
-        src={logo}
-      />
-      {
-        HEADER_DIR.map(file => {
-          let Children: React.FC
+      <LeftBarBox>
+        <Image
+          className="logo-box"
+          width={45}
+          height={35}
+          preview={false}
+          src={logo}
+        />
+        {
+          HEADER_DIR.map(file => {
+            let Children: React.FC
 
-          if (file.children && !file.disabled) {
-            Children = () => (
-              <Popover
-                content={(CodeContentDOM(file.children || []))}
-                placement="bottomLeft"
-                color="#f2f4f5"
-                overlayClassName="uxo-popover"
-                getPopupContainer={() => document.querySelector('.header-menu-item') || document.body}
-                trigger="click"
-              >
-                <Button disabled={file.disabled} className={file.notify ? 'notify' : ''}>{file.label}</Button>
-              </Popover>
-            )
-          } else {
-            Children = () => <Button disabled className="header-menu-item">{file.label}</Button>
-          }
+            if (file.children && !file.disabled) {
+              Children = () => (
+                <Popover
+                  content={(CodeContentDOM(file.children || []))}
+                  placement="bottomLeft"
+                  color="#f2f4f5"
+                  overlayClassName="uxo-popover"
+                  getPopupContainer={() => document.querySelector('.header-menu-item') || document.body}
+                  trigger="click"
+                >
+                  <Button disabled={file.disabled} className={file.notify ? 'notify' : ''}>{file.label}</Button>
+                </Popover>
+              )
+            } else {
+              Children = () => <Button disabled className="header-menu-item">{file.label}</Button>
+            }
 
-          return <Children key={file.value} />
-        })
-      }
-    </HomeHeaderBox>
+            return <Children key={file.value} />
+          })
+        }
+      </LeftBarBox>
+      {activeComponent && <RightBarContainer />}
+    </HomeHeaderBox >
   )
 }
 
 export default connect((state: State.ReduxConnectProps) => ({
   drawingboardSize: state.metaViewReducer.drawingboardSize,
+  activeComponent: state.DrawingBoardReducer.activeComponent,
+  selectedRightBarConfigPage: state.metaViewReducer.selectedRightBarConfigPage,
   visibleSidebarIconsList: state.metaViewReducer.visibleSidebarIconsList
 }))(memo(HomeHeaderComp))

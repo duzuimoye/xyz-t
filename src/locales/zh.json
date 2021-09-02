@@ -34,10 +34,13 @@
       "debug": "运行和调试",
       "extend": "扩展",
       "setting": "配置",
-      "counter": "账户"
+      "counter": "账户",
+      "attrsConfig": "组件属性",
+      "eventConfig": "事件配置",
+      "modelAnalysis": "模型分析"
     },
     "toast": {
-      "unfinish": "暂未完成，尽请期待。。。"
+      "unfinish": "还没做呢，不急不急"
     },
     "baseMaterial": {
       "element": {

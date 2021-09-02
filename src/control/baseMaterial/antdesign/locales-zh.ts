@@ -17,7 +17,7 @@ export default {
     iconSelect: '图标选择',
     iconType: '图标类型',
     searchIconplaceholder: '图标搜索',
-    busingDating: '忙着相亲呢，😕哪有时间写。',
+    busingDating: '非才之难，所以自用者实难。',
     block: '块级按钮',
     disabled: '禁用',
 

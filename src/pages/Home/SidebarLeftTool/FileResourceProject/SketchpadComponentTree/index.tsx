@@ -3,7 +3,7 @@ import { CarryOutOutlined } from '@ant-design/icons'
 import { SketchpadComponentTreeContainer } from './styled'
 
 export const ComponentTree = () => {
-  const TreerootNodeIcon = () => <i className="iconfont iconJournal" style={{ color: '#01aaaa' }} />
+  const TreerootNodeIcon = () => <i className="xyz-t iconJournal" style={{ color: '#01aaaa' }} />
   const treeData = [
     {
       title: 'parent 0',

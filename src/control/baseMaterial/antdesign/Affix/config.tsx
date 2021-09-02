@@ -1,6 +1,6 @@
 import { InputNumber, Empty } from 'antd'
 import { UPDATE_ACTIVE_COMPONENT_ACTION } from '../../../../redux/actions/index'
-import emptyPage from '../../../../assets/images/emptyPage.svg'
+import emptyPage from '../../../../assets/images/emptyStatus2.svg'
 import { LineBlockLabel, LineBlock } from '../common/styled'
 import BaseStructureBox from '../common/baseStructure'
 import MonacoEditIDE from '../common/monacoEditIDE'

@@ -1,10 +1,11 @@
-import { Popover } from 'antd'
+import { Popover, Empty } from 'antd'
 import { useState } from 'react'
 import { EllipsisOutlined, CheckOutlined, RightOutlined, DownOutlined } from '@ant-design/icons'
 import { FileResourceProjectContainer, HeaderFileTitleBox, ResourceManagePopoverContainer, ResourceManageList, SplitView, SplitViewHeader, SplitViewPane } from './styled'
 import i18n from '../../../../utils/i18n'
 import SketchpadComponentTree from './SketchpadComponentTree/index'
 import FileResourceTree from './FileResourceTree/index'
+import emptyPage from '../../../../assets/images/emptyStatus2.svg'
 
 const FileResourceProject = () => {
   const [visiblePopover, setVisiblePopover] = useState(false)
@@ -81,7 +82,7 @@ const FileResourceProject = () => {
           {resource.visibleStaticResouce ? <DownOutlined /> : <RightOutlined />}
         </SplitViewHeader>
         <SplitViewPane visible={resource.visibleStaticResouce}>
-          14
+          <Empty className="empty-box" image={emptyPage} description={i18n.t('baseMateiral.baseText.busingDating')} />
         </SplitViewPane>
         <SplitViewHeader onClick={() => {
           setResource({

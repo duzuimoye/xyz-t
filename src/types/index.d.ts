@@ -31,6 +31,7 @@ declare namespace State {
       messageInfo: string[]
       addProgressMaxStep: number
     }
+    selectedRightBarConfigPage: string
     visibleFullPage: boolean
     areaModuleValue: areaModuleValueType
     resizeDrawingBoardIframe: number

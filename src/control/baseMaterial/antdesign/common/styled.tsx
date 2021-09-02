@@ -46,18 +46,6 @@ export const CollapseContent = styled.div`
   overflow: hidden;
   height: 0;
   flex: ${(props: visibleProps) => props.visible ? 1 : 'none'};
-  .empty-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    align-items: center;
-    min-height: 200px;
-    user-select: none;
-    img {
-      -webkit-user-drag: none;
-    }
-  }
   .ant-switch {
     background-color: #e0e0e0;
     &.ant-switch-checked {

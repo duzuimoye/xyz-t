@@ -22,6 +22,31 @@ export const SketchpadComponentTreeContainer = styled.div`
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .ant-tree-title {
+        display: inline-block;
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
     }
   }
+`
+
+export const CatagoryNodeContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-right: 5px;
+`
+
+export const NodeTitle = styled.span`
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 115px;
 `

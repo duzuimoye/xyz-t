@@ -10,35 +10,35 @@ export const SIDEBAR_ICONS_LIST = {
     {
       title: i18n.t('common.resourceManage'),
       value: 'resourceManager',
-      icon: 'iconwenjianjia1 iconfont',
+      icon: ' xyz xyz-Artboard',
       Comp: FileResourceProject,
       size: 26
     },
     {
       title: i18n.t('common.holdAll'),
       value: 'tools',
-      icon: 'iconfont iconshujuzhongjian',
+      icon: 'xyz xyz-shujuzhongjian',
       Comp: ComponentContainer,
       size: 24
     },
     {
       title: i18n.t('common.search'),
       value: 'search',
-      icon: 'iconsearch iconfont',
+      icon: 'xyz-search xyz',
       Comp: SearchModel,
       size: 24
     },
     {
       title: i18n.t('common.debug'),
       value: 'debugAndRun',
-      icon: 'iconrun1 iconfont',
+      icon: 'xyz-run1 xyz',
       Comp: DebugModel,
       size: 26
     },
     {
       title: i18n.t('common.extend'),
       value: 'extend',
-      icon: 'iconkuaixuanzhong iconfont',
+      icon: 'xyz-kuaixuanzhong xyz',
       Comp: ExtendTool,
       size: 26
     }
@@ -47,13 +47,13 @@ export const SIDEBAR_ICONS_LIST = {
     {
       title: i18n.t('common.counter'),
       value: 'counter',
-      icon: 'iconfenxiang iconfont',
+      icon: 'xyz-fenxiang xyz',
       size: 26
     },
     {
       title: i18n.t('common.setting'),
       value: 'manage',
-      icon: 'iconsetting iconfont',
+      icon: 'xyz-setting xyz',
       size: 24
     }
   ]

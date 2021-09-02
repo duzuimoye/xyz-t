@@ -4,7 +4,7 @@ export const HomeHeaderBox = styled.header`
   width: 100%;
   height: 35px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   background-color: #3c3c3c;
   .logo-box {
@@ -19,6 +19,23 @@ interface ButtonPropsAttrs {
   disabled?: boolean
   divider?: boolean
 }
+
+export const RightBth = styled.div`
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  cursor: default;
+  height: 100%;
+  user-select: none;
+  line-height: 37px;
+  box-sizing: border-box;
+  padding: 0;
+  color: #fff;
+  background: ${({ select }: { select: boolean }) => select ? '#272f3b' : 'transparent'};
+  &:hover {
+    background:  #272f3b;
+  }
+`
 export const Button = styled.div`
   display: inline-block;
   width: 50px;
@@ -26,7 +43,7 @@ export const Button = styled.div`
   cursor: default;
   height: 100%;
   user-select: none;
-  line-height: 34px;
+  line-height: 37px;
   box-sizing: border-box;
   padding: 0;
   color: ${(props: ButtonPropsAttrs) => props.disabled ? '#928e8e' : '#fff'};
@@ -99,4 +116,15 @@ export const PopoverDivider = styled.div`
 
 export const NotityLabel = styled.div`
   width: 100%;
+`
+
+export const LeftBarBox = styled.div`
+  flex:1;
+`
+
+export const RightBarBtns = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
 `

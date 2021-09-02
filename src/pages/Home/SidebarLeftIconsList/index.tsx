@@ -1,5 +1,5 @@
-import { memo } from 'react'
 import { connect } from 'react-redux'
+import { Tooltip } from 'antd'
 import store from '../../../redux/store'
 import { SIDEBAR_ICONS_LIST } from '../../../utils/constant'
 import { VISIBLE_SIZEBARLEFT_TOOL_ACTION } from '../../../redux/actions'
@@ -18,22 +18,26 @@ const SidebarLeft = () => {
       <SidebarleftIconList>
         {
           SIDEBAR_ICONS_LIST.header.map(item => (
-            <SideBarIconLi
+            <Tooltip
+              placement="right"
               title={item.title}
               key={item.value}
-              selected={item.value === selectedSideBarLeftIconLabel && visibleSideBarLeftTool}
-              onClick={() => {
-                store.dispatch({
-                  type: VISIBLE_SIZEBARLEFT_TOOL_ACTION,
-                  payload: {
-                    selectedSideBarLeftIconLabel: item.value,
-                    visibleSideBarLeftTool: item.value === selectedSideBarLeftIconLabel ? !visibleSideBarLeftTool : true
-                  }
-                })
-              }}
             >
-              <i className={item.icon} />
-            </SideBarIconLi>
+              <SideBarIconLi
+                selected={item.value === selectedSideBarLeftIconLabel && visibleSideBarLeftTool}
+                onClick={() => {
+                  store.dispatch({
+                    type: VISIBLE_SIZEBARLEFT_TOOL_ACTION,
+                    payload: {
+                      selectedSideBarLeftIconLabel: item.value,
+                      visibleSideBarLeftTool: item.value === selectedSideBarLeftIconLabel ? !visibleSideBarLeftTool : true
+                    }
+                  })
+                }}
+              >
+                <i className={item.icon} />
+              </SideBarIconLi>
+            </Tooltip>
           ))
         }
       </SidebarleftIconList>
@@ -60,4 +64,4 @@ const mapStateToProps = (state: State.ReduxConnectProps) => {
   }
 }
 
-export default connect(mapStateToProps)(memo(SidebarLeft))
+export default connect(mapStateToProps)(SidebarLeft)

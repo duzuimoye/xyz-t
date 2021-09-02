@@ -102,6 +102,31 @@ ul {
 .ant-tree.ant-tree-directory .ant-tree-treenode-selected:hover::before, .ant-tree.ant-tree-directory .ant-tree-treenode-selected::before {
   background-color: #3e3d3d !important
 }
+.ant-tree.ant-tree-directory .ant-tree-treenode-selected:hover::before, .ant-tree.ant-tree-directory .ant-tree-treenode-selected .ant-tree-title {
+  color: #01aaaa !important;
+  font-weight: 600;
+}
+
 .ant-tree-treenode:hover::before {
   background-color: #333 !important;
+}
+
+.empty-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 200px;
+  user-select: none;
+}
+.empty-box.full-page {
+  height: 100%;
+}
+.empty-box .ant-empty-image {
+  height: 150px;
+}
+.empty-box .ant-empty-image  img {
+  height: 160px;
+  -webkit-user-drag: none;
 }

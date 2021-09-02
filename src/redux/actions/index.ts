@@ -6,7 +6,7 @@ export const RESIZE_AUTO_DRAWINGBOARD_ACTION = 'resize auto drawingboard action'
 export const UPDATE_DRAWINGBOARD_SIZE_ACTION = 'update drawingboard size action'
 export const FULL_SCREEN_ACTION = 'full screen action'
 export const VISIBLE_SIDEBAR_LEFT_ICONS_ACTION = 'visible sidebar left icons action'
-
+export const SELECT_RIGHTBAR_CONFIG_PAGE_ACTION = 'select header right bar config icon action'
 export const TEST_AXIOS_AXIOS = 'test axios http'
 
 // drawingboard action

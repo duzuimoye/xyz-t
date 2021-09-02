@@ -5,7 +5,8 @@ import {
   RESIZE_AUTO_DRAWINGBOARD_ACTION,
   UPDATE_DRAWINGBOARD_SIZE_ACTION,
   FULL_SCREEN_ACTION,
-  VISIBLE_SIDEBAR_LEFT_ICONS_ACTION
+  VISIBLE_SIDEBAR_LEFT_ICONS_ACTION,
+  SELECT_RIGHTBAR_CONFIG_PAGE_ACTION
 } from '../actions/index'
 import metaViewState from '../state/metaView'
 
@@ -18,6 +19,11 @@ function reducer(state: State.MetaView = metaViewState, action: any): State.Meta
           ...action.payload
         }
       case FULL_SCREEN_ACTION:
+        return {
+          ...state,
+          ...action.payload
+        }
+      case SELECT_RIGHTBAR_CONFIG_PAGE_ACTION:
         return {
           ...state,
           ...action.payload
