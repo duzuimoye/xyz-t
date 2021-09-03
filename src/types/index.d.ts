@@ -6,7 +6,7 @@ declare namespace State {
 
   interface FileProps {
     label: string
-    id: string
+    pageId: string
   }
 
   interface FileResourceManage {
@@ -14,9 +14,15 @@ declare namespace State {
     visibleStaticResource: boolean
   }
 
+  interface FileProps {
+    label: string
+    pageId: string
+    [props: string]: any
+  }
+
   interface Drawingboard {
     drawingboardList: Array
-    activeFile: any
+    activeFile: FileProps | null
     activeComponent: any
     eventGolbal: Array
     styleGlobal: Array

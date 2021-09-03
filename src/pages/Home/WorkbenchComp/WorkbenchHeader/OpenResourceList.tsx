@@ -1,6 +1,9 @@
+import { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { OpenResourceListContainer, FileList, EmptyText } from './styled'
+import { ACTIVE_PAGE_ACTION } from '../../../../redux/actions/index'
 import store from '../../../../redux/store'
-import { OpenResourceListContainer, FileList } from './styled'
+import i18n from '../../../../utils/i18n'
 
 const OpenResourceList = () => {
   const {
@@ -10,16 +13,33 @@ const OpenResourceList = () => {
     }
   } = store.getState()
 
+  useEffect(() => {
+    if (activeFile) {
+      document.getElementById(activeFile?.pageId)?.scrollIntoView({
+        behavior: 'smooth',
+        inline: 'center',
+        block: 'center'
+      })
+    }
+  }, [activeFile])
+
   return (
     <OpenResourceListContainer>
       {
-        stackFileOpened.map(file => (
+        stackFileOpened.length ? stackFileOpened.map(file => (
           <FileList
-            key={file.id}
-            selected={activeFile?.id === file.id}>
+            key={file.pageId}
+            id={file.pageId}
+            onClick={() => {
+              store.dispatch({
+                type: ACTIVE_PAGE_ACTION,
+                payload: file
+              })
+            }}
+            className={activeFile?.pageId === file.pageId ? 'select' : ''}>
             {file.label}
           </FileList>
-        ))
+        )) : <EmptyText>{i18n.t('common.emptyFile')}</EmptyText>
       }
     </OpenResourceListContainer>
   )

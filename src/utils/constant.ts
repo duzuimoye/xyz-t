@@ -17,7 +17,14 @@ export const SIDEBAR_ICONS_LIST = {
     {
       title: i18n.t('common.holdAll'),
       value: 'tools',
-      icon: 'xyz xyz-shujuzhongjian',
+      icon: 'xyz xyz-duixiangxuanzhong',
+      Comp: ComponentContainer,
+      size: 24
+    },
+    {
+      title: i18n.t('common.template'),
+      value: 'template',
+      icon: 'xyz xyz-hebingxingzhuang',
       Comp: ComponentContainer,
       size: 24
     },

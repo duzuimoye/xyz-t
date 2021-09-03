@@ -15,3 +15,6 @@ export const PUSH_COMPONENT_ACTION = 'push component action'
 export const DRAWINGBOARDLIST_PUSH_ACTION = "push component in drawingboard action"
 export const UPDATE_ACTIVE_COMPONENT_ACTION = "update active component attrs action"
 export const SELECT_COMPONENT_ACTION = 'select component action'
+
+// file resources ation
+export const ACTIVE_PAGE_ACTION = 'active page action'

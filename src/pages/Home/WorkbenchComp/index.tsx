@@ -46,7 +46,6 @@ export const WorkbenchComp = () => {
               <DrawingBoard />
             </IframeResizeBox>
           </IframeContent>
-
         </IframeBox>
         <DividerWorkbench />
       </IframeContainer>

@@ -58,7 +58,7 @@ export default connect(mapResizeDrawingboardStateToProps)(() => {
         style={{ width: '150px' }}
         onChange={val => changeResize(val)}
         min={20}
-        step={2}
+        step={5}
         max={200}
         tipFormatter={value => `${value} %`}
       />

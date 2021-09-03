@@ -17,7 +17,7 @@ export default {
     iconSelect: '图标选择',
     iconType: '图标类型',
     searchIconplaceholder: '图标搜索',
-    busingDating: '非才之难，所以自用者实难。',
+    busingDating: '寄蜉蝣于天地，渺沧海之一粟',
     block: '块级按钮',
     disabled: '禁用',
 

@@ -40,40 +40,58 @@ export const Button = styled.div`
 `
 
 export const OpenResourceListContainer = styled.div`
-  /* flex: 1; */
   height: 100%;
-  width: 100%;
   line-height: 30px;
   background: #494a4c5e;
-  overflow: hidden;
+
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-direction: row;
+  /* flex-wrap: ; */
+  overflow: hidden;
   &:hover {
-    overflow-x: auto;
+    overflow: auto hidden;
   }
+  /* &:hover {
+    overflow: auto hidden;
+  } */
+ 
+  /* display: flex;
+  overflow-x: hidden;
+  flex: 1;
+  &:hover {
+    overflow: auto hidden;
+  } */
+  
 `
 
 export const FileList = styled.div`
-  /* flex-shrink: 0; */
-  /* left: auto; */
-  /* min-width: fit-content; */
   padding: 0 3px;
   text-align: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: 14px;
   border-right: 1px solid rgb(37, 37, 38);
   background-color: rgb(45, 45, 45);
   color: rgba(255, 255, 255, 0.5);
   display: inline-block;
-  position: relative;
   width: 100px;
-  white-space: nowrap;
   user-select: none;
   cursor: pointer;
   box-sizing: border-box;
-  background-color: ${({ selected }: { selected: boolean }) => `${selected ? '#6d6d6d' : 'rgb(45, 45, 45)'}`};
+  &.select {
+    color: #fff;
+    background: #6d6d6d;
+  }
   &:hover {
-    background-color: #6d6d6d;
     color: #fff;
   }
+`
+
+export const EmptyText = styled.div`
+  width: 100%;
+  text-align: center;
+  color: #fff;
 `

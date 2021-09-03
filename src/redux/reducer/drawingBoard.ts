@@ -4,7 +4,8 @@ import {
   ACTIVE_COMPONENT_ACTION,
   PUSH_COMPONENT_ACTION,
   UPDATE_ACTIVE_COMPONENT_ACTION,
-  SELECT_COMPONENT_ACTION
+  SELECT_COMPONENT_ACTION,
+  ACTIVE_PAGE_ACTION
 } from '../actions/index'
 
 export const activeComponentFn = (
@@ -85,6 +86,26 @@ function catchIframeAction({ iframePropagationClick }: { iframePropagationClick:
   }
 }
 
+function activePageAction(state = drawingBoardState, { pageId, label }: { pageId: string, label: string }) {
+  const index = state.stackFileOpened.findIndex(item => item.pageId === pageId)
+  const newStackFileOpen = JSON.parse(JSON.stringify(state.stackFileOpened))
+  const activeFile = { label, pageId }
+
+  if (index < 0) {
+    newStackFileOpen.push(activeFile)
+
+    return {
+      ...state,
+      activeFile,
+      stackFileOpened: newStackFileOpen
+    }
+  }
+  return {
+    ...state,
+    activeFile
+  }
+}
+
 function reducer(state: State.Drawingboard = drawingBoardState, action: any): State.Drawingboard {
   catchIframeAction(action)
   switch (action.type) {
@@ -93,6 +114,8 @@ function reducer(state: State.Drawingboard = drawingBoardState, action: any): St
         ...state,
         ...action.payload
       }
+    case ACTIVE_PAGE_ACTION:
+      return activePageAction(state, action.payload)
     case SELECT_COMPONENT_ACTION:
       return selectComponent(state, action.payload)
     case UPDATE_ACTIVE_COMPONENT_ACTION:

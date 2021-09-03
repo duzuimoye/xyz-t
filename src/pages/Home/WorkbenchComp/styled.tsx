@@ -5,14 +5,13 @@ import divider2 from '../../../assets/images/divider2.png'
 
 export const WorkbenchBox = styled.div`
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
   flex-direction: column;
   flex: 1;
   height: 100%;
   color: #fff;
   position: relative;
   box-sizing: border-box;
+  width: 1px;
 `
 
 export const WorkbenchFooter = styled.div`
