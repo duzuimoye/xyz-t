@@ -18,3 +18,4 @@ export const SELECT_COMPONENT_ACTION = 'select component action'
 
 // file resources ation
 export const ACTIVE_PAGE_ACTION = 'active page action'
+export const UPDATE_LOCK_ACTION = 'update project lock resource'

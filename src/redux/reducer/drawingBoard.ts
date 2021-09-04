@@ -5,7 +5,8 @@ import {
   PUSH_COMPONENT_ACTION,
   UPDATE_ACTIVE_COMPONENT_ACTION,
   SELECT_COMPONENT_ACTION,
-  ACTIVE_PAGE_ACTION
+  ACTIVE_PAGE_ACTION,
+  UPDATE_LOCK_ACTION
 } from '../actions/index'
 
 export const activeComponentFn = (
@@ -110,6 +111,12 @@ function reducer(state: State.Drawingboard = drawingBoardState, action: any): St
   catchIframeAction(action)
   switch (action.type) {
     case ACTIVE_COMPONENT_ACTION:
+      return {
+        ...state,
+        ...action.payload
+      }
+    case UPDATE_LOCK_ACTION:
+      console.log(action.payload)
       return {
         ...state,
         ...action.payload

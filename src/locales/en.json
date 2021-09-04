@@ -25,7 +25,7 @@
     },
     "common": {
       "resourceManage": "resource Manage",
-      "workbar": "work bar",
+      "Projectbar": "Projectbar",
       "staticResource": "static resource",
       "componentTree": "component tree",
       "emptyFile": "empty file",

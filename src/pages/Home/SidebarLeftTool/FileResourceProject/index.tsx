@@ -1,6 +1,6 @@
 import { Popover, Empty } from 'antd'
 import { useState } from 'react'
-import { EllipsisOutlined, CheckOutlined, RightOutlined, DownOutlined } from '@ant-design/icons'
+import { EllipsisOutlined, CaretDownOutlined, CaretRightOutlined, CheckOutlined } from '@ant-design/icons'
 import { FileResourceProjectContainer, HeaderFileTitleBox, ResourceManagePopoverContainer, ResourceManageList, SplitView, SplitViewHeader, SplitViewPane } from './styled'
 import i18n from '../../../../utils/i18n'
 import SketchpadComponentTree from './SketchpadComponentTree/index'
@@ -22,7 +22,7 @@ const FileResourceProject = () => {
           setVisiblePopover(false)
         }}>
           <CheckOutlined />
-          <div className="label">{i18n.t('common.workbar')}</div>
+          <div className="label">{i18n.t('common.Projectbar')}</div>
         </ResourceManageList>
         <ResourceManageList onClick={() => {
           setVisiblePopover(false)
@@ -66,8 +66,8 @@ const FileResourceProject = () => {
             visiblePageResource: !resource.visiblePageResource
           })
         }}>
-          <div className="resource-item-title">{i18n.t('common.workbar')}</div>
-          {resource.visiblePageResource ? <DownOutlined /> : <RightOutlined />}
+          <div className="resource-item-title">{i18n.t('common.Projectbar')}</div>
+          {resource.visiblePageResource ? <CaretDownOutlined /> : <CaretRightOutlined />}
         </SplitViewHeader>
         <SplitViewPane visible={resource.visiblePageResource}>
           <FileResourceTree />
@@ -79,7 +79,7 @@ const FileResourceProject = () => {
           })
         }}>
           <div className="resource-item-title">{i18n.t('common.staticResource')}</div>
-          {resource.visibleStaticResouce ? <DownOutlined /> : <RightOutlined />}
+          {resource.visibleStaticResouce ? <CaretDownOutlined /> : <CaretRightOutlined />}
         </SplitViewHeader>
         <SplitViewPane visible={resource.visibleStaticResouce}>
           <Empty className="empty-box" image={emptyPage} description={i18n.t('baseMateiral.baseText.busingDating')} />
@@ -91,7 +91,7 @@ const FileResourceProject = () => {
           })
         }}>
           <div className="resource-item-title">{i18n.t('common.componentTree')}</div>
-          {resource.visibleComponentTree ? <DownOutlined /> : <RightOutlined />}
+          {resource.visibleComponentTree ? <CaretDownOutlined /> : <CaretRightOutlined />}
         </SplitViewHeader>
         <SplitViewPane visible={resource.visibleComponentTree}>
           <SketchpadComponentTree />

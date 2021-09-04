@@ -39,11 +39,10 @@ const HomeHeaderComp = () => {
   } = store.getState()
 
   const RightBarContainer = () => {
-
     const headerIcons = [
       { title: i18n.t('common.preview'), value: 'html', icon: 'xyz-html' },
       { title: i18n.t('common.lock'), value: 'js', icon: 'xyz-js' },
-      { title: i18n.t('common.workbar'), value: 'css', icon: 'xyz-style' }
+      { title: i18n.t('common.Projectbar'), value: 'css', icon: 'xyz-style' }
     ]
 
     const IconButtonAttr = headerIcons.map(item => (

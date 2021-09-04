@@ -25,7 +25,7 @@
     },
     "common": {
       "resourceManage": "资源管理器",
-      "workbar": "工作栏",
+      "Projectbar": "项目栏",
       "staticResource": "静态资源",
       "componentTree": "组件树",
       "emptyFile": "未发现文件",
