@@ -1,16 +1,24 @@
 import { Popover, Empty } from 'antd'
 import { useState } from 'react'
-import { EllipsisOutlined, CaretDownOutlined, CaretRightOutlined, CheckOutlined } from '@ant-design/icons'
-import { FileResourceProjectContainer, HeaderFileTitleBox, ResourceManagePopoverContainer, ResourceManageList, SplitView, SplitViewHeader, SplitViewPane } from './styled'
+import { EllipsisOutlined, CaretDownOutlined, CaretRightOutlined } from '@ant-design/icons'
+import {
+  FileResourceProjectContainer,
+  HeaderFileTitleBox,
+  ResourceManagePopoverContainer,
+  ResourceManageList,
+  VisibleModelIconBox,
+  SplitView,
+  SplitViewHeader,
+  SplitViewPane
+} from './styled'
 import i18n from '../../../../utils/i18n'
-import SketchpadComponentTree from './SketchpadComponentTree/index'
 import FileResourceTree from './FileResourceTree/index'
 import emptyPage from '../../../../assets/images/emptyStatus2.svg'
 
 const FileResourceProject = () => {
   const [visiblePopover, setVisiblePopover] = useState(false)
   const [resource, setResource] = useState({
-    visiblePageResource: false,
+    visiblePageResource: true,
     visibleStaticResouce: false,
     visibleComponentTree: false
   })
@@ -21,19 +29,19 @@ const FileResourceProject = () => {
         <ResourceManageList onClick={() => {
           setVisiblePopover(false)
         }}>
-          <CheckOutlined />
+          <VisibleModelIconBox><i className="xyz xyz-enable" /></VisibleModelIconBox>
           <div className="label">{i18n.t('common.Projectbar')}</div>
         </ResourceManageList>
         <ResourceManageList onClick={() => {
           setVisiblePopover(false)
         }}>
-          <CheckOutlined />
+          <VisibleModelIconBox><i className="xyz xyz-enable" /></VisibleModelIconBox>
           <div className="label">{i18n.t('common.staticResource')}</div>
         </ResourceManageList>
         <ResourceManageList onClick={() => {
           setVisiblePopover(false)
         }}>
-          <CheckOutlined />
+          <VisibleModelIconBox><i className="xyz xyz-enable" /></VisibleModelIconBox>
           <div className="label">{i18n.t('common.componentTree')}</div>
         </ResourceManageList>
       </ResourceManagePopoverContainer>
@@ -94,7 +102,7 @@ const FileResourceProject = () => {
           {resource.visibleComponentTree ? <CaretDownOutlined /> : <CaretRightOutlined />}
         </SplitViewHeader>
         <SplitViewPane visible={resource.visibleComponentTree}>
-          <SketchpadComponentTree />
+          <Empty className="empty-box" image={emptyPage} description={i18n.t('baseMateiral.baseText.busingDating')} />
         </SplitViewPane>
       </SplitView>
     </FileResourceProjectContainer>

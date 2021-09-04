@@ -40,7 +40,7 @@ declare namespace State {
     eventGolbal: Array
     styleGlobal: Array
     stackFileOpened: FileProps[]
-    FileResource: FileResourceProps[]
+    fileResource: FileResourceProps[]
   }
 
   interface MetaView {
@@ -60,7 +60,6 @@ declare namespace State {
     visibleSidebarIconsList: boolean
     visibleSidebarRightConfigBox: boolean
     visibleHeaderBox: boolean
-    auxliaryCompName: string
     configCompEnterName: string
     fileResourceManage: FileResourceManage
   }

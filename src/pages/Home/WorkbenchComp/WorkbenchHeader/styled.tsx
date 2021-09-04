@@ -47,22 +47,13 @@ export const OpenResourceListContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  /* flex-wrap: ; */
   overflow: hidden;
   &:hover {
     overflow: auto hidden;
   }
-  /* &:hover {
-    overflow: auto hidden;
-  } */
- 
-  /* display: flex;
-  overflow-x: hidden;
-  flex: 1;
-  &:hover {
-    overflow: auto hidden;
-  } */
-  
+  &::-webkit-scrollbar {
+    height: 0;
+  }
 `
 
 export const FileList = styled.div`
@@ -79,7 +70,6 @@ export const FileList = styled.div`
   display: inline-block;
   width: 100px;
   user-select: none;
-  cursor: pointer;
   box-sizing: border-box;
   &.select {
     color: #fff;

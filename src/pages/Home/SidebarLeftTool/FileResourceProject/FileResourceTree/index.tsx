@@ -2,9 +2,15 @@ import { useEffect, useState } from 'react'
 import { Menu, Item, Separator, useContextMenu } from "react-contexify"
 
 import { connect } from 'react-redux'
-import { Tree } from 'antd'
+import { Tree, Empty } from 'antd'
 import "react-contexify/dist/ReactContexify.css"
-import { SketchpadComponentTreeContainer, CatagoryNodeContainer, NodeTitle } from './styled'
+import emptyFileSvg from '../../../../../assets/images/emptyFile.svg'
+import {
+  SketchpadComponentTreeContainer,
+  CatagoryNodeContainer,
+  NodeTitle,
+  EmptyFile
+} from './styled'
 import {
   ACTIVE_PAGE_ACTION,
   UPDATE_LOCK_ACTION
@@ -15,7 +21,7 @@ const MENU_ID = "SketchpadComponent"
 const mapStateToProps = (state: State.ReduxConnectProps) => {
   return {
     activeFile: state.DrawingBoardReducer.activeFile,
-    FileResource: state.DrawingBoardReducer.FileResource,
+    fileResource: state.DrawingBoardReducer.fileResource,
     unlockProjectId: state.DrawingBoardReducer.unlockProjectId
   }
 }
@@ -31,7 +37,7 @@ const FileResourceTree = () => {
     DrawingBoardReducer: {
       activeFile,
       unlockProjectId,
-      FileResource
+      fileResource
     }
   } = store.getState()
 
@@ -54,7 +60,7 @@ const FileResourceTree = () => {
     )
   }
 
-  const treeData = FileResource.map(item => {
+  const treeData = fileResource.map(item => {
     return {
       ...item,
       title: <CatagoryNode title={item.title} type={item.type} id={item.key} isunlock={unlockProjectId === item.key} />,
@@ -134,9 +140,20 @@ const FileResourceTree = () => {
 }
 
 const FileResourceTreeContainer = () => {
+  const {
+    DrawingBoardReducer: {
+      fileResource
+    }
+  } = store.getState()
   return (
     <SketchpadComponentTreeContainer id={MENU_ID}>
-      <FileResourceTree />
+      {
+        fileResource.length ? <FileResourceTree /> : (
+          <EmptyFile>
+            <Empty style={{ height: 100, color: '#fff' }} image={emptyFileSvg} description="右键新建项目" />
+          </EmptyFile>
+        )
+      }
     </SketchpadComponentTreeContainer>
   )
 }

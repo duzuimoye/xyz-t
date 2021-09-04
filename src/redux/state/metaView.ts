@@ -1,6 +1,5 @@
 const metaView: State.MetaView = {
   selectedSideBarLeftIconLabel: 'resourceManager', // 左侧图标默认选中值
-  auxliaryCompName: '',
   configCompEnterName: '',
 
   drawingboardSize: 'mobile-480*800',

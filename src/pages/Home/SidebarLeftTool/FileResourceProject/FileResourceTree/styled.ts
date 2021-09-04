@@ -6,11 +6,8 @@ export const SketchpadComponentTreeContainer = styled.div`
   background-color: transparent;
   overflow-y: auto;
   ::-webkit-scrollbar {
-    position: relative;
     width: 0;
     height: 0;
-    border-radius: 0;
-    background-color: transparent;
   }
   .ant-tree {
     color: #fff;
@@ -34,6 +31,14 @@ export const SketchpadComponentTreeContainer = styled.div`
       }
     }
   }
+`
+
+export const EmptyFile = styled.div`
+  height: 100%;
+  width: 100%;
+  padding-top: 100px;
+  box-sizing: border-box;
+  text-align: center;
 `
 
 export const CatagoryNodeContainer = styled.div`

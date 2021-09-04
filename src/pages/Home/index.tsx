@@ -7,7 +7,6 @@ import WorkbenchComp from './WorkbenchComp/index'
 import ComponentConfig from './ComponentConfig/index'
 import { HomePageContainer, HomeMain } from './styled'
 import AuxliaryComp from './AuxliaryComp'
-// import ImageGridLoader from '../../components/Loader/index'
 
 const MainContentContainer = connect((state: State.ReduxConnectProps) => ({
   visibleSidebarRightConfigBox: state.metaViewReducer.visibleSidebarRightConfigBox,

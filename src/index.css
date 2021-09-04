@@ -5,6 +5,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  user-select: none;
 }
 
 .ant-popover-content {
@@ -48,7 +49,6 @@ ul {
 }
 
 ::-webkit-scrollbar {
-  position: relative;
   width: 5px;
   height: 5px;
   background-color: #262531;

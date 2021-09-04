@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Provider } from 'react-redux'
 import 'antd/dist/antd.css'
 import styled from 'styled-components'
@@ -14,6 +15,11 @@ const AppDiv = styled.div`
 `
 
 const App = () => {
+  useEffect(() => {
+    // close global default context menu.
+    document.oncontextmenu = () => false
+  })
+
   return (
     <Provider store={store}>
       <AppDiv>

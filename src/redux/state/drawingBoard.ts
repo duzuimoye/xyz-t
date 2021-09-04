@@ -4,7 +4,7 @@ const drawingboard: State.Drawingboard = {
   activeComponent: null, // 当前选中的组件
   eventGolbal: [], // 事件列表
   styleGlobal: [], // 样式列表
-  FileResource: [
+  fileResource: [
     {
       title: 'HarmonyOS设置',
       key: 'nJ3faY3PSmEeIePXIs',

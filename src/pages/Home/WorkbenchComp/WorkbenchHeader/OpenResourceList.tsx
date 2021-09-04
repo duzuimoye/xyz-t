@@ -24,7 +24,9 @@ const OpenResourceList = () => {
   }, [activeFile])
 
   return (
-    <OpenResourceListContainer>
+    <OpenResourceListContainer onWheel={e => {
+      e.currentTarget.scrollBy(e.deltaY > 0 ? 50 : -50, 0)
+    }}>
       {
         stackFileOpened.length ? stackFileOpened.map(file => (
           <FileList

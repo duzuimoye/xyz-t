@@ -107,20 +107,24 @@ export const ResourceManageList = styled.div`
   height: 22px;
   cursor: default;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 0 5px;
+  width: 110px;
   &:hover {
     background: #1890ff;
     color: #fff;
     border-radius: 3px;
   }
   .label {
-    text-indent: 5px;
-    padding-right: 5px;
+    flex: 1;
+    text-align: left;
   }
 `
-
+export const VisibleModelIconBox = styled.div`
+  display: inline-block;
+  width: 30px;
+`
 export const SplitView = styled.div`
   overflow: hidden;
   width: 100%;
