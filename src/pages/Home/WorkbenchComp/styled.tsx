@@ -11,6 +11,7 @@ export const WorkbenchBox = styled.div`
   color: #fff;
   position: relative;
   box-sizing: border-box;
+  // todo ??? must set width, but the value is arbitrarily.
   width: 1px;
 `
 

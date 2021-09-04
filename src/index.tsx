@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import 'react-contexify/dist/ReactContexify.css'
 
 ReactDOM.render(
   <App />,

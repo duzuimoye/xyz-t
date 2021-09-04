@@ -20,14 +20,27 @@ declare namespace State {
     [props: string]: any
   }
 
+  interface FileResourcePageProps {
+    title: string,
+    key: string
+  }
+
+  interface FileResourceProps {
+    title: string,
+    key: string,
+    type: 'mobile' | 'pc'
+    children: FileResourcePageProps[]
+  }
+
   interface Drawingboard {
+    unlockProjectId: string
     drawingboardList: Array
     activeFile: FileProps | null
     activeComponent: any
     eventGolbal: Array
     styleGlobal: Array
     stackFileOpened: FileProps[]
-    FileResource: Array
+    FileResource: FileResourceProps[]
   }
 
   interface MetaView {
