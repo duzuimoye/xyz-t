@@ -9,13 +9,4 @@ Axios.interceptors.request.use((config: AxiosRequestConfig) => {
   return Promise.reject(error)
 })
 
-// Axios.interceptors.response.use(response => {
-//   if (response.data && response.status === 200) {
-//     return response.data
-//   }
-
-//   return Promise.reject(response.data ? response.data.errorinfo : '')
-
-// })
-
 export default Axios
