@@ -6,7 +6,9 @@ import {
   UPDATE_ACTIVE_COMPONENT_ACTION,
   SELECT_COMPONENT_ACTION,
   ACTIVE_PAGE_ACTION,
-  UPDATE_LOCK_ACTION
+  UPDATE_LOCK_ACTION,
+  CLOSE_FILE_ACTION,
+  CLOSE_OTHER_SAVED_FILE_ACTION
 } from '../actions/index'
 
 export const activeComponentFn = (
@@ -45,6 +47,46 @@ function selectComponent(state = drawingBoardState, selectComponentId: string) {
   return {
     ...state,
     activeComponent
+  }
+}
+
+function closeOtherSavedFileAction(state = drawingBoardState, closePageId: string) {
+  const index = state.stackFileOpened.findIndex((item: any) => item.pageId === closePageId)
+  let { activeFile } = state
+
+  if (index < 0) {
+    return state
+  }
+
+  activeFile = state.stackFileOpened[index]
+
+  return {
+    ...state,
+    activeFile,
+    stackFileOpened: [activeFile]
+  }
+}
+
+function closeFileAction(state = drawingBoardState, closePageId: string) {
+  const index = state.stackFileOpened.findIndex((item: any) => item.pageId === closePageId)
+  const len = state.stackFileOpened.length
+  const stackFileOpened = JSON.parse(JSON.stringify(state.stackFileOpened))
+  let { activeFile } = state
+
+  if (index < 0) {
+    return state
+  }
+
+  stackFileOpened.splice(index, 1)
+
+  if (activeFile?.pageId === closePageId) {
+    activeFile = len >= 2 ? stackFileOpened.slice(-1)[0] : null
+  }
+
+  return {
+    ...state,
+    stackFileOpened,
+    activeFile
   }
 }
 
@@ -115,8 +157,11 @@ function reducer(state: State.Drawingboard = drawingBoardState, action: any): St
         ...state,
         ...action.payload
       }
+    case CLOSE_FILE_ACTION:
+      return closeFileAction(state, action.payload)
+    case CLOSE_OTHER_SAVED_FILE_ACTION:
+      return closeOtherSavedFileAction(state, action.payload)
     case UPDATE_LOCK_ACTION:
-      console.log(action.payload)
       return {
         ...state,
         ...action.payload

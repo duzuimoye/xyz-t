@@ -19,3 +19,5 @@ export const SELECT_COMPONENT_ACTION = 'select component action'
 // file resources ation
 export const ACTIVE_PAGE_ACTION = 'active page action'
 export const UPDATE_LOCK_ACTION = 'update project lock resource'
+export const CLOSE_FILE_ACTION = 'close one file action'
+export const CLOSE_OTHER_SAVED_FILE_ACTION = 'close other saved file action'

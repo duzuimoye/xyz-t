@@ -57,26 +57,47 @@ export const OpenResourceListContainer = styled.div`
 `
 
 export const FileList = styled.div`
-  padding: 0 3px;
-  text-align: center;
+  padding: 0 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-shrink: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 14px;
   border-right: 1px solid rgb(37, 37, 38);
   background-color: rgb(45, 45, 45);
-  color: rgba(255, 255, 255, 0.5);
-  display: inline-block;
-  width: 100px;
-  user-select: none;
-  box-sizing: border-box;
   &.select {
     color: #fff;
     background: #6d6d6d;
   }
   &:hover {
-    color: #fff;
+    .close-btn {
+      visibility: visible;
+    }
+  }
+`
+
+export const FileLabel = styled.div`
+  width: 80px;
+  display: inline-block;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  text-indent: 10px;
+  color: ${({ highlight }: { highlight: boolean }) => highlight ? '#fff' : 'rgba(255, 255, 255, 0.5)'};
+`
+
+export const CloseIconBox = styled.span`
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  visibility: ${({ highlight }: { highlight: boolean }) => highlight ? 'visible' : 'hidden'};
+  &:hover {
+    background: #86909c45;
   }
 `
 
