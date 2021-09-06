@@ -1,6 +1,6 @@
 declare namespace State {
   export type IconType = 'antdIcon' | 'thirdPartyIcon' | 'img' | 'svg'
-  export type areaModuleValueType = 'drawingboard' | 'fullContent' | 'metaView'
+  export type areaModuleValueType = 'drawingboard' | 'fullContent' | 'metaView' | ""
 
   type DrawingboardSize = 'pc-1920*1080' | 'pc-1440*1050' | 'pc-1024*768' | 'mobile-320*480' | 'mobile-480*800'
 

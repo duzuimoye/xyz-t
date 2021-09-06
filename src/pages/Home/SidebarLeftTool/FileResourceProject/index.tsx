@@ -18,7 +18,7 @@ import emptyPage from '../../../../assets/images/emptyStatus2.svg'
 const FileResourceProject = () => {
   const [visiblePopover, setVisiblePopover] = useState(false)
   const [resource, setResource] = useState({
-    visiblePageResource: true,
+    visiblePageResource: false,
     visibleStaticResouce: false,
     visibleComponentTree: false
   })

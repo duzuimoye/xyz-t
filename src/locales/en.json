@@ -16,12 +16,16 @@
       "sidebarToRight": "sidebarToRight",
       "drawingboard": "drawingboard",
       "pc": "pc",
+      "help": "help",
       "pc-1920*1080": "1920 * 1080",
       "pc-1440*1050": "1440 * 1050",
       "pc-1024*768": "1024 * 768",
       "mobile": "mobile",
       "mobile-320*480": "320 * 480",
-      "mobile-480*800": "480 * 800"
+      "mobile-480*800": "480 * 800",
+      "feedback": "feedback",
+      "driver": "driver",
+      "checkUpdate": "check update"
     },
     "common": {
       "resourceManage": "resource Manage",

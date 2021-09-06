@@ -21,7 +21,11 @@
       "pc-1024*768": "1024 * 768",
       "mobile": "移动端",
       "mobile-320*480": "320 * 480",
-      "mobile-480*800": "480 * 800"
+      "mobile-480*800": "480 * 800",
+      "feedback": "反馈",
+      "help": "帮助",
+      "driver": "引导页",
+      "checkUpdate": "检查更新..."
     },
     "common": {
       "resourceManage": "资源管理器",

@@ -12,7 +12,8 @@ import {
 } from './styled'
 import {
   ACTIVE_PAGE_ACTION,
-  UPDATE_LOCK_ACTION
+  UPDATE_LOCK_ACTION,
+  ACTIVE_AREA_MODULE_ACTION
 } from '../../../../../redux/actions/index'
 import store from '../../../../../redux/store'
 
@@ -129,6 +130,12 @@ const FileResourceTree = () => {
               payload: {
                 pageId: node.key,
                 label: node.title
+              }
+            })
+            store.dispatch({
+              type: ACTIVE_AREA_MODULE_ACTION,
+              payload: {
+                areaModuleValue: 'drawingboard'
               }
             })
           }

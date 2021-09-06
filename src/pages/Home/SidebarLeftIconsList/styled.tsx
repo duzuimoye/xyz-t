@@ -39,6 +39,9 @@ export const SideBarIconLi = styled.li`
   &:hover {
     background-color: #252526;
   }
+  i {
+    font-size: 18px;
+  }
   a {
     width: 100%;
     height: 100%;
@@ -75,6 +78,9 @@ export const SidebarFooterList = styled.div`
     &:hover {
       color: #fff;
       background-color: #252526;
+    }
+    i {
+      font-size: 18px;
     }
     a {
       width: 100%;

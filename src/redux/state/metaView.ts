@@ -11,7 +11,7 @@ const metaView: State.MetaView = {
   visibleSidebarIconsList: true, // 是否显示左侧图标栏
   visibleSidebarRightConfigBox: true, // 是否显示右侧配置栏
   visibleHeaderBox: true, // 是否显示顶部栏
-  areaModuleValue: 'drawingboard', // main区域显示内容
+  areaModuleValue: '', // main区域显示内容
   selectedRightBarConfigPage: 'html',
 
   // 初始化全屏loader

@@ -83,7 +83,7 @@ const drawingboard: State.Drawingboard = {
       children: []
     }
   ],
-  unlockProjectId: 'nJ3faY3PSmEeIePXIs', // 已经解锁的项目id
+  unlockProjectId: '', // 已经解锁的项目id
   stackFileOpened: [] // 已打开的文件列表
 }
 

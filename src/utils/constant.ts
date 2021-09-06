@@ -54,7 +54,7 @@ export const SIDEBAR_ICONS_LIST = {
     {
       title: i18n.t('common.counter'),
       value: 'counter',
-      icon: 'xyz-fenxiang xyz',
+      icon: 'xyz-user-filling xyz',
       size: 26
     },
     {
@@ -211,6 +211,33 @@ export const HEADER_DIR: Array<Meta.HeaderDir> = [
             ]
           }
         ]
+      }
+    ]
+  },
+  {
+    label: i18n.t('header.help'),
+    value: 'help',
+    disabled: false,
+    notify: false,
+    visible: false,
+    children: [
+      {
+        label: i18n.t('header.driver'),
+        value: 'driver',
+        disabled: false,
+        notify: false
+      },
+      {
+        label: i18n.t('header.feedback'),
+        value: 'feedback',
+        disabled: false,
+        notify: false
+      },
+      {
+        label: i18n.t('header.checkUpdate'),
+        value: 'checkUpdate',
+        disabled: false,
+        notify: false
       }
     ]
   }
