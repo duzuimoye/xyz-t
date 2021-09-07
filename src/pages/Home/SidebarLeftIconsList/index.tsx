@@ -9,12 +9,13 @@ const SidebarLeft = () => {
   const {
     metaViewReducer: {
       selectedSideBarLeftIconLabel,
-      visibleSideBarLeftTool
+      visibleSideBarLeftTool,
+      visibleSidebarIconsList
     }
   } = store.getState()
 
   return (
-    <SidebarContainer>
+    <SidebarContainer visible={visibleSidebarIconsList}>
       <SidebarleftIconList>
         {
           SIDEBAR_ICONS_LIST.header.map(item => (
@@ -60,7 +61,8 @@ const SidebarLeft = () => {
 const mapStateToProps = (state: State.ReduxConnectProps) => {
   return {
     selectedSideBarLeftIconLabel: state.metaViewReducer.selectedSideBarLeftIconLabel,
-    visibleSideBarLeftTool: state.metaViewReducer.visibleSideBarLeftTool
+    visibleSideBarLeftTool: state.metaViewReducer.visibleSideBarLeftTool,
+    visibleSidebarIconsList: state.metaViewReducer.visibleSidebarIconsList
   }
 }
 

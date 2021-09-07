@@ -18,6 +18,7 @@ import {
 import store from '../../../../../redux/store'
 
 const MENU_ID = "SketchpadComponent"
+
 const mapStateToProps = (state: State.ReduxConnectProps) => {
   return {
     activeFile: state.DrawingBoardReducer.activeFile,
@@ -110,13 +111,10 @@ const FileResourceTree = () => {
             </Item>
           )
         }
-        <Item onClick={() => {
-          // preview
-        }}>
-          预览
-        </Item>
+        <Item disabled> 预览</Item>
+        <Item disabled>部署</Item>
         <Separator />
-        <Item>删除</Item>
+        <Item disabled>删除</Item>
         <Item disabled>配置</Item>
       </Menu>
       <Tree.DirectoryTree

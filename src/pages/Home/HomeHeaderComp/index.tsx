@@ -31,7 +31,9 @@ const HomeHeaderComp = () => {
     metaViewReducer: {
       drawingboardSize,
       visibleSidebarIconsList,
-      selectedRightBarConfigPage
+      selectedRightBarConfigPage,
+      visibleHeaderBox,
+      visibleFullPage
     },
     DrawingBoardReducer: {
       activeComponent
@@ -40,6 +42,7 @@ const HomeHeaderComp = () => {
 
   const RightBarContainer = () => {
     const headerIcons = [
+      { title: i18n.t('common.preview'), value: 'body', icon: 'xyz-html' },
       { title: i18n.t('common.preview'), value: 'html', icon: 'xyz-html' },
       { title: i18n.t('common.lock'), value: 'js', icon: 'xyz-js' },
       { title: i18n.t('common.Projectbar'), value: 'css', icon: 'xyz-style' }
@@ -146,7 +149,7 @@ const HomeHeaderComp = () => {
   }
 
   return (
-    <HomeHeaderBox id="headerRef">
+    <HomeHeaderBox id="headerRef" visible={visibleHeaderBox && !visibleFullPage}>
       <LeftBarBox>
         <Image
           className="logo-box"
@@ -189,5 +192,7 @@ export default connect((state: State.ReduxConnectProps) => ({
   drawingboardSize: state.metaViewReducer.drawingboardSize,
   activeComponent: state.DrawingBoardReducer.activeComponent,
   selectedRightBarConfigPage: state.metaViewReducer.selectedRightBarConfigPage,
-  visibleSidebarIconsList: state.metaViewReducer.visibleSidebarIconsList
+  visibleSidebarIconsList: state.metaViewReducer.visibleSidebarIconsList,
+  visibleHeaderBox: state.metaViewReducer.visibleHeaderBox,
+  visibleFullPage: state.metaViewReducer.visibleFullPage
 }))(memo(HomeHeaderComp))

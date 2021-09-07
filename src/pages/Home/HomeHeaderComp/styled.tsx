@@ -3,10 +3,10 @@ import styled from 'styled-components'
 export const HomeHeaderBox = styled.header`
   width: 100%;
   height: 35px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #3c3c3c;
+  display: ${({ visible }: { visible: boolean }) => `${visible ? 'flex' : 'none'}`};
   .logo-box {
     width: 100%;
     height: 100%;

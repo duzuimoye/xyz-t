@@ -141,7 +141,7 @@ export function updateComponent(state = drawingBoardState, activeComponent: Draw
 
 export function catchIframeAction({ iframePropagationClick }: { iframePropagationClick: boolean }) {
   if (iframePropagationClick) {
-    // useless
+    // todo: useless
     document.body.click()
   }
 }

@@ -12,10 +12,6 @@ import EmptyFilePage from '../../components/EmptyFilePage'
 const HomePage = () => {
   const {
     metaViewReducer: {
-      visibleHeaderBox,
-      visibleFullPage,
-      visibleSidebarIconsList,
-      visibleSidebarRightConfigBox,
       areaModuleValue
     },
     DrawingBoardReducer: {
@@ -29,7 +25,7 @@ const HomePage = () => {
       return (
         <>
           <WorkbenchComp />
-          {visibleSidebarRightConfigBox && <ComponentConfig />}
+          <ComponentConfig />
         </>
       )
     }
@@ -44,9 +40,9 @@ const HomePage = () => {
   return (
     <HomePageContainer>
       {/* {visible && <ImageGridLoader progress={progress} loadInfo={messageInfo.slice(-1)} />} */}
-      {visibleHeaderBox && !visibleFullPage && <HomeHeaderComp />}
+      <HomeHeaderComp />
       <HomeMain>
-        {visibleSidebarIconsList && <SidebarleftIconList />}
+        <SidebarleftIconList />
         <SideBarLeftToolComp />
         <MainContentContainer />
       </HomeMain>
@@ -56,11 +52,7 @@ const HomePage = () => {
 
 export default connect((state: State.ReduxConnectProps) => {
   return {
-    visibleHeaderBox: state.metaViewReducer.visibleHeaderBox,
-    visibleFullPage: state.metaViewReducer.visibleFullPage,
     areaModuleValue: state.metaViewReducer.areaModuleValue,
-    activeFile: !!state.DrawingBoardReducer.activeFile,
-    visibleSidebarRightConfigBox: state.metaViewReducer.visibleSidebarRightConfigBox,
-    visibleSidebarIconsList: state.metaViewReducer.visibleSidebarIconsList
+    activeFile: !!state.DrawingBoardReducer.activeFile
   }
 })(HomePage)

@@ -30,6 +30,10 @@ export const TitleBox = styled.div`
   line-height: 35px;
   padding-right: 20px;
 `
+export const MainBox = styled.div`
+  flex: 1;
+  max-height: 250px;
+`
 
 export const ContentList = styled.div`
   flex: 1;

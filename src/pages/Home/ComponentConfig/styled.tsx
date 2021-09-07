@@ -8,6 +8,7 @@ export const ComponentConfigContainer = styled.div`
   border-left: 1px solid #333f57;
   position: relative;
   overflow-y: auto;
+  display: ${({ visible }: { visible: boolean }) => `${visible ? 'block' : 'none'}`};
   &::-webkit-scrollbar {
     width: 0;
     height: 0;

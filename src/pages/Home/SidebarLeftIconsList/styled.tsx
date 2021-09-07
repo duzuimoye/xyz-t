@@ -7,11 +7,11 @@ interface SelectIconProps {
 export const SidebarContainer = styled.div`
   width: 45px;
   height: 100%;
-  display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   overflow: hidden;
+  display: ${({ visible }: { visible: boolean }) => `${visible ? 'flex' : 'none'}`};
 `
 
 export const SidebarleftIconList = styled.div`

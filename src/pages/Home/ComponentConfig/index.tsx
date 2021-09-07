@@ -15,6 +15,7 @@ const ComponentConfig = () => {
       activeComponent
     },
     metaViewReducer: {
+      visibleSidebarRightConfigBox,
       selectedRightBarConfigPage
     }
   } = store.getState()
@@ -43,7 +44,7 @@ const ComponentConfig = () => {
     }
   }
   return (
-    <ComponentConfigContainer>
+    <ComponentConfigContainer visible={visibleSidebarRightConfigBox}>
       <RenderChild />
     </ComponentConfigContainer>
   )
@@ -51,5 +52,6 @@ const ComponentConfig = () => {
 
 export default connect((state: State.ReduxConnectProps) => ({
   activeComponent: state.DrawingBoardReducer.activeComponent,
+  visibleSidebarRightConfigBox: state.metaViewReducer.visibleSidebarRightConfigBox,
   selectedRightBarConfigPage: state.metaViewReducer.selectedRightBarConfigPage
 }))(memo(ComponentConfig))

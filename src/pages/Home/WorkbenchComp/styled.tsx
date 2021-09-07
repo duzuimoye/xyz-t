@@ -25,7 +25,7 @@ export const IframeContainer = styled.div`
   padding: 20px 20px;
   width: 100%;
   box-sizing: border-box;
-  background-color: #24222e;
+  background-color: #262431;
   position: relative;
 `
 
@@ -38,7 +38,7 @@ export const IframeBox = styled.div`
   overflow: hidden;
   background-image: url(${iframeBg});
   background-size: 15px 15px;
-  background-color: #24222e;
+  /* background-color: #\; */
   flex: 1;
   box-sizing: border-box;
   .frame-drawboard-content {
@@ -90,7 +90,7 @@ export const IframeContent = styled.div`
     border: none;
     padding: 0;
     margin: 20px 20px 17px;
-    box-shadow: rgb(0 0 0 / 50%) 0 0 30px 0;
+    box-shadow: rgb(0 0 0) 0 0 19px 0;
     .frame-drawboard-content {
       width: 100%;
       height: 100%;

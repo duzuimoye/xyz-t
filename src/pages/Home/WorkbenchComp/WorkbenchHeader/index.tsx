@@ -52,7 +52,7 @@ const WorkbenchHeader = () => {
           {visibleFullPage ? <ExpandOutlined /> : <CompressOutlined />}
         </Button>
         <Button onClick={() => {
-          message.warning(i18n.t('baseMateiral.baseText.busingDating'))
+          message.warning('预览未完成')
         }}>
           <YoutubeOutlined />
         </Button>
