@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import iframeBg from '../../../assets/images/iframeBG.png'
 import divider1 from '../../../assets/images/divider1.png'
 import divider2 from '../../../assets/images/divider2.png'
+import iframeBg from '../../../assets/images/drawingboardsvg.svg'
 
 export const WorkbenchBox = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ export const IframeContainer = styled.div`
   padding: 20px 20px;
   width: 100%;
   box-sizing: border-box;
-  background-color: #3c3c3c;
+  background-color: #262431;
   position: relative;
 `
 
@@ -37,6 +37,8 @@ export const IframeBox = styled.div`
   bottom: 0;
   overflow: hidden;
   background-image: url(${iframeBg});
+  background-size: 15px 15px;
+  /* background-color: #\; */
   flex: 1;
   box-sizing: border-box;
   .frame-drawboard-content {
@@ -88,7 +90,7 @@ export const IframeContent = styled.div`
     border: none;
     padding: 0;
     margin: 20px 20px 17px;
-    box-shadow: rgb(0 0 0 / 50%) 0 0 30px 0;
+    box-shadow: rgb(0 0 0) 0 0 19px 0;
     .frame-drawboard-content {
       width: 100%;
       height: 100%;

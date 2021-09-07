@@ -7,11 +7,11 @@ interface SelectIconProps {
 export const SidebarContainer = styled.div`
   width: 45px;
   height: 100%;
-  display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   overflow: hidden;
+  display: ${({ visible }: { visible: boolean }) => `${visible ? 'flex' : 'none'}`};
 `
 
 export const SidebarleftIconList = styled.div`
@@ -38,6 +38,9 @@ export const SideBarIconLi = styled.li`
   background-color: ${(props: SelectIconProps) => props.selected ? '#252526' : ''};
   &:hover {
     background-color: #252526;
+  }
+  i {
+    font-size: 18px;
   }
   a {
     width: 100%;
@@ -75,6 +78,9 @@ export const SidebarFooterList = styled.div`
     &:hover {
       color: #fff;
       background-color: #252526;
+    }
+    i {
+      font-size: 18px;
     }
     a {
       width: 100%;

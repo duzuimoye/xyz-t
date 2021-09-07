@@ -15,9 +15,11 @@ export const PUSH_COMPONENT_ACTION = 'push component action'
 export const DRAWINGBOARDLIST_PUSH_ACTION = "push component in drawingboard action"
 export const UPDATE_ACTIVE_COMPONENT_ACTION = "update active component attrs action"
 export const SELECT_COMPONENT_ACTION = 'select component action'
+export const ACTIVE_AREA_MODULE_ACTION = 'active area module action'
 
 // file resources ation
 export const ACTIVE_PAGE_ACTION = 'active page action'
 export const UPDATE_LOCK_ACTION = 'update project lock resource'
 export const CLOSE_FILE_ACTION = 'close one file action'
 export const CLOSE_OTHER_SAVED_FILE_ACTION = 'close other saved file action'
+export const CLOSE_STACK_OPEN_FILE_ACTION = 'close stack open file action'

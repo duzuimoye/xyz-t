@@ -12,11 +12,13 @@ import {
 } from './styled'
 import {
   ACTIVE_PAGE_ACTION,
-  UPDATE_LOCK_ACTION
+  UPDATE_LOCK_ACTION,
+  ACTIVE_AREA_MODULE_ACTION
 } from '../../../../../redux/actions/index'
 import store from '../../../../../redux/store'
 
 const MENU_ID = "SketchpadComponent"
+
 const mapStateToProps = (state: State.ReduxConnectProps) => {
   return {
     activeFile: state.DrawingBoardReducer.activeFile,
@@ -109,13 +111,10 @@ const FileResourceTree = () => {
             </Item>
           )
         }
-        <Item onClick={() => {
-          // preview
-        }}>
-          预览
-        </Item>
+        <Item disabled> 预览</Item>
+        <Item disabled>部署</Item>
         <Separator />
-        <Item>删除</Item>
+        <Item disabled>删除</Item>
         <Item disabled>配置</Item>
       </Menu>
       <Tree.DirectoryTree
@@ -129,6 +128,12 @@ const FileResourceTree = () => {
               payload: {
                 pageId: node.key,
                 label: node.title
+              }
+            })
+            store.dispatch({
+              type: ACTIVE_AREA_MODULE_ACTION,
+              payload: {
+                areaModuleValue: 'drawingboard'
               }
             })
           }

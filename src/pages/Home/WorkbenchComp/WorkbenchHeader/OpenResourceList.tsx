@@ -11,7 +11,7 @@ import {
 import {
   ACTIVE_PAGE_ACTION,
   CLOSE_FILE_ACTION,
-  CLOSE_OTHER_SAVED_FILE_ACTION
+  CLOSE_STACK_OPEN_FILE_ACTION
 } from '../../../../redux/actions/index'
 import store from '../../../../redux/store'
 import i18n from '../../../../utils/i18n'
@@ -87,12 +87,42 @@ const OpenResourceList = () => {
           <Item
             onClick={() => {
               store.dispatch({
-                type: CLOSE_OTHER_SAVED_FILE_ACTION,
-                payload: contextFileId
+                type: CLOSE_STACK_OPEN_FILE_ACTION,
+                payload: {
+                  type: 'closeLeft',
+                  pageId: contextFileId
+                }
               })
-            }}>关闭其他</Item>
-          <Item disabled>全部关闭</Item>
+            }}>
+            关闭左侧
+          </Item>
+          <Item
+            onClick={() => {
+              store.dispatch({
+                type: CLOSE_STACK_OPEN_FILE_ACTION,
+                payload: {
+                  type: 'closeRight',
+                  pageId: contextFileId
+                }
+              })
+            }}>
+            关闭右侧
+          </Item>
+          <Item
+            onClick={() => {
+              store.dispatch({
+                type: CLOSE_STACK_OPEN_FILE_ACTION,
+                payload: {
+                  type: 'closeOther',
+                  pageId: contextFileId
+                }
+              })
+            }}>
+            关闭其他
+          </Item>
+          <Item disabled>关闭已保存</Item>
           <Separator />
+          <Item disabled>另存</Item>
           <Item disabled>固定</Item>
           <Item disabled>预览</Item>
           <Separator />

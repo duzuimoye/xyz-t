@@ -3,10 +3,10 @@ import styled from 'styled-components'
 export const HomeHeaderBox = styled.header`
   width: 100%;
   height: 35px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #3c3c3c;
+  display: ${({ visible }: { visible: boolean }) => `${visible ? 'flex' : 'none'}`};
   .logo-box {
     width: 100%;
     height: 100%;
@@ -74,7 +74,7 @@ export const PopoverContentItem = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  line-height: 25px;
+  line-height: 30px;
   font-size: 14px;
   text-indent: 5px;
   border-radius: 3px;
@@ -111,7 +111,7 @@ export const PopoverDivider = styled.div`
   width: 100%;
   height: 1px;
   background: #d9d9d9;
-  margin: 2px 0;
+  margin: 6px 0;
 `
 
 export const NotityLabel = styled.div`

@@ -7,50 +7,42 @@ import WorkbenchComp from './WorkbenchComp/index'
 import ComponentConfig from './ComponentConfig/index'
 import { HomePageContainer, HomeMain } from './styled'
 import AuxliaryComp from './AuxliaryComp'
-
-const MainContentContainer = connect((state: State.ReduxConnectProps) => ({
-  visibleSidebarRightConfigBox: state.metaViewReducer.visibleSidebarRightConfigBox,
-  areaModuleValue: state.metaViewReducer.areaModuleValue
-}))(() => {
-  const {
-    metaViewReducer: {
-      visibleSidebarRightConfigBox,
-      areaModuleValue
-    }
-  } = store.getState()
-
-  switch (areaModuleValue) {
-    case 'drawingboard':
-      return (
-        <>
-          <WorkbenchComp />
-          {visibleSidebarRightConfigBox && <ComponentConfig />}
-        </>
-      )
-    case 'fullContent':
-      return <AuxliaryComp.OperationGuide />
-    case 'metaView':
-      return <div>none</div>
-    default:
-      return <div>none</div>
-  }
-})
+import EmptyFilePage from '../../components/EmptyFilePage'
 
 const HomePage = () => {
   const {
     metaViewReducer: {
-      visibleHeaderBox,
-      visibleFullPage,
-      visibleSidebarIconsList
+      areaModuleValue
+    },
+    DrawingBoardReducer: {
+      activeFile
     }
   } = store.getState()
+
+  const MainContentContainer = () => {
+
+    if (!!activeFile && areaModuleValue === 'drawingboard') {
+      return (
+        <>
+          <WorkbenchComp />
+          <ComponentConfig />
+        </>
+      )
+    }
+
+    if (areaModuleValue === 'fullContent') {
+      return <AuxliaryComp.OperationGuide />
+    }
+
+    return <EmptyFilePage />
+  }
 
   return (
     <HomePageContainer>
       {/* {visible && <ImageGridLoader progress={progress} loadInfo={messageInfo.slice(-1)} />} */}
-      {visibleHeaderBox && !visibleFullPage && <HomeHeaderComp />}
+      <HomeHeaderComp />
       <HomeMain>
-        {visibleSidebarIconsList && <SidebarleftIconList />}
+        <SidebarleftIconList />
         <SideBarLeftToolComp />
         <MainContentContainer />
       </HomeMain>
@@ -60,8 +52,7 @@ const HomePage = () => {
 
 export default connect((state: State.ReduxConnectProps) => {
   return {
-    visibleHeaderBox: state.metaViewReducer.visibleHeaderBox,
-    visibleFullPage: state.metaViewReducer.visibleFullPage,
-    visibleSidebarIconsList: state.metaViewReducer.visibleSidebarIconsList
+    areaModuleValue: state.metaViewReducer.areaModuleValue,
+    activeFile: !!state.DrawingBoardReducer.activeFile
   }
 })(HomePage)
